@@ -30,8 +30,8 @@ export default function LivingRoom() {
           <div>mogmog</div>
           <div className={`${styles.subButtons} ${activeMenu === 'mogmog' ? styles.show : ''}`}>
             <Link href="/mogmog/home" className={styles.subStar} style={{ 
-              '--x': '-70px', 
-              '--y': '30px', 
+              '--x': '-50px', 
+              '--y': '20px', 
               '--rotate': getRandomRotation() 
             } as React.CSSProperties}>
               <div className={styles.starContent}>
@@ -40,8 +40,8 @@ export default function LivingRoom() {
               </div>
             </Link>
             <Link href="/mogmog/away" className={styles.subStar} style={{ 
-              '--x': '70px', 
-              '--y': '40px', 
+              '--x': '50px', 
+              '--y': '30px', 
               '--rotate': getRandomRotation() 
             } as React.CSSProperties}>
               <div className={styles.starContent}>
@@ -62,7 +62,7 @@ export default function LivingRoom() {
           <div className={`${styles.subButtons} ${activeMenu === 'tektek' ? styles.show : ''}`}>
             <Link href="/tektek/journeys" className={styles.subStar} style={{ 
               '--x': '30px', 
-              '--y': '-90px', 
+              '--y': '-60px', 
               '--rotate': getRandomRotation() 
             } as React.CSSProperties}>
               <div className={styles.starContent}>
@@ -71,8 +71,8 @@ export default function LivingRoom() {
               </div>
             </Link>
             <Link href="/tektek/strolls" className={styles.subStar} style={{ 
-              '--x': '120px', 
-              '--y': '10px', 
+              '--x': '80px', 
+              '--y': '0px', 
               '--rotate': getRandomRotation() 
             } as React.CSSProperties}>
               <div className={styles.starContent}>
@@ -82,7 +82,7 @@ export default function LivingRoom() {
             </Link>
             <Link href="/tektek/citynotes" className={styles.subStar} style={{ 
               '--x': '40px', 
-              '--y': '100px', 
+              '--y': '60px', 
               '--rotate': getRandomRotation() 
             } as React.CSSProperties}>
               <div className={styles.starContent}>
@@ -102,7 +102,7 @@ export default function LivingRoom() {
           <div>parapara</div>
           <div className={`${styles.subButtons} ${activeMenu === 'parapara' ? styles.show : ''}`}>
             <Link href="/parapara/readings" className={styles.subStar} style={{ 
-              '--x': '-60px', 
+              '--x': '-80px', 
               '--y': '-40px', 
               '--rotate': getRandomRotation() 
             } as React.CSSProperties}>
@@ -112,7 +112,7 @@ export default function LivingRoom() {
               </div>
             </Link>
             <Link href="/parapara/zine" className={styles.subStar} style={{ 
-              '--x': '-100px', 
+              '--x': '-40px', 
               '--y': '30px', 
               '--rotate': getRandomRotation() 
             } as React.CSSProperties}>
@@ -133,8 +133,8 @@ export default function LivingRoom() {
           <div>jiiii</div>
           <div className={`${styles.subButtons} ${activeMenu === 'jiiii' ? styles.show : ''}`}>
             <Link href="/jiiii/exhibits" className={styles.subStar} style={{ 
-              '--x': '-80px', 
-              '--y': '-60px', 
+              '--x': '-60px', 
+              '--y': '-40px', 
               '--rotate': getRandomRotation() 
             } as React.CSSProperties}>
               <div className={styles.starContent}>
@@ -153,8 +153,8 @@ export default function LivingRoom() {
               </div>
             </Link>
             <Link href="/jiiii/films" className={styles.subStar} style={{ 
-              '--x': '80px', 
-              '--y': '-60px', 
+              '--x': '60px', 
+              '--y': '-40px', 
               '--rotate': getRandomRotation() 
             } as React.CSSProperties}>
               <div className={styles.starContent}>

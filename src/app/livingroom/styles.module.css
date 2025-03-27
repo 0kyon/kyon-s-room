@@ -82,8 +82,6 @@
   pointer-events: none;
   transition: opacity 0.3s ease;
   z-index: 1;
-  width: 300px;
-  height: 300px;
 }
 
 .show {
@@ -92,26 +90,26 @@
 }
 
 .left .subButtons {
-  left: 100%;
+  left: calc(100% + 20px);
   top: 50%;
   transform: translateY(-50%);
 }
 
 .right .subButtons {
-  right: 100%;
+  right: calc(100% + 20px);
   top: 50%;
   transform: translateY(-50%);
 }
 
 .top .subButtons {
-  top: 100%;
   left: 50%;
+  top: calc(100% + 20px);
   transform: translateX(-50%);
 }
 
 .bottom .subButtons {
-  bottom: 100%;
   left: 50%;
+  bottom: calc(100% + 20px);
   transform: translateX(-50%);
 }
 
@@ -129,6 +127,7 @@
   text-decoration: none;
   transform-origin: center;
   transform: translate(var(--x, 0), var(--y, 0)) rotate(var(--rotate, 0deg));
+  transition: transform 0.3s ease;
 }
 
 .starContent {
