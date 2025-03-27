@@ -8,12 +8,14 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(#FFF7BC 0%, transparent 70%);
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  transform: translate(-50%, -50%) scale(2);
+  width: 600px;
+  height: 600px;
+  background: #FBFB72;
+  /* 四芒星の形状を作成 - シャープな放射状の形状 */
+  clip-path: path('M 300 0 L 330 270 L 600 300 L 330 330 L 300 600 L 270 330 L 0 300 L 270 270 Z');
+  transform: translate(-50%, -50%) scale(1.5);
   z-index: 0;
+  opacity: 0.8;
 }
 
 .buttonContainer {
