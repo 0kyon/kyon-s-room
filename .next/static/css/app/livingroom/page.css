@@ -33,6 +33,11 @@
   font-size: 2.5rem;
   transform: translate(-50%, -50%);
   z-index: 3;
+  transition: transform 0.3s ease;
+}
+
+.styles_emoji__0lagk.styles_active__EhsLx {
+  transform: translate(-50%, -50%) scale(2);
 }
 
 /* メインボタン共通 */
@@ -122,6 +127,16 @@
   position: absolute;
   width: 120px;
   height: 120px;
+  text-decoration: none;
+  transform-origin: center;
+  transform: translate(var(--x, 0), var(--y, 0));
+  transition: transform 0.3s ease;
+}
+
+.styles_starShape__a__N_ {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   background-color: #D9D9D9;
   -webkit-clip-path: polygon(
     50% 0%, 61% 35%, 98% 35%, 68% 57%,
@@ -133,9 +148,7 @@
     79% 91%, 50% 70%, 21% 91%, 32% 57%,
     2% 35%, 39% 35%
   );
-  text-decoration: none;
-  transform-origin: center;
-  transform: translate(var(--x, 0), var(--y, 0)) rotate(var(--rotate, 0deg));
+  transform: rotate(var(--rotate, 0deg));
   transition: transform 0.3s ease;
 }
 
@@ -144,8 +157,13 @@
   width: 200px;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) rotate(calc(-1 * var(--rotate, 0deg)));
+  transform: translate(-50%, -50%);
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 6px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .styles_subTitle__hWofX {
@@ -154,12 +172,14 @@
   font-size: 1.1rem;
   margin-bottom: 4px;
   white-space: nowrap;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
 .styles_subKana__EKu3U {
   color: #444;
   font-size: 0.9rem;
   white-space: nowrap;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
 /* 回転クラス - 使用しないので削除または無効化 */
