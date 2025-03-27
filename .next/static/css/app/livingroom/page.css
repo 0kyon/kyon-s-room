@@ -1,0 +1,177 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[3]!./src/app/livingroom/styles.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+.styles_wrapper__XbicG {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.styles_glow__RIfue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(#FFF7BC 0%, transparent 70%);
+  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+          clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  transform: translate(-50%, -50%) scale(2);
+  z-index: 0;
+}
+
+.styles_buttonContainer__dzGP3 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* 絵文字 */
+.styles_emoji__0lagk {
+  position: absolute;
+  font-size: 2.5rem;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+/* メインボタン共通 */
+.styles_mainButton___mf8N {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  padding: 8px 16px;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* 位置指定 */
+.styles_top__jqaCU {
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
+}
+
+.styles_bottom__mygY2 {
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
+}
+
+.styles_left__qnr5h {
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+  flex-direction: row;
+}
+
+.styles_right__nYE2I {
+  top: 50%;
+  right: 20%;
+  transform: translateY(-50%);
+  flex-direction: row-reverse;
+}
+
+/* クリック展開共通 */
+.styles_subButtons__sUfFc {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  width: 300px;
+  height: 300px;
+}
+
+.styles_show__0iesI {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.styles_left__qnr5h .styles_subButtons__sUfFc {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.styles_right__nYE2I .styles_subButtons__sUfFc {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.styles_top__jqaCU .styles_subButtons__sUfFc {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.styles_bottom__mygY2 .styles_subButtons__sUfFc {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* サブボタンデザイン */
+.styles_subStar__fPWtF {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-color: #D9D9D9;
+  -webkit-clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+          clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+  text-decoration: none;
+  transform-origin: center;
+  transform: translate(var(--x, 0), var(--y, 0)) rotate(var(--rotate, 0deg));
+}
+
+.styles_starContent__u0lR8 {
+  position: absolute;
+  width: 200px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(calc(-1 * var(--rotate, 0deg)));
+  text-align: center;
+}
+
+.styles_subTitle__hWofX {
+  color: black;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+.styles_subKana__EKu3U {
+  color: #444;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* 回転クラス - 使用しないので削除または無効化 */
+/* .rotate15 { transform: rotate(15deg); }
+.rotate20 { transform: rotate(20deg); }
+.rotate30 { transform: rotate(30deg); }
+.rotateNeg15 { transform: rotate(-15deg); }
+.rotateNeg20 { transform: rotate(-20deg); }
+.rotateNeg25 { transform: rotate(-25deg); } */
+
+/* 星の位置調整 - 不要になったので削除 */
+/* .subButtons > * {
+  transform: translate(var(--x, 0), var(--y, 0));
+} */
