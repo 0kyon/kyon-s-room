@@ -33,14 +33,14 @@ export default function LivingRoom() {
         >
           <div>mogmog</div>
           <div className={`${styles.subButtons} ${activeMenu === 'mogmog' ? styles.show : ''}`}>
-            <Link href="/mogmog/home" className={styles.subStar} style={{ '--x': '-50px', '--y': '20px' } as React.CSSProperties}>
+            <Link href="/mogmog/home" className={styles.subStar} style={{ '--x': '-100px', '--y': '10px' } as React.CSSProperties}>
               <div className={styles.starShape} style={{ '--rotate': getRandomRotation() } as React.CSSProperties} />
               <div className={styles.starContent}>
                 <div className={styles.subTitle}>at My Home</div>
                 <div className={styles.subKana}>おうちで作ったごはんとおやつ</div>
               </div>
             </Link>
-            <Link href="/mogmog/away" className={styles.subStar} style={{ '--x': '50px', '--y': '30px' } as React.CSSProperties}>
+            <Link href="/mogmog/away" className={styles.subStar} style={{ '--x': '100px', '--y': '10px' } as React.CSSProperties}>
               <div className={styles.starShape} style={{ '--rotate': getRandomRotation() } as React.CSSProperties} />
               <div className={styles.starContent}>
                 <div className={styles.subTitle}>Away</div>
@@ -62,21 +62,21 @@ export default function LivingRoom() {
         >
           <div>tektek</div>
           <div className={`${styles.subButtons} ${activeMenu === 'tektek' ? styles.show : ''}`}>
-            <Link href="/tektek/journeys" className={styles.subStar} style={{ '--x': '30px', '--y': '-60px' } as React.CSSProperties}>
+            <Link href="/tektek/journeys" className={styles.subStar} style={{ '--x': '40px', '--y': '-120px' } as React.CSSProperties}>
               <div className={styles.starShape} style={{ '--rotate': getRandomRotation() } as React.CSSProperties} />
               <div className={styles.starContent}>
                 <div className={styles.subTitle}>Journeys</div>
                 <div className={styles.subKana}>旅</div>
               </div>
             </Link>
-            <Link href="/tektek/strolls" className={styles.subStar} style={{ '--x': '80px', '--y': '0px' } as React.CSSProperties}>
+            <Link href="/tektek/strolls" className={styles.subStar} style={{ '--x': '120px', '--y': '-40px' } as React.CSSProperties}>
               <div className={styles.starShape} style={{ '--rotate': getRandomRotation() } as React.CSSProperties} />
               <div className={styles.starContent}>
                 <div className={styles.subTitle}>Strolls</div>
                 <div className={styles.subKana}>おさんぽ</div>
               </div>
             </Link>
-            <Link href="/tektek/citynotes" className={styles.subStar} style={{ '--x': '40px', '--y': '60px' } as React.CSSProperties}>
+            <Link href="/tektek/citynotes" className={styles.subStar} style={{ '--x': '40px', '--y': '40px' } as React.CSSProperties}>
               <div className={styles.starShape} style={{ '--rotate': getRandomRotation() } as React.CSSProperties} />
               <div className={styles.starContent}>
                 <div className={styles.subTitle}>City Notes</div>
@@ -98,14 +98,14 @@ export default function LivingRoom() {
         >
           <div>parapara</div>
           <div className={`${styles.subButtons} ${activeMenu === 'parapara' ? styles.show : ''}`}>
-            <Link href="/parapara/readings" className={styles.subStar} style={{ '--x': '-80px', '--y': '-40px' } as React.CSSProperties}>
+            <Link href="/parapara/readings" className={styles.subStar} style={{ '--x': '-120px', '--y': '-60px' } as React.CSSProperties}>
               <div className={styles.starShape} style={{ '--rotate': getRandomRotation() } as React.CSSProperties} />
               <div className={styles.starContent}>
                 <div className={styles.subTitle}>Readings</div>
                 <div className={styles.subKana}>読んだ本とか</div>
               </div>
             </Link>
-            <Link href="/parapara/zine" className={styles.subStar} style={{ '--x': '-40px', '--y': '30px' } as React.CSSProperties}>
+            <Link href="/parapara/zine" className={styles.subStar} style={{ '--x': '-80px', '--y': '60px' } as React.CSSProperties}>
               <div className={styles.starShape} style={{ '--rotate': getRandomRotation() } as React.CSSProperties} />
               <div className={styles.starContent}>
                 <div className={styles.subTitle}>Zine</div>
@@ -127,21 +127,21 @@ export default function LivingRoom() {
         >
           <div>jiiii</div>
           <div className={`${styles.subButtons} ${activeMenu === 'jiiii' ? styles.show : ''}`}>
-            <Link href="/jiiii/exhibits" className={styles.subStar} style={{ '--x': '-60px', '--y': '-40px' } as React.CSSProperties}>
+            <Link href="/jiiii/exhibits" className={styles.subStar} style={{ '--x': '-100px', '--y': '-80px' } as React.CSSProperties}>
               <div className={styles.starShape} style={{ '--rotate': getRandomRotation() } as React.CSSProperties} />
               <div className={styles.starContent}>
                 <div className={styles.subTitle}>Exhibits</div>
                 <div className={styles.subKana}>展示</div>
               </div>
             </Link>
-            <Link href="/jiiii/music" className={styles.subStar} style={{ '--x': '0px', '--y': '-80px' } as React.CSSProperties}>
+            <Link href="/jiiii/music" className={styles.subStar} style={{ '--x': '0px', '--y': '-120px' } as React.CSSProperties}>
               <div className={styles.starShape} style={{ '--rotate': getRandomRotation() } as React.CSSProperties} />
               <div className={styles.starContent}>
                 <div className={styles.subTitle}>Music</div>
                 <div className={styles.subKana}>ライブとか</div>
               </div>
             </Link>
-            <Link href="/jiiii/films" className={styles.subStar} style={{ '--x': '60px', '--y': '-40px' } as React.CSSProperties}>
+            <Link href="/jiiii/films" className={styles.subStar} style={{ '--x': '100px', '--y': '-80px' } as React.CSSProperties}>
               <div className={styles.starShape} style={{ '--rotate': getRandomRotation() } as React.CSSProperties} />
               <div className={styles.starContent}>
                 <div className={styles.subTitle}>Films</div>

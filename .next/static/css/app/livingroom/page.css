@@ -159,27 +159,20 @@
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 6px 8px;
-  border-radius: 4px;
   pointer-events: none;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .styles_subTitle__hWofX {
   color: black;
-  font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   margin-bottom: 4px;
   white-space: nowrap;
-  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
 .styles_subKana__EKu3U {
   color: #444;
   font-size: 0.9rem;
   white-space: nowrap;
-  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
 /* 回転クラス - 使用しないので削除または無効化 */
