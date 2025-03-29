@@ -33,7 +33,8 @@ export default function LivingRoom() {
 
   // ランダムな角度を生成する関数（-30度から30度の範囲）
   const getRandomRotation = () => {
-    return `${Math.floor(Math.random() * 61) - 30}deg`;
+    // return `${Math.floor(Math.random() * 61) - 30}deg`;
+    return `0deg`;  // 常に0度を返すように変更
   };
 
   // 画面サイズに基づく表示調整
