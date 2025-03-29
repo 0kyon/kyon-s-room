@@ -53,7 +53,7 @@ export default function LivingRoom() {
         {/* tektek */}
         <div 
           className={`${styles.emoji} ${activeMenu === 'tektek' ? styles.active : ''}`}
-          style={{ top: '50%', left: '18%', cursor: 'pointer' }}
+          style={{ top: '50%', left: '22%', cursor: 'pointer' }}
           onClick={() => toggleMenu('tektek')}
         >🚶‍♂️</div>
         <div
@@ -89,7 +89,7 @@ export default function LivingRoom() {
         {/* parapara */}
         <div 
           className={`${styles.emoji} ${activeMenu === 'parapara' ? styles.active : ''}`}
-          style={{ top: '50%', right: '18%', cursor: 'pointer' }}
+          style={{ top: '50%', right: '20%', cursor: 'pointer' }}
           onClick={() => toggleMenu('parapara')}
         >📚</div>
         <div
@@ -118,7 +118,7 @@ export default function LivingRoom() {
         {/* jiiii */}
         <div 
           className={`${styles.emoji} ${activeMenu === 'jiiii' ? styles.active : ''}`}
-          style={{ bottom: '3%', left: '50%', cursor: 'pointer' }}
+          style={{ bottom: '4%', left: '50%', cursor: 'pointer' }}
           onClick={() => toggleMenu('jiiii')}
         >👀</div>
         <div

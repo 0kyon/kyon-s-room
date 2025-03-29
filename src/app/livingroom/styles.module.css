@@ -55,6 +55,7 @@
   position: absolute;
   display: flex;
   align-items: center;
+  justify-content: center;
   border: 1px solid black;
   padding: 8px 16px;
   font-size: 1.4rem;
@@ -63,6 +64,8 @@
   background-color: white;
   cursor: pointer;
   z-index: 2;
+  width: 95px; /* paraparaボタンのサイズに合わせた固定幅 */
+  text-align: center;
 }
 
 /* 位置指定 */
@@ -74,7 +77,7 @@
 }
 
 .bottom {
-  bottom: 20%;
+  bottom: 18%;
   left: 50%;
   transform: translateX(-50%);
   flex-direction: column;
