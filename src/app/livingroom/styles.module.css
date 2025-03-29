@@ -367,20 +367,20 @@
 
 .subKana {
   color: #444;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   white-space: nowrap;
 }
 
 /* subKanaのレスポンシブ対応 */
 @media (max-width: 768px) {
   .subKana {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 
 @media (max-width: 480px) {
   .subKana {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
 }
 

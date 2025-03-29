@@ -377,20 +377,20 @@
 
 .styles_subKana__EKu3U {
   color: #444;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   white-space: nowrap;
 }
 
 /* subKanaのレスポンシブ対応 */
 @media (max-width: 768px) {
   .styles_subKana__EKu3U {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 
 @media (max-width: 480px) {
   .styles_subKana__EKu3U {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
 }
 
