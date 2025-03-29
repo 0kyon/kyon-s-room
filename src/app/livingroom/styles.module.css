@@ -10,12 +10,24 @@
   left: 50%;
   width: 600px;
   height: 600px;
-  background: #FBFB72;
-  /* 四芒星の形状を作成 - シャープな放射状の形状 */
-  clip-path: path('M 300 0 L 330 270 L 600 300 L 330 330 L 300 600 L 270 330 L 0 300 L 270 270 Z');
+  background: gold;
+  /* 曲線の菱形の形状 */
+  clip-path: path('M 300,0 C 270,240 240,270 0,300 C 240,330 270,360 300,600 C 330,360 360,330 600,300 C 360,270 330,240 300,0');
   transform: translate(-50%, -50%) scale(1.5);
   z-index: 0;
   opacity: 0.8;
+  animation: shine 2s infinite ease-in-out;
+}
+
+@keyframes shine {
+  0%, 100% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+  }
+  50% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
+  }
 }
 
 .buttonContainer {
