@@ -156,6 +156,24 @@
   }
 }
 
+/* 601~767pxの範囲専用のメディアクエリを追加 */
+@media (min-width: 601px) and (max-width: 767px) {
+  .right {
+    right: 20%;
+  }
+}
+
+/* 横長画面（アスペクト比が高い画面）用のメディアクエリ */
+@media (max-aspect-ratio: 1/1.7) {
+  .left {
+    left: 18%;
+  }
+  
+  .right {
+    right: 18%;
+  }
+}
+
 @media (max-width: 480px) {
   .top {
     top: 26%;

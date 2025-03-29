@@ -40,16 +40,23 @@ export default function LivingRoom() {
   const isWideScreen = windowWidth > 600;
   const isTablet = windowWidth <= 1024 && windowWidth > 600;
   const isIpad = windowWidth >= 768 && windowWidth <= 1024;
+  // 601~767pxの範囲を検出する変数を追加
+  const isMediumTablet = windowWidth >= 601 && windowWidth <= 767;
+  // 横長画面を検出する変数を追加（アスペクト比が約1.7以上の場合）
+  const isWideFlat = windowWidth / window.innerHeight >= 1.7;
 
   // タブレットサイズでの左右絵文字の位置調整
   const getEmojiPosition = (position: string) => {
     if (position === 'tektek') {
       if (!isWideScreen) return { top: '46%', left: '8%' }; // スマホ
+      if (isWideFlat) return { top: '50%', left: '15%' }; // 横長画面用
       if (isIpad) return { top: '50%', left: '6%' }; // iPad特化
       if (isTablet) return { top: '50%', left: '8%' }; // タブレット一般
       return { top: '50%', left: '18%' }; // PC
     } else if (position === 'parapara') {
       if (!isWideScreen) return { top: '54%', right: '1%' }; // スマホ
+      if (isWideFlat) return { top: '50%', right: '15%' }; // 横長画面用
+      if (isMediumTablet) return { top: '50%', right: '15%' }; // 601~767pxの範囲専用
       if (isIpad) return { top: '50%', right: '2%' }; // iPad特化
       if (isTablet) return { top: '50%', right: '8%' }; // タブレット一般
       return { top: '50%', right: '15%' }; // PC
