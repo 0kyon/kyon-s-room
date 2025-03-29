@@ -86,14 +86,14 @@
 
 .styles_left__qnr5h {
   top: 50%;
-  left: 20%;
+  left: 28%;
   transform: translateY(-50%);
   flex-direction: row;
 }
 
 .styles_right__nYE2I {
   top: 50%;
-  right: 20%;
+  right: 28%;
   transform: translateY(-50%);
   flex-direction: row-reverse;
 }
