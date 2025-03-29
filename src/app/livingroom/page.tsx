@@ -6,18 +6,28 @@ import styles from './styles.module.css';
 
 export default function LivingRoom() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  // クライアントサイドでレンダリングされているかを確認するフラグ
+  const [isMounted, setIsMounted] = useState(false);
   // 初期値を1200に設定（デスクトップサイズをデフォルトとする）
-  const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  const [windowWidth, setWindowWidth] = useState<number>(1200);
+  // クライアントサイドで使用する画面の高さ
+  const [windowHeight, setWindowHeight] = useState<number>(800);
+
+  // クライアントサイドへのマウント検知
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // 画面サイズ変更を検知
   useEffect(() => {
-    // クライアントサイドでのみ実行
     if (typeof window !== 'undefined') {
       // 初期値を正確に設定
       setWindowWidth(window.innerWidth);
+      setWindowHeight(window.innerHeight);
 
       const handleResize = () => {
         setWindowWidth(window.innerWidth);
+        setWindowHeight(window.innerHeight);
       };
 
       window.addEventListener('resize', handleResize);
@@ -44,7 +54,7 @@ export default function LivingRoom() {
   // 601~767pxの範囲を検出する変数を追加
   const isMediumTablet = windowWidth >= 601 && windowWidth <= 767;
   // 横長画面を検出する変数を追加（アスペクト比が約1.7以上の場合）
-  const isWideFlat = windowWidth / window.innerHeight >= 1.7;
+  const isWideFlat = isMounted ? windowWidth / windowHeight >= 1.7 : false;
   // スマホサイズを検出
   const isMobile = windowWidth <= 480;
 
