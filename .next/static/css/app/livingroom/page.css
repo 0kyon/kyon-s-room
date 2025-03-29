@@ -50,8 +50,32 @@
   transition: transform 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  .styles_emoji__0lagk {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .styles_emoji__0lagk {
+    font-size: 1.5rem;
+  }
+}
+
 .styles_emoji__0lagk.styles_active__EhsLx {
   transform: translate(-50%, -50%) scale(2);
+}
+
+@media (max-width: 768px) {
+  .styles_emoji__0lagk.styles_active__EhsLx {
+    transform: translate(-50%, -50%) scale(1.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .styles_emoji__0lagk.styles_active__EhsLx {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
 }
 
 /* メインボタン共通 */
@@ -72,16 +96,33 @@
   text-align: center;
 }
 
+/* レスポンシブ対応 - 画面サイズによってボタンサイズを変更 */
+@media (max-width: 768px) {
+  .styles_mainButton___mf8N {
+    width: 80px;
+    padding: 6px 12px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .styles_mainButton___mf8N {
+    width: 70px;
+    padding: 4px 8px;
+    font-size: 1rem;
+  }
+}
+
 /* 位置指定 */
 .styles_top__jqaCU {
-  top: 20%;
+  top: 22%;
   left: 50%;
   transform: translateX(-50%);
   flex-direction: column;
 }
 
 .styles_bottom__mygY2 {
-  bottom: 18%;
+  bottom: 22%;
   left: 50%;
   transform: translateX(-50%);
   flex-direction: column;
@@ -89,16 +130,62 @@
 
 .styles_left__qnr5h {
   top: 50%;
-  left: 28%;
+  left: 24%;
   transform: translateY(-50%);
   flex-direction: row;
 }
 
 .styles_right__nYE2I {
   top: 50%;
-  right: 28%;
+  right: 24%;
   transform: translateY(-50%);
   flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+  .styles_top__jqaCU {
+    top: 24%;
+  }
+  
+  .styles_bottom__mygY2 {
+    bottom: 24%;
+  }
+  
+  .styles_left__qnr5h {
+    left: 12%;
+  }
+  
+  .styles_right__nYE2I {
+    right: 12%;
+  }
+}
+
+@media (max-width: 480px) {
+  .styles_top__jqaCU {
+    top: 26%;
+  }
+  
+  .styles_bottom__mygY2 {
+    bottom: 26%;
+  }
+  
+  .styles_left__qnr5h {
+    left: 5%;
+  }
+  
+  .styles_right__nYE2I {
+    right: 5%;
+  }
+}
+
+@media (max-width: 375px) {
+  .styles_left__qnr5h {
+    left: 3%;
+  }
+  
+  .styles_right__nYE2I {
+    right: 3%;
+  }
 }
 
 /* クリック展開共通 */

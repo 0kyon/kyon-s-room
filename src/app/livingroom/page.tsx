@@ -1,11 +1,27 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './styles.module.css';
 
 export default function LivingRoom() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+
+  // 画面サイズ変更を検知
+  useEffect(() => {
+    // 初期値をセット
+    setWindowWidth(window.innerWidth);
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const toggleMenu = (menu: string) => {
     setActiveMenu(activeMenu === menu ? null : menu);
@@ -16,6 +32,9 @@ export default function LivingRoom() {
     return `${Math.floor(Math.random() * 61) - 30}deg`;
   };
 
+  // 幅600px以上と以下で絵文字の位置を変更
+  const isWideScreen = windowWidth > 600;
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.glow}></div>
@@ -24,7 +43,11 @@ export default function LivingRoom() {
         {/* mogmog */}
         <div 
           className={`${styles.emoji} ${activeMenu === 'mogmog' ? styles.active : ''}`}
-          style={{ top: '12%', left: '50%', cursor: 'pointer' }}
+          style={{ 
+            top: isWideScreen ? '10%' : '16%', 
+            left: '50%', 
+            cursor: 'pointer' 
+          }}
           onClick={() => toggleMenu('mogmog')}
         >😋</div>
         <div
@@ -53,7 +76,11 @@ export default function LivingRoom() {
         {/* tektek */}
         <div 
           className={`${styles.emoji} ${activeMenu === 'tektek' ? styles.active : ''}`}
-          style={{ top: '50%', left: '22%', cursor: 'pointer' }}
+          style={{ 
+            top: isWideScreen ? '50%' : '42%', 
+            left: isWideScreen ? '18%' : '14%', 
+            cursor: 'pointer' 
+          }}
           onClick={() => toggleMenu('tektek')}
         >🚶‍♂️</div>
         <div
@@ -89,7 +116,11 @@ export default function LivingRoom() {
         {/* parapara */}
         <div 
           className={`${styles.emoji} ${activeMenu === 'parapara' ? styles.active : ''}`}
-          style={{ top: '50%', right: '20%', cursor: 'pointer' }}
+          style={{ 
+            top: isWideScreen ? '50%' : '58%', 
+            right: isWideScreen ? '18%' : '14%', 
+            cursor: 'pointer' 
+          }}
           onClick={() => toggleMenu('parapara')}
         >📚</div>
         <div
@@ -118,7 +149,11 @@ export default function LivingRoom() {
         {/* jiiii */}
         <div 
           className={`${styles.emoji} ${activeMenu === 'jiiii' ? styles.active : ''}`}
-          style={{ bottom: '4%', left: '50%', cursor: 'pointer' }}
+          style={{ 
+            bottom: isWideScreen ? '10%' : '14%', 
+            left: '50%', 
+            cursor: 'pointer' 
+          }}
           onClick={() => toggleMenu('jiiii')}
         >👀</div>
         <div

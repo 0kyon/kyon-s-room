@@ -46,8 +46,32 @@
   transition: transform 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  .emoji {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .emoji {
+    font-size: 1.5rem;
+  }
+}
+
 .emoji.active {
   transform: translate(-50%, -50%) scale(2);
+}
+
+@media (max-width: 768px) {
+  .emoji.active {
+    transform: translate(-50%, -50%) scale(1.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .emoji.active {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
 }
 
 /* メインボタン共通 */
@@ -68,16 +92,33 @@
   text-align: center;
 }
 
+/* レスポンシブ対応 - 画面サイズによってボタンサイズを変更 */
+@media (max-width: 768px) {
+  .mainButton {
+    width: 80px;
+    padding: 6px 12px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainButton {
+    width: 70px;
+    padding: 4px 8px;
+    font-size: 1rem;
+  }
+}
+
 /* 位置指定 */
 .top {
-  top: 20%;
+  top: 22%;
   left: 50%;
   transform: translateX(-50%);
   flex-direction: column;
 }
 
 .bottom {
-  bottom: 18%;
+  bottom: 22%;
   left: 50%;
   transform: translateX(-50%);
   flex-direction: column;
@@ -85,16 +126,62 @@
 
 .left {
   top: 50%;
-  left: 28%;
+  left: 24%;
   transform: translateY(-50%);
   flex-direction: row;
 }
 
 .right {
   top: 50%;
-  right: 28%;
+  right: 24%;
   transform: translateY(-50%);
   flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+  .top {
+    top: 24%;
+  }
+  
+  .bottom {
+    bottom: 24%;
+  }
+  
+  .left {
+    left: 12%;
+  }
+  
+  .right {
+    right: 12%;
+  }
+}
+
+@media (max-width: 480px) {
+  .top {
+    top: 26%;
+  }
+  
+  .bottom {
+    bottom: 26%;
+  }
+  
+  .left {
+    left: 5%;
+  }
+  
+  .right {
+    right: 5%;
+  }
+}
+
+@media (max-width: 375px) {
+  .left {
+    left: 3%;
+  }
+  
+  .right {
+    right: 3%;
+  }
 }
 
 /* クリック展開共通 */
