@@ -17,7 +17,7 @@
   /* 曲線の菱形の形状 */
   -webkit-clip-path: path('M 300,0 C 270,240 240,270 0,300 C 240,330 270,360 300,600 C 330,360 360,330 600,300 C 360,270 330,240 300,0');
           clip-path: path('M 300,0 C 270,240 240,270 0,300 C 240,330 270,360 300,600 C 330,360 360,330 600,300 C 360,270 330,240 300,0');
-  transform: translate(-50%, -50%) scale(1.5);
+  transform: translate(-50%, -50%) scale(0.6);
   z-index: 0;
   opacity: 0.8;
   animation: styles_shine__0BjT_ 2s infinite ease-in-out;
