@@ -32,8 +32,26 @@ export default function LivingRoom() {
     return `${Math.floor(Math.random() * 61) - 30}deg`;
   };
 
-  // 幅600px以上と以下で絵文字の位置を変更
+  // 画面サイズに基づく表示調整
   const isWideScreen = windowWidth > 600;
+  const isTablet = windowWidth > 600 && windowWidth <= 1024;
+
+  // タブレットサイズでの左右絵文字の位置調整
+  const getEmojiPosition = (position: string) => {
+    if (position === 'tektek') {
+      if (!isWideScreen) return { top: '46%', left: '8%' }; // スマホ
+      if (isTablet) return { top: '50%', left: '12%' }; // タブレット
+      return { top: '50%', left: '18%' }; // PC
+    } else if (position === 'parapara') {
+      if (!isWideScreen) return { top: '54%', right: '1%' }; // スマホ
+      if (isTablet) return { top: '50%', right: '12%' }; // タブレット
+      return { top: '50%', right: '15%' }; // PC
+    }
+    return {};
+  };
+
+  const tektekPosition = getEmojiPosition('tektek');
+  const paraparaPosition = getEmojiPosition('parapara');
 
   return (
     <div className={styles.wrapper}>
@@ -44,7 +62,7 @@ export default function LivingRoom() {
         <div 
           className={`${styles.emoji} ${activeMenu === 'mogmog' ? styles.active : ''}`}
           style={{ 
-            top: isWideScreen ? '10%' : '16%', 
+            top: isWideScreen ? '15%' : '23%', 
             left: '50%', 
             cursor: 'pointer' 
           }}
@@ -77,8 +95,8 @@ export default function LivingRoom() {
         <div 
           className={`${styles.emoji} ${activeMenu === 'tektek' ? styles.active : ''}`}
           style={{ 
-            top: isWideScreen ? '50%' : '42%', 
-            left: isWideScreen ? '18%' : '14%', 
+            top: tektekPosition.top, 
+            left: tektekPosition.left, 
             cursor: 'pointer' 
           }}
           onClick={() => toggleMenu('tektek')}
@@ -117,8 +135,8 @@ export default function LivingRoom() {
         <div 
           className={`${styles.emoji} ${activeMenu === 'parapara' ? styles.active : ''}`}
           style={{ 
-            top: isWideScreen ? '50%' : '58%', 
-            right: isWideScreen ? '18%' : '14%', 
+            top: paraparaPosition.top, 
+            right: paraparaPosition.right, 
             cursor: 'pointer' 
           }}
           onClick={() => toggleMenu('parapara')}
@@ -150,7 +168,7 @@ export default function LivingRoom() {
         <div 
           className={`${styles.emoji} ${activeMenu === 'jiiii' ? styles.active : ''}`}
           style={{ 
-            bottom: isWideScreen ? '10%' : '14%', 
+            bottom: isWideScreen ? '10%' : '18%', 
             left: '50%', 
             cursor: 'pointer' 
           }}
