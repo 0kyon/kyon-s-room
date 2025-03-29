@@ -50,20 +50,34 @@ export default function LivingRoom() {
   // サブスターの位置を画面サイズに基づいて調整する関数
   const getSubStarPosition = (menuType: string, position: string) => {
     if (menuType === 'tektek') {
-      if (position === 'journeys') {
-        if (isMobile) return { x: '30px', y: '-80px' };
-        if (isTablet) return { x: '35px', y: '-100px' };
-        return { x: '40px', y: '-120px' };
-      } else if (position === 'strolls') {
-        if (isMobile) return { x: '80px', y: '-30px' };
-        if (isTablet) return { x: '100px', y: '-35px' };
-        return { x: '120px', y: '-40px' };
-      } else if (position === 'citynotes') {
-        if (isMobile) return { x: '30px', y: '30px' };
-        if (isTablet) return { x: '35px', y: '35px' };
-        return { x: '40px', y: '40px' };
+      // 縦長画面の場合（スマホやタブレットの縦向き）
+      if (!isWideScreen) {
+        // 縦長画面の配置はそのまま
+        if (position === 'journeys') {
+          return { x: '-35px', y: '-60px' }; // より左に
+        } else if (position === 'strolls') {
+          return { x: '15px', y: '10px' }; // より中央側に
+        } else if (position === 'citynotes') {
+          return { x: '-60px', y: '70px' }; // さらに左側に
+        }
+      } else {
+        // 横長画面の場合（PC、iPadなど）
+        if (position === 'journeys') {
+          if (isMobile) return { x: '-10px', y: '-50px' }; // モバイルを元に戻す
+          if (isTablet) return { x: '-75px', y: '-115px' }; // 指定値に変更
+          return { x: '-90px', y: '-150px' }; // より上に配置
+        } else if (position === 'strolls') {
+          if (isMobile) return { x: '30px', y: '-30px' }; // モバイルを元に戻す
+          if (isTablet) return { x: '0px', y: '-35px' }; // より中央側に
+          return { x: '0px', y: '-40px' }; // より中央側に
+        } else if (position === 'citynotes') {
+          if (isMobile) return { x: '-40px', y: '0px' }; // モバイルを元に戻す
+          if (isTablet) return { x: '-100px', y: '35px' }; // 指定値のまま
+          return { x: '-110px', y: '40px' }; // 指定値に変更
+        }
       }
     } else if (menuType === 'mogmog') {
+      // mogmogはそのまま
       if (position === 'home') {
         if (isMobile) return { x: '-70px', y: '8px' };
         if (isTablet) return { x: '-85px', y: '9px' };
@@ -74,16 +88,27 @@ export default function LivingRoom() {
         return { x: '100px', y: '10px' };
       }
     } else if (menuType === 'parapara') {
-      if (position === 'readings') {
-        if (isMobile) return { x: '-80px', y: '-40px' };
-        if (isTablet) return { x: '-100px', y: '-50px' };
-        return { x: '-120px', y: '-60px' };
-      } else if (position === 'zine') {
-        if (isMobile) return { x: '-60px', y: '40px' };
-        if (isTablet) return { x: '-70px', y: '50px' };
-        return { x: '-80px', y: '60px' };
+      // 縦長画面の場合（スマホやタブレットの縦向き）
+      if (!isWideScreen) {
+        if (position === 'readings') {
+          return { x: '-50px', y: '80px' };
+        } else if (position === 'zine') {
+          return { x: '20px', y: '120px' };
+        }
+      } else {
+        // 横長画面の場合（従来通り）
+        if (position === 'readings') {
+          if (isMobile) return { x: '-80px', y: '-40px' };
+          if (isTablet) return { x: '-100px', y: '-50px' };
+          return { x: '-120px', y: '-60px' };
+        } else if (position === 'zine') {
+          if (isMobile) return { x: '-60px', y: '40px' };
+          if (isTablet) return { x: '-70px', y: '50px' };
+          return { x: '-80px', y: '60px' };
+        }
       }
     } else if (menuType === 'jiiii') {
+      // jiiiはそのまま
       if (position === 'exhibits') {
         if (isMobile) return { x: '-70px', y: '-60px' };
         if (isTablet) return { x: '-85px', y: '-70px' };

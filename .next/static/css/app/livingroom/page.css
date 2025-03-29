@@ -225,15 +225,32 @@
 }
 
 .styles_left__qnr5h .styles_subButtons__sUfFc {
-  left: calc(100% + 20px);
+  left: calc(100% + 10px);
   top: 50%;
   transform: translateY(-50%);
 }
 
 .styles_right__nYE2I .styles_subButtons__sUfFc {
-  right: calc(100% + 20px);
+  right: calc(100% + 10px);
   top: 50%;
   transform: translateY(-50%);
+}
+
+/* 縦長画面での左右メニューボタンのサブメニュー位置調整 */
+@media (max-width: 600px) {
+  .styles_left__qnr5h .styles_subButtons__sUfFc {
+    left: -30px;
+    top: -20px;
+    transform: none;
+    width: 200px;
+    height: 200px;
+  }
+  
+  .styles_right__nYE2I .styles_subButtons__sUfFc {
+    right: 0;
+    top: 80px;
+    transform: none;
+  }
 }
 
 .styles_top__jqaCU .styles_subButtons__sUfFc {
@@ -401,5 +418,24 @@
   .styles_glow__RIfue {
     -webkit-clip-path: path('M 278 0 C 278 0 278 219.027 307.487 248.515 C 336.975 278.002 396 278 396 278 C 396 278 336.973 278 307.486 307.486 C 278 336.973 278 556 278 556 C 278 556 278 336.975 248.513 307.487 C 219.025 278 160 278 160 278 C 160 278 219.025 278.002 248.513 248.515 C 278 219.027 278 0 278 0');
             clip-path: path('M 278 0 C 278 0 278 219.027 307.487 248.515 C 336.975 278.002 396 278 396 278 C 396 278 336.973 278 307.486 307.486 C 278 336.973 278 556 278 556 C 278 556 278 336.975 248.513 307.487 C 219.025 278 160 278 160 278 C 160 278 219.025 278.002 248.513 248.515 C 278 219.027 278 0 278 0');
+  }
+}
+
+/* スターの位置調整のための追加設定 */
+@media (max-width: 600px) {
+  /* tektek用のスタイル */
+  .styles_left__qnr5h .styles_subButtons__sUfFc .styles_subStar__fPWtF:first-child .styles_starShape__a__N_ {
+    /* Journeys */
+    background-color: #D9D9D9;
+  }
+  
+  .styles_left__qnr5h .styles_subButtons__sUfFc .styles_subStar__fPWtF:nth-child(2) .styles_starShape__a__N_ {
+    /* Strolls */
+    background-color: #D9D9D9;
+  }
+  
+  .styles_left__qnr5h .styles_subButtons__sUfFc .styles_subStar__fPWtF:nth-child(3) .styles_starShape__a__N_ {
+    /* City Notes */
+    background-color: #D9D9D9;
   }
 }

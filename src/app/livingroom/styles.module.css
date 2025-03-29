@@ -220,15 +220,32 @@
 }
 
 .left .subButtons {
-  left: calc(100% + 20px);
+  left: calc(100% + 10px);
   top: 50%;
   transform: translateY(-50%);
 }
 
 .right .subButtons {
-  right: calc(100% + 20px);
+  right: calc(100% + 10px);
   top: 50%;
   transform: translateY(-50%);
+}
+
+/* 縦長画面での左右メニューボタンのサブメニュー位置調整 */
+@media (max-width: 600px) {
+  .left .subButtons {
+    left: -30px;
+    top: -20px;
+    transform: none;
+    width: 200px;
+    height: 200px;
+  }
+  
+  .right .subButtons {
+    right: 0;
+    top: 80px;
+    transform: none;
+  }
 }
 
 .top .subButtons {
@@ -389,5 +406,24 @@
 @media (min-width: 376px) and (max-width: 430px) and (max-aspect-ratio: 9/19) {
   .glow {
     clip-path: path('M 278 0 C 278 0 278 219.027 307.487 248.515 C 336.975 278.002 396 278 396 278 C 396 278 336.973 278 307.486 307.486 C 278 336.973 278 556 278 556 C 278 556 278 336.975 248.513 307.487 C 219.025 278 160 278 160 278 C 160 278 219.025 278.002 248.513 248.515 C 278 219.027 278 0 278 0');
+  }
+}
+
+/* スターの位置調整のための追加設定 */
+@media (max-width: 600px) {
+  /* tektek用のスタイル */
+  .left .subButtons .subStar:first-child .starShape {
+    /* Journeys */
+    background-color: #D9D9D9;
+  }
+  
+  .left .subButtons .subStar:nth-child(2) .starShape {
+    /* Strolls */
+    background-color: #D9D9D9;
+  }
+  
+  .left .subButtons .subStar:nth-child(3) .starShape {
+    /* City Notes */
+    background-color: #D9D9D9;
   }
 }
