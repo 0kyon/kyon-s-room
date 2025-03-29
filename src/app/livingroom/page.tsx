@@ -6,21 +6,25 @@ import styles from './styles.module.css';
 
 export default function LivingRoom() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const [windowWidth, setWindowWidth] = useState<number>(0);
+  // 初期値を1200に設定（デスクトップサイズをデフォルトとする）
+  const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 1200);
 
   // 画面サイズ変更を検知
   useEffect(() => {
-    // 初期値をセット
-    setWindowWidth(window.innerWidth);
-
-    const handleResize = () => {
+    // クライアントサイドでのみ実行
+    if (typeof window !== 'undefined') {
+      // 初期値を正確に設定
       setWindowWidth(window.innerWidth);
-    };
 
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
   }, []);
 
   const toggleMenu = (menu: string) => {
@@ -34,17 +38,20 @@ export default function LivingRoom() {
 
   // 画面サイズに基づく表示調整
   const isWideScreen = windowWidth > 600;
-  const isTablet = windowWidth > 600 && windowWidth <= 1024;
+  const isTablet = windowWidth <= 1024 && windowWidth > 600;
+  const isIpad = windowWidth >= 768 && windowWidth <= 1024;
 
   // タブレットサイズでの左右絵文字の位置調整
   const getEmojiPosition = (position: string) => {
     if (position === 'tektek') {
       if (!isWideScreen) return { top: '46%', left: '8%' }; // スマホ
-      if (isTablet) return { top: '50%', left: '12%' }; // タブレット
+      if (isIpad) return { top: '50%', left: '6%' }; // iPad特化
+      if (isTablet) return { top: '50%', left: '8%' }; // タブレット一般
       return { top: '50%', left: '18%' }; // PC
     } else if (position === 'parapara') {
       if (!isWideScreen) return { top: '54%', right: '1%' }; // スマホ
-      if (isTablet) return { top: '50%', right: '12%' }; // タブレット
+      if (isIpad) return { top: '50%', right: '2%' }; // iPad特化
+      if (isTablet) return { top: '50%', right: '8%' }; // タブレット一般
       return { top: '50%', right: '15%' }; // PC
     }
     return {};
