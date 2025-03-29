@@ -10,7 +10,7 @@
   left: 50%;
   width: 600px;
   height: 600px;
-  background: gold;
+  background: #FFFF88;
   /* 曲線の菱形の形状 */
   clip-path: path('M 300,0 C 270,240 240,270 0,300 C 240,330 270,360 300,600 C 330,360 360,330 600,300 C 360,270 330,240 300,0');
   transform: translate(-50%, -50%) scale(0.6);
