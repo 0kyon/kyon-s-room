@@ -259,6 +259,28 @@
   transition: transform 0.3s ease;
 }
 
+/* サブスターのレスポンシブ対応 */
+@media (max-width: 1024px) {
+  .styles_subStar__fPWtF {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .styles_subStar__fPWtF {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .styles_subStar__fPWtF {
+    width: 70px;
+    height: 70px;
+  }
+}
+
 .styles_starShape__a__N_ {
   position: absolute;
   width: 100%;
@@ -288,6 +310,25 @@
   pointer-events: none;
 }
 
+/* starContentのレスポンシブ対応 */
+@media (max-width: 1024px) {
+  .styles_starContent__u0lR8 {
+    width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .styles_starContent__u0lR8 {
+    width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .styles_starContent__u0lR8 {
+    width: 120px;
+  }
+}
+
 .styles_subTitle__hWofX {
   color: black;
   font-size: 1.4rem;
@@ -295,10 +336,43 @@
   white-space: nowrap;
 }
 
+/* subTitleのレスポンシブ対応 */
+@media (max-width: 1024px) {
+  .styles_subTitle__hWofX {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .styles_subTitle__hWofX {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .styles_subTitle__hWofX {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+  }
+}
+
 .styles_subKana__EKu3U {
   color: #444;
   font-size: 0.9rem;
   white-space: nowrap;
+}
+
+/* subKanaのレスポンシブ対応 */
+@media (max-width: 768px) {
+  .styles_subKana__EKu3U {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .styles_subKana__EKu3U {
+    font-size: 0.7rem;
+  }
 }
 
 /* 回転クラス - 使用しないので削除または無効化 */

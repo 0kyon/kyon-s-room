@@ -254,6 +254,28 @@
   transition: transform 0.3s ease;
 }
 
+/* サブスターのレスポンシブ対応 */
+@media (max-width: 1024px) {
+  .subStar {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .subStar {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .subStar {
+    width: 70px;
+    height: 70px;
+  }
+}
+
 .starShape {
   position: absolute;
   width: 100%;
@@ -278,6 +300,25 @@
   pointer-events: none;
 }
 
+/* starContentのレスポンシブ対応 */
+@media (max-width: 1024px) {
+  .starContent {
+    width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .starContent {
+    width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .starContent {
+    width: 120px;
+  }
+}
+
 .subTitle {
   color: black;
   font-size: 1.4rem;
@@ -285,10 +326,43 @@
   white-space: nowrap;
 }
 
+/* subTitleのレスポンシブ対応 */
+@media (max-width: 1024px) {
+  .subTitle {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .subTitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .subTitle {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+  }
+}
+
 .subKana {
   color: #444;
   font-size: 0.9rem;
   white-space: nowrap;
+}
+
+/* subKanaのレスポンシブ対応 */
+@media (max-width: 768px) {
+  .subKana {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .subKana {
+    font-size: 0.7rem;
+  }
 }
 
 /* 回転クラス - 使用しないので削除または無効化 */
