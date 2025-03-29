@@ -79,48 +79,50 @@ export default function LivingRoom() {
     } else if (menuType === 'mogmog') {
       // mogmogはそのまま
       if (position === 'home') {
-        if (isMobile) return { x: '-70px', y: '8px' };
-        if (isTablet) return { x: '-85px', y: '9px' };
-        return { x: '-100px', y: '10px' };
+        if (isMobile) return { x: '-90px', y: '0px' };
+        if (isTablet) return { x: '-110px', y: '0px' };
+        return { x: '-130px', y: '0px' };
       } else if (position === 'away') {
-        if (isMobile) return { x: '70px', y: '8px' };
-        if (isTablet) return { x: '85px', y: '9px' };
-        return { x: '100px', y: '10px' };
+        if (isMobile) return { x: '40px', y: '-50px' };
+        if (isTablet) return { x: '50px', y: '-60px' };
+        return { x: '60px', y: '-70px' };
       }
     } else if (menuType === 'parapara') {
       // 縦長画面の場合（スマホやタブレットの縦向き）
       if (!isWideScreen) {
         if (position === 'readings') {
-          return { x: '-50px', y: '80px' };
+          if (isMobile) return { x: '-40px', y: '-60px' }; // モバイル用により上に
+          return { x: '15px', y: '-60px' }; // タブレット縦向き
         } else if (position === 'zine') {
-          return { x: '20px', y: '120px' };
+          if (isMobile) return { x: '-25px', y: '60px' }; // モバイル用により右下に
+          return { x: '25px', y: '70px' }; // タブレット縦向き
         }
       } else {
-        // 横長画面の場合（従来通り）
+        // 横長画面の場合
         if (position === 'readings') {
-          if (isMobile) return { x: '-80px', y: '-40px' };
-          if (isTablet) return { x: '-100px', y: '-50px' };
-          return { x: '-120px', y: '-60px' };
+          if (isMobile) return { x: '-5px', y: '-40px' }; // モバイルは大幅に中央寄り
+          if (isTablet) return { x: '40px', y: '-135px' }; // タブレットはもっと上に
+          return { x: '20px', y: '-150px' }; // PCは大幅に中央寄り
         } else if (position === 'zine') {
-          if (isMobile) return { x: '-60px', y: '40px' };
-          if (isTablet) return { x: '-70px', y: '50px' };
-          return { x: '-80px', y: '60px' };
+          if (isMobile) return { x: '-5px', y: '0px' }; // モバイルは大幅に中央寄り
+          if (isTablet) return { x: '50px', y: '35px' }; // タブレットも少し中央寄り
+          return { x: '60px', y: '40px' }; // デスクトップも少し中央寄り
         }
       }
     } else if (menuType === 'jiiii') {
       // jiiiはそのまま
       if (position === 'exhibits') {
-        if (isMobile) return { x: '-70px', y: '-60px' };
-        if (isTablet) return { x: '-85px', y: '-70px' };
-        return { x: '-100px', y: '-80px' };
+        if (isMobile) return { x: '-110px', y: '-30px' };
+        if (isTablet) return { x: '-130px', y: '-40px' };
+        return { x: '-160px', y: '-50px' };
       } else if (position === 'music') {
-        if (isMobile) return { x: '0px', y: '-80px' };
-        if (isTablet) return { x: '0px', y: '-100px' };
-        return { x: '0px', y: '-120px' };
+        if (isMobile) return { x: '-35px', y: '-70px' };
+        if (isTablet) return { x: '-40px', y: '-90px' };
+        return { x: '-50px', y: '-110px' };
       } else if (position === 'films') {
-        if (isMobile) return { x: '70px', y: '-60px' };
-        if (isTablet) return { x: '85px', y: '-70px' };
-        return { x: '100px', y: '-80px' };
+        if (isMobile) return { x: '40px', y: '-30px' };
+        if (isTablet) return { x: '45px', y: '-40px' };
+        return { x: '60px', y: '-50px' };
       }
     }
     return { x: '0px', y: '0px' }; // デフォルト値

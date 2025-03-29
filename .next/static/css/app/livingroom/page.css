@@ -247,9 +247,11 @@
   }
   
   .styles_right__nYE2I .styles_subButtons__sUfFc {
-    right: 0;
-    top: 80px;
+    right: -30px;
+    top: -20px;
     transform: none;
+    width: 200px;
+    height: 200px;
   }
 }
 
