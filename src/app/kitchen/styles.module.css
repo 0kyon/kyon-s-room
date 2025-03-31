@@ -1,0 +1,176 @@
+.wrapper {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 556px;
+  height: 556px;
+  background: #F5F544;
+  /* 十字型の星形 */
+  clip-path: path('M 278 0 C 278 0 278 219.027 307.487 248.515 C 336.975 278.002 556 278 556 278 C 556 278 336.973 278 307.486 307.486 C 278 336.973 278 556 278 556 C 278 556 278 336.975 248.513 307.487 C 219.025 278 0 278 0 278 C 0 278 219.025 278.002 248.513 248.515 C 278 219.027 278 0 278 0');
+  transform: translate(-50%, -50%) scale(0.6);
+  z-index: 0;
+  opacity: 0.8;
+  animation: shine 2s infinite ease-in-out;
+}
+
+@keyframes shine {
+  0%, 100% {
+    opacity: 1.0;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+  }
+  50% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
+  }
+}
+
+.buttonContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* メインボタン共通 */
+.mainButton {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  padding: 8px 16px;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+  z-index: 2;
+  width: 95px;
+  text-align: center;
+}
+
+/* レスポンシブ対応 - 画面サイズによってボタンサイズを変更 */
+@media (max-width: 768px) {
+  .mainButton {
+    width: 80px;
+    padding: 6px 12px;
+    font-size: 1.2rem;
+  }
+  
+  /* Recipe Boxボタンの幅を調整 */
+  .mainButton[style*="width: 120px"] {
+    width: 100px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainButton {
+    width: 70px;
+    padding: 4px 8px;
+    font-size: 1rem;
+  }
+  
+  /* Recipe Boxボタンの幅を調整 */
+  .mainButton[style*="width: 120px"] {
+    width: 85px !important;
+  }
+}
+
+/* 絵文字コンテナ */
+.emojiContainer {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: auto;
+}
+
+/* 絵文字 */
+.emoji {
+  position: relative;
+  font-size: 2rem;
+  z-index: 3;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .emoji {
+    font-size: 1.8rem;
+  }
+  
+  .emojiContainer {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .emoji {
+    font-size: 1.5rem;
+  }
+  
+  .emojiContainer {
+    gap: 4px;
+  }
+}
+
+/* タブレット用のレイアウト */
+@media (max-width: 1024px) and (min-width: 601px) {
+  .emojiContainer {
+    display: flex;
+    flex-direction: column !important;
+    top: 12% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    gap: 6px !important;
+    width: auto !important;
+  }
+  
+  .emojiContainer .emoji {
+    margin-left: inherit !important;
+  }
+  
+  .emojiContainer .emoji:nth-child(2) {
+    margin-left: 1em !important;
+  }
+  
+  .emojiContainer .emoji:nth-child(3) {
+    margin-left: 2em !important;
+  }
+}
+
+/* モバイル用のレイアウト */
+@media (max-width: 600px) {
+  .emojiContainer {
+    display: flex;
+    flex-direction: column !important;
+    top: 12% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    gap: 4px !important;
+    width: auto !important;
+  }
+  
+  .emojiContainer .emoji {
+    margin-left: inherit !important;
+  }
+  
+  .emojiContainer .emoji:nth-child(2) {
+    margin-left: 1em !important;
+  }
+  
+  .emojiContainer .emoji:nth-child(3) {
+    margin-left: 2em !important;
+  }
+  
+  .glow {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+} 

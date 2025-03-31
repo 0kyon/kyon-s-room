@@ -1,22 +1,100 @@
-import Link from 'next/link'
+"use client";
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import styles from './styles.module.css';
 
 export default function Kitchen() {
-  return (
-    <div className="kitchen">
-      <div className="glow-background"></div>
-      <div className="kitchen-container">
-        <Link href="/cupboard" className="kitchen-button left">
-          <div className="emoji-group">
-            <span>🥃</span><span>🍴</span><span>☕</span>
-          </div>
-          <div className="label">Cupboard</div>
-        </Link>
+  // クライアントサイドでレンダリングされているかを確認するフラグ
+  const [isMounted, setIsMounted] = useState(false);
+  // 初期値を1200に設定（デスクトップサイズをデフォルトとする）
+  const [windowWidth, setWindowWidth] = useState<number>(1200);
+  // クライアントサイドで使用する画面の高さ
+  const [windowHeight, setWindowHeight] = useState<number>(800);
 
-        <Link href="/recipe" className="kitchen-button right">
-          <div className="label">Recipe Box</div>
-          <div className="emoji-group">🗃️</div>
+  // クライアントサイドへのマウント検知
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // 画面サイズ変更を検知
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // 初期値を正確に設定
+      setWindowWidth(window.innerWidth);
+      setWindowHeight(window.innerHeight);
+
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+        setWindowHeight(window.innerHeight);
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, []);
+
+  // 画面サイズに基づく表示調整
+  const isTablet = windowWidth <= 1024 && windowWidth > 600;
+  const isMobile = windowWidth <= 600;
+
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.glow}></div>
+
+      <div className={styles.buttonContainer}>
+        {/* Cupboard */}
+        <div 
+          className={styles.emojiContainer}
+          style={{ 
+            top: isMobile || isTablet ? '12%' : '22%',
+            left: isMobile || isTablet ? '50%' : '40%',
+            transform: isMobile || isTablet ? 'translateX(-50%)' : 'none',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: '5px'
+          }}
+        >
+          <div className={styles.emoji}>🍸️</div>
+          <div className={styles.emoji} style={{ marginLeft: '1em' }}>🍨</div>
+          <div className={styles.emoji} style={{ marginLeft: '2em' }}>🍽️</div>
+        </div>
+
+        <Link href="/cupboard" className={styles.mainButton} style={{ 
+          top: isMobile || isTablet ? '25%' : '22%', 
+          left: '50%', 
+          transform: 'translateX(-50%)' 
+        }}>
+          <div>Cupboard</div>
         </Link>
+        
+        {/* Recipe Box */}
+        <Link href="/recipe" className={styles.mainButton} style={{ 
+          bottom: '22%', 
+          left: '50%', 
+          transform: 'translateX(-50%)',
+          width: '120px'
+        }}>
+          <div>Recipe Box</div>
+        </Link>
+        
+        <div 
+          className={styles.emoji}
+          style={{ 
+            position: 'absolute',
+            bottom: '15%', 
+            left: '50%', 
+            transform: 'translateX(-50%)',
+            fontSize: '2rem',
+            marginTop: '10px'
+          }}
+        >
+          🗃️
+        </div>
       </div>
     </div>
-  )
+  );
 }
