@@ -4,6 +4,37 @@
   overflow: hidden;
 }
 
+.glowGradient {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at center,
+    rgba(255, 247, 188, 0.95) 0%,
+    rgba(255, 247, 188, 0.8) 15%,
+    rgba(255, 247, 188, 0.6) 30%,
+    rgba(255, 247, 188, 0.3) 45%,
+    transparent 60%
+  );
+  transform: translate(-50%, -50%) scale(1.5);
+  z-index: -1;
+}
+
+.underglow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 556px;
+  height: 556px;
+  background: white;
+  /* 十字型の星形 */
+  clip-path: path('M 278 0 C 278 0 278 219.027 307.487 248.515 C 336.975 278.002 556 278 556 278 C 556 278 336.973 278 307.486 307.486 C 278 336.973 278 556 278 556 C 278 556 278 336.975 248.513 307.487 C 219.025 278 0 278 0 278 C 0 278 219.025 278.002 248.513 248.515 C 278 219.027 278 0 278 0');
+  transform: translate(-50%, -50%) scale(0.95);
+  z-index: 0;
+  opacity: 0.8;
+}
+
 .glow {
   position: absolute;
   top: 50%;
@@ -17,25 +48,6 @@
   z-index: 1;
   opacity: 0.8;
   animation: shine 2s infinite ease-in-out;
-}
-
-.glowGradient {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle at center,
-    white 0%,
-    white 5%,
-    rgba(255, 247, 188, 0.95) 15%,
-    rgba(255, 247, 188, 0.8) 30%,
-    rgba(255, 247, 188, 0.6) 45%,
-    rgba(255, 247, 188, 0.3) 60%,
-    transparent 70%
-  );
-  transform: translate(-50%, -50%) scale(1.5);
-  z-index: 0;
 }
 
 .crossGradient {
