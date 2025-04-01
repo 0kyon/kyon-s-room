@@ -164,9 +164,6 @@ export default function LivingRoom() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.glow}></div>
-      <div className={styles.underglow}></div>
-      <div className={styles.glowGradient}></div>
-
       <div className={styles.buttonContainer}>
         {/* mogmog */}
         <div 
