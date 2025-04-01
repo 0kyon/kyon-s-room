@@ -25,7 +25,15 @@
   left: 50%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(ellipse at center, #FFF7BC 0%, transparent 70%);
+  background: radial-gradient(circle at center,
+    white 0%,
+    white 5%,
+    rgba(255, 247, 188, 0.95) 15%,
+    rgba(255, 247, 188, 0.8) 30%,
+    rgba(255, 247, 188, 0.6) 45%,
+    rgba(255, 247, 188, 0.3) 60%,
+    transparent 70%
+  );
   transform: translate(-50%, -50%) scale(1.5);
   z-index: 0;
 }
