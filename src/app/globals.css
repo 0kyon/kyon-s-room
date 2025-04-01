@@ -9,27 +9,26 @@ body {
 /* Entrance */
 .container {
   display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-top: 100px;
+  padding: 0 200px;
 }
-
-
-
-
 
 .door-button {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 120px;
-  height: 240px;
+  width: 165px;
+  height: 303px;
   border: 1px solid black;
   text-decoration: none;
   color: black;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   transition: transform 0.2s;
+  background-color: white;
+  margin-top: 150px;
 }
 
 .door-button:hover {
@@ -37,22 +36,20 @@ body {
 }
 
 .label {
-  margin-bottom: 10px;
-  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .emoji {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .center {
-  margin-top: -50px;
+  margin-top: 0;
 }
 
 .welcome {
-  margin-top: 80px;
-  font-size: 3rem;
-  font-weight: bold;
+  margin-top: 50px;
+  font-size: 4rem;
 }
 
 /* Glow */
