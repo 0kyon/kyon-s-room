@@ -49,18 +49,24 @@ export default function Kitchen() {
         <div 
           className={styles.emojiContainer}
           style={{ 
-            top: isMobile || isTablet ? '12%' : '22%',
-            left: isMobile || isTablet ? '50%' : '40%',
+            top: isMobile || isTablet ? '12%' : '10%',
+            left: isMobile || isTablet ? '50%' : '30%',
             transform: isMobile || isTablet ? 'translateX(-50%)' : 'none',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
-            gap: '5px'
+            gap: isMobile || isTablet ? '5px' : '15px'
           }}
         >
-          <div className={styles.emoji}>🍸️</div>
-          <div className={styles.emoji} style={{ marginLeft: '1em' }}>🍨</div>
-          <div className={styles.emoji} style={{ marginLeft: '2em' }}>🍽️</div>
+          <div className={styles.emoji}>🍽️</div>
+          <div className={styles.emoji} style={{ 
+            marginLeft: isMobile || isTablet ? '1em' : '2em',
+            marginTop: isMobile || isTablet ? '0' : '0'
+          }}>🍨</div>
+          <div className={styles.emoji} style={{ 
+            marginLeft: isMobile || isTablet ? '2em' : '4em',
+            marginTop: isMobile || isTablet ? '0' : '0'
+          }}>🍸️</div>
         </div>
 
         <Link href="/cupboard" className={styles.mainButton} style={{ 
