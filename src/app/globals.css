@@ -236,46 +236,52 @@ body.kitchen {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 50px;
+    padding: 0 30px;
     margin-top: 0;
     justify-content: center;
-    gap: 20px;
-    padding-top: 35vh;
+    gap: 280px;
+    padding-top: 25vh;
   }
   
   .door-button {
-    width: 120px;
-    height: 220px;
+    width: 150px;
+    height: 275px;
     font-size: 1.2rem;
-    margin-top: 80px;
+    margin-top: 60px;
   }
   
   .door-button.center {
-    margin-top: -40px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -100px;
   }
   
   .welcome {
     font-size: 3rem;
-    bottom: 7vh;
+    bottom: 15vh;
   }
 }
 
 @media (max-width: 480px) {
   .container {
     padding: 20px;
-    padding-top: 30vh;
-    gap: 15px;
+    padding-top: 25vh;
+    gap: 20px;
+    justify-content: center;
   }
   
   .door-button {
-    width: 90px;
-    height: 165px;
+    width: 110px;
+    height: 202px;
     font-size: 1rem;
-    margin-top: 60px;
+    margin-top: 30px;
   }
   
   .door-button.center {
-    margin-top: -30px;
+    position: static;
+    transform: none;
+    margin-top: -80px;
   }
   
   .emoji {
@@ -284,6 +290,6 @@ body.kitchen {
   
   .welcome {
     font-size: 2.5rem;
-    bottom: 6vh;
+    bottom: 15vh;
   }
 }
