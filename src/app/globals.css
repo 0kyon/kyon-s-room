@@ -4,6 +4,9 @@ body {
   font-family: sans-serif;
   background-color: white;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Entrance */
@@ -11,8 +14,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: 100px;
+  margin-top: 50px;
   padding: 0 200px;
+  position: relative;
+  flex: 1;
 }
 
 .door-button {
@@ -28,7 +33,11 @@ body {
   font-size: 1.5rem;
   transition: transform 0.2s;
   background-color: white;
-  margin-top: 150px;
+  margin-top: 200px;
+}
+
+.door-button.center {
+  margin-top: 0;
 }
 
 .door-button:hover {
@@ -48,7 +57,8 @@ body {
 }
 
 .welcome {
-  margin-top: 50px;
+  margin-top: 0;
+  margin-bottom: 50px;
   font-size: 4rem;
 }
 
@@ -211,4 +221,60 @@ body.kitchen {
   font-size: 1.8rem;
   display: flex;
   gap: 5px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 100px;
+  }
+  
+  .door-button {
+    width: 140px;
+    height: 257px;
+    font-size: 1.3rem;
+    margin-top: 170px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 50px;
+    margin-top: 30px;
+  }
+  
+  .door-button {
+    width: 120px;
+    height: 220px;
+    font-size: 1.2rem;
+    margin-top: 140px;
+  }
+  
+  .welcome {
+    font-size: 3rem;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 20px;
+    margin-top: 20px;
+  }
+  
+  .door-button {
+    width: 90px;
+    height: 165px;
+    font-size: 1rem;
+    margin-top: 100px;
+  }
+  
+  .emoji {
+    font-size: 2.5rem;
+  }
+  
+  .welcome {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
 }
