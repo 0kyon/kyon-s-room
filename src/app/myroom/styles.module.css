@@ -1,0 +1,167 @@
+.wrapper {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  background-color: #FFFFFF;
+}
+
+.glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 556px;
+  height: 556px;
+  background: #F5F544;
+  /* 十字型の星形 */
+  clip-path: path('M 278 0 C 278 0 278 219.027 307.487 248.515 C 336.975 278.002 556 278 556 278 C 556 278 336.973 278 307.486 307.486 C 278 336.973 278 556 278 556 C 278 556 278 336.975 248.513 307.487 C 219.025 278 0 278 0 278 C 0 278 219.025 278.002 248.513 248.515 C 278 219.027 278 0 278 0');
+  transform: translate(-50%, -50%) scale(0.6);
+  z-index: 3;
+  opacity: 0.8;
+  animation: shine 2s infinite ease-in-out;
+}
+
+@keyframes shine {
+  0%, 100% {
+    opacity: 1.0;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+  }
+  50% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
+  }
+}
+
+.buttonContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+}
+
+/* 絵文字 */
+.emoji {
+  position: absolute;
+  font-size: 2.5rem;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .emoji {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .emoji {
+    font-size: 2rem;
+    transform: none;
+  }
+}
+
+.emoji.active {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+@media (max-width: 768px) {
+  .emoji.active {
+    transform: translate(-50%, -50%) scale(1.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .emoji.active {
+    transform: scale(1.5);
+  }
+}
+
+/* メインボタン共通 */
+.mainButton {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  padding: 8px 16px;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+  z-index: 2;
+  width: 95px;
+  text-align: center;
+}
+
+/* レスポンシブ対応 - 画面サイズによってボタンサイズを変更 */
+@media (max-width: 768px) {
+  .mainButton {
+    width: 80px;
+    padding: 6px 12px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainButton {
+    width: 70px;
+    padding: 4px 8px;
+    font-size: 1rem;
+  }
+}
+
+/* 位置指定 */
+.top {
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
+}
+
+.bottom {
+  bottom: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .top {
+    top: 24%;
+  }
+  
+  .bottom {
+    bottom: 24%;
+  }
+}
+
+@media (max-width: 480px) {
+  .top {
+    top: 30%;
+    left: calc(50% - 35px);
+    transform: none;
+  }
+  
+  .bottom {
+    top: 70%;
+    left: calc(50% - 35px);
+    bottom: auto;
+    transform: none;
+  }
+}
+
+/* 画面サイズが小さくなるにつれて、左右の頂点を中央に寄せる */
+@media (max-width: 768px) {
+  .glow {
+    clip-path: path('M 278 0 C 278 0 278 219.027 307.487 248.515 C 336.975 278.002 480 278 480 278 C 480 278 336.973 278 307.486 307.486 C 278 336.973 278 556 278 556 C 278 556 278 336.975 248.513 307.487 C 219.025 278 76 278 76 278 C 76 278 219.025 278.002 248.513 248.515 C 278 219.027 278 0 278 0');
+  }
+}
+
+/* 大きめのスマホで、かつアスペクト比が縦長の場合（iPhone 14 Pro Max等） */
+@media (min-width: 376px) and (max-width: 430px) and (max-aspect-ratio: 9/19) {
+  .glow {
+    clip-path: path('M 278 0 C 278 0 278 219.027 307.487 248.515 C 336.975 278.002 396 278 396 278 C 396 278 336.973 278 307.486 307.486 C 278 336.973 278 556 278 556 C 278 556 278 336.975 248.513 307.487 C 219.025 278 160 278 160 278 C 160 278 219.025 278.002 248.513 248.515 C 278 219.027 278 0 278 0');
+  }
+}
