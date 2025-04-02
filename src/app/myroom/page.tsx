@@ -84,10 +84,16 @@ export default function MyRoom() {
         <div 
           className={`${styles.emoji} ${activeMenu === 'murmur' ? styles.active : ''}`}
           style={{ 
-            top: isWideScreen ? null : '70%',
-            bottom: isWideScreen ? '10%' : null,
-            right: isWideScreen ? null : '15%',
-            left: isWideScreen ? '50%' : null,
+            top: isWideScreen 
+              ? isTablet 
+                ? 'calc(82% - 80px)'  // タブレット
+                : 'calc(82% - 80px)'  // PC
+              : 'calc(77% - 45px)',   // モバイル
+            left: isWideScreen 
+              ? isTablet 
+                ? 'calc(50% + 80px)'  // タブレット
+                : 'calc(50% + 110px)'  // PC
+              : 'calc(50% + 50px)',   // モバイル
             cursor: 'pointer' 
           }}
           onClick={() => toggleMenu('murmur')}

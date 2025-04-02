@@ -114,14 +114,14 @@
 
 /* 位置指定 */
 .top {
-  top: 22%;
+  top: 18%;
   left: 50%;
   transform: translateX(-50%);
   flex-direction: column;
 }
 
 .bottom {
-  bottom: 22%;
+  bottom: 18%;
   left: 50%;
   transform: translateX(-50%);
   flex-direction: column;
@@ -129,23 +129,23 @@
 
 @media (max-width: 768px) {
   .top {
-    top: 24%;
+    top: 20%;
   }
   
   .bottom {
-    bottom: 24%;
+    bottom: 20%;
   }
 }
 
 @media (max-width: 480px) {
   .top {
-    top: 30%;
+    top: 23%;
     left: calc(50% - 35px);
     transform: none;
   }
   
   .bottom {
-    top: 70%;
+    top: 77%;
     left: calc(50% - 35px);
     bottom: auto;
     transform: none;
