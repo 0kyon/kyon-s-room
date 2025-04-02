@@ -5,8 +5,7 @@ body {
   background-color: white;
   text-align: center;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  position: relative;
 }
 
 /* Entrance */
@@ -17,7 +16,6 @@ body {
   margin-top: 50px;
   padding: 0 200px;
   position: relative;
-  flex: 1;
 }
 
 .door-button {
@@ -52,14 +50,13 @@ body {
   font-size: 3rem;
 }
 
-.center {
-  margin-top: 0;
-}
-
 .welcome {
-  margin-top: 0;
-  margin-bottom: 50px;
+  position: fixed;
+  bottom: 8vh;
+  left: 0;
+  right: 0;
   font-size: 4rem;
+  margin: 0;
 }
 
 /* Glow */
@@ -240,33 +237,45 @@ body.kitchen {
 @media (max-width: 768px) {
   .container {
     padding: 0 50px;
-    margin-top: 30px;
+    margin-top: 0;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 35vh;
   }
   
   .door-button {
     width: 120px;
     height: 220px;
     font-size: 1.2rem;
-    margin-top: 140px;
+    margin-top: 80px;
+  }
+  
+  .door-button.center {
+    margin-top: -40px;
   }
   
   .welcome {
     font-size: 3rem;
-    margin-bottom: 40px;
+    bottom: 7vh;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 20px;
-    margin-top: 20px;
+    padding: 20px;
+    padding-top: 30vh;
+    gap: 15px;
   }
   
   .door-button {
     width: 90px;
     height: 165px;
     font-size: 1rem;
-    margin-top: 100px;
+    margin-top: 60px;
+  }
+  
+  .door-button.center {
+    margin-top: -30px;
   }
   
   .emoji {
@@ -275,6 +284,6 @@ body.kitchen {
   
   .welcome {
     font-size: 2.5rem;
-    margin-bottom: 30px;
+    bottom: 6vh;
   }
 }
