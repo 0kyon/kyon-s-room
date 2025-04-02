@@ -67,8 +67,16 @@ export default function MyRoom() {
         <div 
           className={`${styles.emoji} ${activeMenu === 'diary' ? styles.active : ''}`}
           style={{ 
-            top: isWideScreen ? '15%' : '30%',
-            left: isWideScreen ? '50%' : '15%',
+            top: isWideScreen 
+              ? isTablet 
+                ? '20%'  // タブレット
+                : '21%'  // PC
+              : '22%',   // モバイル
+            left: isWideScreen 
+              ? isTablet 
+                ? '37%'  // タブレット
+                : '41%'  // PC
+              : '30%',   // モバイル
             cursor: 'pointer' 
           }}
           onClick={() => toggleMenu('diary')}
