@@ -36,7 +36,7 @@ export default function Home() {
   const isMobile = windowWidth <= 480;
 
   return (
-    <div>
+    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', overflow: 'hidden' }}>
       <div className="container">
         <Link href="/myroom" className="door-button">
           <div className="label">My Room</div>
