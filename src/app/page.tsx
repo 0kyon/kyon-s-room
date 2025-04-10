@@ -1,13 +1,19 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
+import { client } from '../libs/microcms';
+
+
+type Blog = {
+  id: string;
+  title: string;
+};
 
 export default function Home() {
-  // クライアントサイドでレンダリングされているかを確認するフラグ
   const [isMounted, setIsMounted] = useState(false);
-  // 初期値を1200に設定（デスクトップサイズをデフォルトとする）
   const [windowWidth, setWindowWidth] = useState<number>(1200);
+  const [blogs, setBlogs] = useState<Blog[]>([]); // ブログ一覧用
 
   // クライアントサイドへのマウント検知
   useEffect(() => {
@@ -17,7 +23,6 @@ export default function Home() {
   // 画面サイズ変更を検知
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // 初期値を正確に設定
       setWindowWidth(window.innerWidth);
 
       const handleResize = () => {
@@ -31,7 +36,15 @@ export default function Home() {
     }
   }, []);
 
-  // 画面サイズに基づく表示調整
+  // microCMS から記事取得
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const data = await client.getList<Blog>({ endpoint: 'blogs' });
+      setBlogs(data.contents);
+    };
+    fetchBlogs();
+  }, []);
+
   const isTablet = windowWidth <= 1024 && windowWidth > 600;
   const isMobile = windowWidth <= 480;
 
@@ -54,6 +67,18 @@ export default function Home() {
         </Link>
       </div>
       <div className="welcome">Welcome!</div>
+
+      {/* ブログ記事一覧を表示する部分を追加 */}
+      <div style={{ padding: '20px', background: '#f5f5f5' }}>
+        <h2>ブログ一覧</h2>
+        <ul>
+          {blogs.map((blog) => (
+            <li key={blog.id}>
+              <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
-  )
+  );
 }

@@ -59,6 +59,10 @@ export default function MyRoom() {
   const diaryPosition = getEmojiPosition('diary');
   const murmurPosition = getEmojiPosition('murmur');
 
+  const handleDiaryClick = () => {
+    window.location.href = '/myroom/diary_list';
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.glow}></div>
@@ -79,11 +83,11 @@ export default function MyRoom() {
               : '30%',   // モバイル
             cursor: 'pointer' 
           }}
-          onClick={() => toggleMenu('diary')}
+          onClick={() => handleDiaryClick()}
         >📓</div>
         <div
           className={`${styles.mainButton} ${styles.top}`}
-          onClick={() => toggleMenu('diary')}
+          onClick={() => handleDiaryClick()}
         >
           <div>diary</div>
         </div>
