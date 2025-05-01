@@ -182,7 +182,7 @@ export default function LivingRoom() {
           <div>mogmog</div>
           <div className={`${styles.subButtons} ${activeMenu === 'mogmog' ? styles.show : ''}`}>
             <Link 
-              href="/mogmog/home" 
+              href="/tags/at-my-home" 
               className={styles.subStar} 
               style={{ 
                 '--x': getSubStarPosition('mogmog', 'home').x, 
@@ -196,7 +196,7 @@ export default function LivingRoom() {
               </div>
             </Link>
             <Link 
-              href="/mogmog/away" 
+              href="/tags/away" 
               className={styles.subStar} 
               style={{ 
                 '--x': getSubStarPosition('mogmog', 'away').x, 
@@ -229,7 +229,7 @@ export default function LivingRoom() {
           <div>tektek</div>
           <div className={`${styles.subButtons} ${activeMenu === 'tektek' ? styles.show : ''}`}>
             <Link 
-              href="/tektek/journeys" 
+              href="/tags/journeys" 
               className={styles.subStar} 
               style={{ 
                 '--x': getSubStarPosition('tektek', 'journeys').x, 
@@ -243,7 +243,7 @@ export default function LivingRoom() {
               </div>
             </Link>
             <Link 
-              href="/tektek/strolls" 
+              href="/tags/strolls" 
               className={styles.subStar} 
               style={{ 
                 '--x': getSubStarPosition('tektek', 'strolls').x, 
@@ -257,7 +257,7 @@ export default function LivingRoom() {
               </div>
             </Link>
             <Link 
-              href="/tektek/citynotes" 
+              href="/tags/city-notes" 
               className={styles.subStar} 
               style={{ 
                 '--x': getSubStarPosition('tektek', 'citynotes').x, 
@@ -290,7 +290,7 @@ export default function LivingRoom() {
           <div>parapara</div>
           <div className={`${styles.subButtons} ${activeMenu === 'parapara' ? styles.show : ''}`}>
             <Link 
-              href="/parapara/readings" 
+              href="/tags/readings" 
               className={styles.subStar} 
               style={{ 
                 '--x': getSubStarPosition('parapara', 'readings').x, 
@@ -304,7 +304,7 @@ export default function LivingRoom() {
               </div>
             </Link>
             <Link 
-              href="/parapara/zine" 
+              href="/tags/zine" 
               className={styles.subStar} 
               style={{ 
                 '--x': getSubStarPosition('parapara', 'zine').x, 
@@ -337,7 +337,7 @@ export default function LivingRoom() {
           <div>jiiii</div>
           <div className={`${styles.subButtons} ${activeMenu === 'jiiii' ? styles.show : ''}`}>
             <Link 
-              href="/jiiii/exhibits" 
+              href="/tags/exhibits" 
               className={styles.subStar} 
               style={{ 
                 '--x': getSubStarPosition('jiiii', 'exhibits').x, 
@@ -351,7 +351,7 @@ export default function LivingRoom() {
               </div>
             </Link>
             <Link 
-              href="/jiiii/music" 
+              href="/tags/music" 
               className={styles.subStar} 
               style={{ 
                 '--x': getSubStarPosition('jiiii', 'music').x, 
@@ -365,7 +365,7 @@ export default function LivingRoom() {
               </div>
             </Link>
             <Link 
-              href="/jiiii/films" 
+              href="/tags/films" 
               className={styles.subStar} 
               style={{ 
                 '--x': getSubStarPosition('jiiii', 'films').x, 
