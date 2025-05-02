@@ -1,6 +1,7 @@
 import { client } from "../../../libs/microcms";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Metadata } from "next";
 
 type Tag = {
   id: string;
@@ -34,6 +35,16 @@ type Params = {
   };
 };
 
+// メタデータの設定
+export const metadata: Metadata = {
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+};
+
 export default async function BlogDetailPage({ params }: Params) {
   const blogId = params.id;
   
@@ -43,6 +54,15 @@ export default async function BlogDetailPage({ params }: Params) {
       endpoint: "blogs",
       contentId: blogId,
     });
+
+    // 日付をフォーマットする関数
+    const formatDate = (dateString: string) => {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      return `${year}/${month}/${day}`;
+    };
 
     return (
       <div className="blog-container">
@@ -66,6 +86,10 @@ export default async function BlogDetailPage({ params }: Params) {
           className="blog-content"
           dangerouslySetInnerHTML={{ __html: blog.content }} 
         />
+        
+        <div className="blog-date">
+          Date : {formatDate(blog.publishedAt)}
+        </div>
         
         <div className="blog-tags">
           {blog.tags && blog.tags.length > 0 && (

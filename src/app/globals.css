@@ -2,6 +2,9 @@
 html, body {
   margin: 0;
   padding: 0;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 16px;
 }
 
 body {
@@ -10,14 +13,22 @@ body {
   text-align: center;
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* ブログスタイル */
 /* ブログコンテンツのスタイル */
 .blog-content {
   margin-top: 2rem;
+  margin-bottom: 2rem;
   font-size: 100%;
   text-align: left;
+}
+
+/* 記事本文の段落スタイル */
+.blog-content p {
+  margin: 1.5em 0;
+  line-height: 1.8;
 }
 
 /* ブログ全体のスタイル */
@@ -25,6 +36,7 @@ body {
   padding: 1.5rem;
   width: 100%;
   max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* ブログヘッダーのスタイル */
@@ -78,6 +90,20 @@ body {
   padding: 1rem 0;
 }
 
+/* ブログ日付のスタイル */
+.blog-date {
+  text-align: center;
+  margin: 1rem 1rem;
+  color: #666;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+.update-date {
+  margin-left: 1rem;
+  color: #888;
+}
+
 /* タブレットとPC向け (768px以上) */
 @media (min-width: 768px) {
   .blog-container {
@@ -86,6 +112,17 @@ body {
   
   .blog-content {
     font-size: 120%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    padding: 0 2rem;
+  }
+  
+  .blog-content p {
+    margin: 1.8em 0;
+  }
+  
+  .blog-date {
     margin-left: auto;
     margin-right: auto;
     max-width: 80%;
@@ -430,6 +467,11 @@ body.no-scroll {
   }
   
   .blog-content {
+    max-width: 70%;
+    padding: 0 3rem;
+  }
+  
+  .blog-date {
     max-width: 70%;
     padding: 0 3rem;
   }
