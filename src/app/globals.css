@@ -12,6 +12,133 @@ body {
   position: relative;
 }
 
+/* ブログスタイル */
+/* ブログコンテンツのスタイル */
+.blog-content {
+  margin-top: 2rem;
+  font-size: 100%;
+  text-align: left;
+}
+
+/* ブログ全体のスタイル */
+.blog-container {
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ブログヘッダーのスタイル */
+.blog-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.blog-eyecatch {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.eyecatch-image {
+  width: 75%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 4px;
+  max-height: none;
+  margin: 0 auto;
+}
+
+/* ブログタイトルとタグのスタイル */
+.blog-title {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog-title h1 {
+  margin-top: 0;
+}
+
+.blog-tags {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+/* タブレットとPC向け (768px以上) */
+@media (min-width: 768px) {
+  .blog-container {
+    padding: 2rem 3rem;
+  }
+  
+  .blog-content {
+    font-size: 120%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    padding: 0 2rem;
+  }
+  
+  .blog-tags {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    padding: 1rem 2rem;
+  }
+  
+  .blog-header {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 300px;
+    justify-content: center;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .blog-eyecatch {
+    width: 45%; /* 幅を少し狭く */
+    padding-right: 2rem; /* パディングを増やす */
+    padding-left: 0;
+    display: flex;
+    justify-content: center; /* 中央寄せに戻す */
+    align-items: center;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  
+  .blog-title {
+    width: 55%; /* タイトル部分を広く */
+    padding-left: 1rem; /* 少し中央寄り */
+    padding-right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* 中央寄せに戻す */
+    text-align: center; /* テキスト中央寄せに戻す */
+  }
+  
+  .eyecatch-image {
+    width: 85%; /* 少し幅を増やす */
+    max-height: none;
+    margin: 0 auto; /* 中央寄せに戻す */
+  }
+  
+  .blog-title h1 {
+    margin: 0;
+  }
+}
+
 /* ホームページとルームページでスクロールを無効にする */
 body.no-scroll {
   overflow: hidden;
@@ -298,5 +425,36 @@ body.no-scroll {
   .welcome {
     font-size: 2.5rem;
     bottom: 15vh;
+  }
+}
+
+/* 大きい画面サイズ向け */
+@media (min-width: 1200px) {
+  .blog-container {
+    padding: 2.5rem 5rem;
+  }
+  
+  .blog-content {
+    max-width: 70%;
+    padding: 0 3rem;
+  }
+  
+  .blog-tags {
+    max-width: 70%;
+    padding: 1rem 3rem;
+  }
+  
+  .blog-header {
+    max-width: 85%; /* 大きい画面では幅を少し狭く */
+  }
+  
+  .blog-eyecatch {
+    padding-right: 3rem; /* 大きい画面ではパディングをさらに増やす */
+    padding-left: 0;
+  }
+  
+  .blog-title {
+    padding-left: 1rem; /* 中央寄りに調整 */
+    padding-right: 0;
   }
 }

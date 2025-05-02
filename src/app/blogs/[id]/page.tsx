@@ -45,22 +45,29 @@ export default async function BlogDetailPage({ params }: Params) {
     });
 
     return (
-      <div style={{ padding: "2rem" }}>
-        <div style={{ marginBottom: "1rem" }}>
-          <Link href="/">ホームに戻る</Link>
+      <div className="blog-container">
+        <div className="blog-header">
+          {blog.eyecatch && (
+            <div className="blog-eyecatch">
+              <img 
+                src={blog.eyecatch.url} 
+                alt={blog.title} 
+                className="eyecatch-image"
+              />
+            </div>
+          )}
+          
+          <div className="blog-title">
+            <h1>{blog.title}</h1>
+          </div>
         </div>
         
-        <h1>{blog.title}</h1>
+        <div 
+          className="blog-content"
+          dangerouslySetInnerHTML={{ __html: blog.content }} 
+        />
         
-        {blog.eyecatch && (
-          <img 
-            src={blog.eyecatch.url} 
-            alt={blog.title} 
-            style={{ maxWidth: "100%", height: "auto" }}
-          />
-        )}
-        
-        <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+        <div className="blog-tags">
           {blog.tags && blog.tags.length > 0 && (
             <div>
               <span>タグ: </span>
@@ -73,11 +80,6 @@ export default async function BlogDetailPage({ params }: Params) {
             </div>
           )}
         </div>
-        
-        <div 
-          dangerouslySetInnerHTML={{ __html: blog.content }} 
-          style={{ marginTop: "2rem" }}
-        />
       </div>
     );
   } catch (error) {
