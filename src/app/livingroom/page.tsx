@@ -162,7 +162,7 @@ export default function LivingRoom() {
   const paraparaPosition = getEmojiPosition('parapara');
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${styles.bodyStyles}`}>
       <div className={styles.glow}></div>
       <div className={styles.buttonContainer}>
         {/* mogmog */}

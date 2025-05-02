@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import styles from './styles.module.css';
 
 export default function MyRoom() {
@@ -64,7 +65,7 @@ export default function MyRoom() {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${styles.bodyStyles}`}>
       <div className={styles.glow}></div>
       <div className={styles.buttonContainer}>
         {/* Diary */}

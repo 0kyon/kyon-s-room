@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import BackButton from '../components/BackButton'
+import ScrollControl from '../components/ScrollControl'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,9 +15,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // クライアントコンポーネントではないためusePathname()が使えないので
+  // クラスの適用はクライアントコンポーネント側で行います
   return (
     <html lang="en">
       <body className={inter.className}>
+        <ScrollControl />
         <BackButton />
         {children}
       </body>

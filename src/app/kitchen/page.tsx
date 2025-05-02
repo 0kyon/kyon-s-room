@@ -41,7 +41,7 @@ export default function Kitchen() {
   const isMobile = windowWidth <= 600;
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${styles.bodyStyles}`}>
       <div className={styles.glow}></div>
 
       <div className={styles.buttonContainer}>

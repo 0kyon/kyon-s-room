@@ -1,7 +1,13 @@
+.bodyStyles {
+  position: relative;
+  height: 100vh;
+  z-index: 0;
+  background-color: #FFFFFF;
+}
+
 .wrapper {
   position: relative;
   height: 100vh;
-  overflow: hidden;
   z-index: 0;
   background-color: #FFFFFF;
 }
