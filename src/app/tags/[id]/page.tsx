@@ -1,6 +1,7 @@
 import { client } from "../../../libs/microcms";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import styles from "./styles.module.css";
 
 type Tag = {
   id: string;
@@ -34,48 +35,52 @@ type Params = {
   };
 };
 
+// タグIDとタイトル・サブタイトルのマッピング
+const tagMapping: { [key: string]: { title: string; subtitle: string } } = {
+  "at-my-home": { title: "at My Home", subtitle: "おうちで作ったごはんとおやつ" },
+  "away": { title: "Away", subtitle: "お外で食べたおいしいもの" },
+  "journeys": { title: "Journeys", subtitle: "旅" },
+  "strolls": { title: "Strolls", subtitle: "おさんぽ" },
+  "city-notes": { title: "City Notes", subtitle: "街歩き" },
+  "readings": { title: "Readings", subtitle: "読んだ本とか" },
+  "zine": { title: "Zine", subtitle: "自作～～" },
+  "exhibits": { title: "Exhibits", subtitle: "展示" },
+  "music": { title: "Music", subtitle: "ライブとか" },
+  "films": { title: "Films", subtitle: "映画" }
+};
+
 export default async function TagPage({ params }: Params) {
-  const tagName = decodeURIComponent(params.id);
-  
-  console.log(`検索するタグ名: ${tagName}`);
+  const tagId = params.id;
   
   try {
-    // タグ名で検索 - 修正されたフィルタリング方法
+    // タグIDで検索
     const blogData = await client.getList<Blog>({
       endpoint: "blogs",
       queries: {
-        filters: `tags[contains]${tagName}`,
+        filters: `tags[contains]${tagId}`,
       },
     });
 
-    console.log(`タグ「${tagName}」に関連する記事: ${blogData.contents?.length || 0}件`);
-
     if (blogData.contents.length === 0) {
       return (
-        <div style={{ padding: "2rem" }}>
-          <h1>タグ: {tagName}</h1>
+        <div className={styles.container}>
+          <h1 className={styles.tagTitle}>{tagMapping[tagId]?.title || tagId}</h1>
+          <p className={styles.tagSubtitle}>{tagMapping[tagId]?.subtitle || ""}</p>
           <p>このタグに関連する記事はありません。</p>
-          <Link href="/">ホームに戻る</Link>
         </div>
       );
     }
 
     return (
-      <div style={{ padding: "2rem" }}>
-        <div style={{ marginBottom: "1rem" }}>
-          <Link href="/">ホームに戻る</Link>
-        </div>
+      <div className={styles.container}>
+        <h1 className={styles.tagTitle}>{tagMapping[tagId]?.title || tagId}</h1>
+        <p className={styles.tagSubtitle}>{tagMapping[tagId]?.subtitle || ""}</p>
         
-        <h1>タグ: {tagName}</h1>
-        
-        <ul style={{ listStyle: "none", padding: 0 }}>
+        <ul className={styles.blogList}>
           {blogData.contents.map((blog) => (
-            <li key={blog.id} style={{ marginBottom: "1rem", padding: "1rem", border: "1px solid #eee", borderRadius: "5px" }}>
-              <Link href={`/blogs/${blog.id}`} style={{ textDecoration: "none", color: "#333" }}>
-                <h2 style={{ margin: "0 0 0.5rem 0" }}>{blog.title}</h2>
-                <div style={{ fontSize: "0.8rem", color: "#666" }}>
-                  公開日: {new Date(blog.publishedAt).toLocaleDateString("ja-JP")}
-                </div>
+            <li key={blog.id} className={styles.blogItem}>
+              <Link href={`/blogs/${blog.id}`} className={styles.blogLink}>
+                <h2 className={styles.blogTitle}>{blog.title}</h2>
               </Link>
             </li>
           ))}
@@ -85,13 +90,10 @@ export default async function TagPage({ params }: Params) {
   } catch (error) {
     console.error("Error fetching tag data:", error);
     return (
-      <div style={{ padding: "2rem" }}>
-        <h1>エラーが発生しました</h1>
-        <p>タグ「{tagName}」の記事を取得できませんでした。</p>
+      <div className={styles.container}>
+        <h1 className={styles.tagTitle}>エラーが発生しました</h1>
+        <p>タグ「{tagId}」の記事を取得できませんでした。</p>
         <p>エラー詳細: {error instanceof Error ? error.message : 'Unknown error'}</p>
-        <div style={{ marginTop: "1rem" }}>
-          <Link href="/">ホームに戻る</Link>
-        </div>
       </div>
     );
   }
