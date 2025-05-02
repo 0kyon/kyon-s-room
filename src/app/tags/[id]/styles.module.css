@@ -1,0 +1,38 @@
+/* タグページのスタイル */
+.tagTitle {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.tagSubtitle {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.blogList {
+  list-style: none;
+  padding: 0;
+}
+
+.blogItem {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.blogItem:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blogLink {
+  text-decoration: none;
+  color: #333;
+}
+
+.blogTitle {
+  margin: 0 0 0.5rem 0;
+} 
