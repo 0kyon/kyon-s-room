@@ -80,7 +80,9 @@ export default async function TagPage({ params }: Params) {
           {blogData.contents.map((blog) => (
             <li key={blog.id} className={styles.blogItem}>
               <Link href={`/blogs/${blog.id}`} className={styles.blogLink}>
-                <h2 className={styles.blogTitle}>{blog.title}</h2>
+                <div className={styles.blogItemContent}>
+                  <h2 className={styles.blogTitle}>{blog.title}</h2>
+                </div>
               </Link>
             </li>
           ))}

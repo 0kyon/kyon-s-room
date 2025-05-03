@@ -494,3 +494,28 @@ body.no-scroll {
     padding: 0;
   }
 }
+
+/* 小さい画面（iPhone SEなど）向け */
+@media (max-width: 375px) {
+  .blog-content {
+    font-size: 85%;
+    padding: 0 0.5rem;
+  }
+  
+  .blog-content p {
+    margin: 1.2em 0;
+    line-height: 1.6;
+  }
+  
+  .blog-title h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 中間サイズのスマートフォン向け */
+@media (min-width: 376px) and (max-width: 480px) {
+  .blog-content {
+    font-size: 95%;
+    padding: 0 0.75rem;
+  }
+}
