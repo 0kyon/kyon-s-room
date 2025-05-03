@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from './styles.module.css';
 
 export default function Kitchen() {
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   // クライアントサイドでレンダリングされているかを確認するフラグ
   const [isMounted, setIsMounted] = useState(false);
   // 初期値を1200に設定（デスクトップサイズをデフォルトとする）
@@ -36,6 +37,11 @@ export default function Kitchen() {
     }
   }, []);
 
+  // トグルメニュー関数
+  const toggleMenu = (menu: string) => {
+    setActiveMenu(activeMenu === menu ? null : menu);
+  };
+
   // 画面サイズに基づく表示調整
   const isTablet = windowWidth <= 1024 && windowWidth > 600;
   const isMobile = windowWidth <= 600;
@@ -47,7 +53,7 @@ export default function Kitchen() {
       <div className={styles.buttonContainer}>
         {/* Cupboard */}
         <div 
-          className={styles.emojiContainer}
+          className={`${styles.emojiContainer} ${activeMenu === 'cupboard' ? styles.active : ''}`}
           style={{ 
             top: isMobile || isTablet ? '12%' : '10%',
             left: isMobile || isTablet ? '50%' : '30%',
@@ -57,46 +63,58 @@ export default function Kitchen() {
             alignItems: 'flex-start',
             gap: isMobile || isTablet ? '5px' : '15px'
           }}
+          onClick={() => toggleMenu('cupboard')}
         >
-          <div className={styles.emoji}>🍽️</div>
-          <div className={styles.emoji} style={{ 
+          <div className={`${styles.emoji}`}>🍽️</div>
+          <div className={`${styles.emoji}`} style={{ 
             marginLeft: isMobile || isTablet ? '1em' : '2em',
             marginTop: isMobile || isTablet ? '0' : '0'
           }}>🍨</div>
-          <div className={styles.emoji} style={{ 
+          <div className={`${styles.emoji}`} style={{ 
             marginLeft: isMobile || isTablet ? '2em' : '4em',
             marginTop: isMobile || isTablet ? '0' : '0'
           }}>🍸️</div>
         </div>
 
-        <Link href="/tags/cupboard" className={styles.mainButton} style={{ 
-          top: isMobile || isTablet ? '25%' : '22%', 
-          left: '50%', 
-          transform: 'translateX(-50%)' 
-        }}>
+        <Link 
+          href="/tags/cupboard" 
+          className={styles.mainButton} 
+          style={{ 
+            top: isMobile || isTablet ? '25%' : '22%', 
+            left: '50%', 
+            transform: 'translateX(-50%)' 
+          }}
+          onClick={() => toggleMenu('cupboard')}
+        >
           <div>Cupboard</div>
         </Link>
         
         {/* Recipe Box */}
-        <Link href="/tags/recipe-box" className={styles.mainButton} style={{ 
-          bottom: '22%', 
-          left: '50%', 
-          transform: 'translateX(-50%)',
-          width: '120px'
-        }}>
+        <Link 
+          href="/tags/recipe-box" 
+          className={styles.mainButton} 
+          style={{ 
+            bottom: '22%', 
+            left: '50%', 
+            transform: 'translateX(-50%)',
+            width: '120px'
+          }}
+          onClick={() => toggleMenu('recipe-box')}
+        >
           <div>Recipe Box</div>
         </Link>
         
         <div 
-          className={styles.emoji}
+          className={`${styles.emoji} ${activeMenu === 'recipe-box' ? styles.active : ''}`}
           style={{ 
             position: 'absolute',
             bottom: '15%', 
             left: '50%', 
-            transform: 'translateX(-50%)',
+            transform: 'translate(-50%, -50%)',
             fontSize: '2rem',
-            marginTop: '10px'
+            cursor: 'pointer'
           }}
+          onClick={() => toggleMenu('recipe-box')}
         >
           🗃️
         </div>

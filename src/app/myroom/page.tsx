@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import styles from './styles.module.css';
 
 export default function MyRoom() {
@@ -85,9 +84,7 @@ export default function MyRoom() {
         <Link 
           href="/tags/diary"
           className={`${styles.mainButton} ${styles.top}`}
-          onClick={(e) => {
-            e.stopPropagation(); // リンクをクリックしたときに不要なイベントバブリングを防止
-          }}
+          onClick={() => toggleMenu('diary')}
         >
           <div>diary</div>
         </Link>
@@ -113,9 +110,7 @@ export default function MyRoom() {
         <Link
           href="/tags/murmur"
           className={`${styles.mainButton} ${styles.bottom}`}
-          onClick={(e) => {
-            e.stopPropagation(); // リンクをクリックしたときに不要なイベントバブリングを防止
-          }}
+          onClick={() => toggleMenu('murmur')}
         >
           <div>murmur</div>
         </Link>

@@ -94,15 +94,42 @@
   flex-direction: column;
   gap: 8px;
   width: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* emojiContainer内の絵文字はposition:relativeに設定 */
+.emojiContainer .emoji {
+  position: relative;
+  transition: transform 0.3s ease;
+  transform: none;
+}
+
+/* emojiContainer.activeの場合の子要素のアニメーション */
+.emojiContainer.active .emoji {
+  transform: scale(1.5);
+}
+
+@media (max-width: 768px) {
+  .emojiContainer.active .emoji {
+    transform: scale(1.3);
+  }
+}
+
+@media (max-width: 480px) {
+  .emojiContainer.active .emoji {
+    transform: scale(1.2);
+  }
 }
 
 /* 絵文字 */
 .emoji {
-  position: relative;
+  position: absolute;
   font-size: 2rem;
   z-index: 3;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   line-height: 1;
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 768px) {
@@ -122,6 +149,23 @@
   
   .emojiContainer {
     gap: 4px;
+  }
+}
+
+/* アクティブな絵文字のスタイル */
+.emoji.active {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+@media (max-width: 768px) {
+  .emoji.active {
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}
+
+@media (max-width: 480px) {
+  .emoji.active {
+    transform: translate(-50%, -50%) scale(1.2);
   }
 }
 
