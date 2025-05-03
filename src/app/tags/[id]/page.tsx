@@ -46,7 +46,13 @@ const tagMapping: { [key: string]: { title: string; subtitle: string } } = {
   "zine": { title: "Zine", subtitle: "自作～～" },
   "exhibits": { title: "Exhibits", subtitle: "展示" },
   "music": { title: "Music", subtitle: "ライブとか" },
-  "films": { title: "Films", subtitle: "映画" }
+  "films": { title: "Films", subtitle: "映画" },
+  // Kitchen関連のタグ
+  "recipe-box": { title: "Recipe Box", subtitle: "レシピコレクション" },
+  "cupboard": { title: "Cupboard", subtitle: "食器棚のアイテム" },
+  // My Room関連のタグ
+  "diary": { title: "Diary", subtitle: "日記" },
+  "murmur": { title: "Murmur", subtitle: "つぶやき" }
 };
 
 export default async function TagPage({ params }: Params) {

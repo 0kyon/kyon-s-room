@@ -60,10 +60,6 @@ export default function MyRoom() {
   const diaryPosition = getEmojiPosition('diary');
   const murmurPosition = getEmojiPosition('murmur');
 
-  const handleDiaryClick = () => {
-    toggleMenu('diary');
-  };
-
   return (
     <div className={`${styles.wrapper} ${styles.bodyStyles}`}>
       <div className={styles.glow}></div>
@@ -84,14 +80,17 @@ export default function MyRoom() {
               : '30%',   // モバイル
             cursor: 'pointer' 
           }}
-          onClick={() => handleDiaryClick()}
+          onClick={() => toggleMenu('diary')}
         >📓</div>
-        <div
+        <Link 
+          href="/tags/diary"
           className={`${styles.mainButton} ${styles.top}`}
-          onClick={() => handleDiaryClick()}
+          onClick={(e) => {
+            e.stopPropagation(); // リンクをクリックしたときに不要なイベントバブリングを防止
+          }}
         >
           <div>diary</div>
-        </div>
+        </Link>
 
         {/* murmur */}
         <div 
@@ -111,12 +110,15 @@ export default function MyRoom() {
           }}
           onClick={() => toggleMenu('murmur')}
         >💭</div>
-        <div
+        <Link
+          href="/tags/murmur"
           className={`${styles.mainButton} ${styles.bottom}`}
-          onClick={() => toggleMenu('murmur')}
+          onClick={(e) => {
+            e.stopPropagation(); // リンクをクリックしたときに不要なイベントバブリングを防止
+          }}
         >
           <div>murmur</div>
-        </div>
+        </Link>
       </div>
     </div>
   );

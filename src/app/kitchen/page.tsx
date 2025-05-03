@@ -69,7 +69,7 @@ export default function Kitchen() {
           }}>🍸️</div>
         </div>
 
-        <Link href="/cupboard" className={styles.mainButton} style={{ 
+        <Link href="/tags/cupboard" className={styles.mainButton} style={{ 
           top: isMobile || isTablet ? '25%' : '22%', 
           left: '50%', 
           transform: 'translateX(-50%)' 
@@ -78,7 +78,7 @@ export default function Kitchen() {
         </Link>
         
         {/* Recipe Box */}
-        <Link href="/recipe" className={styles.mainButton} style={{ 
+        <Link href="/tags/recipe-box" className={styles.mainButton} style={{ 
           bottom: '22%', 
           left: '50%', 
           transform: 'translateX(-50%)',
