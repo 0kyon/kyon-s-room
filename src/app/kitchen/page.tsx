@@ -104,20 +104,23 @@ export default function Kitchen() {
           <div>Recipe Box</div>
         </Link>
         
-        <div 
-          className={`${styles.emoji} ${activeMenu === 'recipe-box' ? styles.active : ''}`}
-          style={{ 
-            position: 'absolute',
-            bottom: '15%', 
-            left: '50%', 
-            transform: 'translate(-50%, -50%)',
-            fontSize: '2rem',
-            cursor: 'pointer'
-          }}
+        <Link 
+          href="/tags/recipe-box"
           onClick={() => toggleMenu('recipe-box')}
         >
-          🗃️
-        </div>
+          <div 
+            className={`${styles.emoji} ${activeMenu === 'recipe-box' ? styles.active : ''}`}
+            style={{ 
+              position: 'absolute',
+              bottom: '15%', 
+              left: '50%', 
+              fontSize: '2rem',
+              cursor: 'pointer'
+            }}
+          >
+            🗃️
+          </div>
+        </Link>
       </div>
     </div>
   );
