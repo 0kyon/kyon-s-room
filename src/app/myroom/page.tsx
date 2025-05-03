@@ -61,7 +61,7 @@ export default function MyRoom() {
   const murmurPosition = getEmojiPosition('murmur');
 
   const handleDiaryClick = () => {
-    window.location.href = '/myroom/diary_list';
+    toggleMenu('diary');
   };
 
   return (
