@@ -27,8 +27,16 @@ body {
 
 /* 記事本文の段落スタイル */
 .blog-content p {
-  margin: 1.5em 0;
+  margin: 1.8em 0;
   line-height: 1.8;
+}
+
+/* ブログコンテンツ内の画像スタイル */
+.blog-content img {
+  max-width: 65%;
+  height: auto;
+  display: block;
+  margin: 2rem auto;
 }
 
 /* ブログ全体のスタイル */
@@ -120,6 +128,10 @@ body {
   
   .blog-content p {
     margin: 1.8em 0;
+  }
+  
+  .blog-content img {
+    max-width: 65%;
   }
   
   .blog-date {
@@ -471,6 +483,10 @@ body.no-scroll {
     padding: 0 3rem;
   }
   
+  .blog-content img {
+    max-width: 60%;
+  }
+  
   .blog-date {
     max-width: 70%;
     padding: 0 3rem;
@@ -507,6 +523,11 @@ body.no-scroll {
     line-height: 1.6;
   }
   
+  .blog-content img {
+    max-width: 90%;
+    margin: 1.5rem auto;
+  }
+  
   .blog-title h1 {
     font-size: 1.5rem;
   }
@@ -517,5 +538,10 @@ body.no-scroll {
   .blog-content {
     font-size: 95%;
     padding: 0 0.75rem;
+  }
+  
+  .blog-content img {
+    max-width: 90%;
+    margin: 1.8rem auto;
   }
 }
