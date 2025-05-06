@@ -48,4 +48,23 @@
 
 .blogTitle {
   margin: 0 0 0.5rem 0;
+}
+
+/* iPhone SEなど小さい画面向けのメディアクエリ */
+@media screen and (max-width: 375px) {
+  .blogTitle {
+    font-size: 0.95rem;
+  }
+  
+  .tagTitle {
+    font-size: 1.75rem;
+  }
+  
+  .tagSubtitle {
+    font-size: 1rem;
+  }
+  
+  .blogItemContent {
+    padding: 0.8rem;
+  }
 } 

@@ -51,10 +51,10 @@ const tagMapping: { [key: string]: { title: string; subtitle: string } } = {
   "music": { title: "Music", subtitle: "ライブとか" },
   "films": { title: "Films", subtitle: "映画" },
   // Kitchen関連のタグ
-  "recipe-box": { title: "Recipe Box", subtitle: "レシピコレクション" },
-  "cupboard": { title: "Cupboard", subtitle: "食器棚のアイテム" },
+  "recipe-box": { title: "Recipe Box", subtitle: "" },
+  "cupboard": { title: "Cupboard", subtitle: "" },
   // My Room関連のタグ
-  "diary": { title: "Diary", subtitle: "日記" },
+  "diary": { title: "Diary", subtitle: "" },
   "murmur": { title: "Murmur", subtitle: "つぶやき" }
 };
 
