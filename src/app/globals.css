@@ -647,11 +647,15 @@ body.no-scroll {
   .blog-content {
     font-size: 85%;
     padding: 0 0.5rem;
+    position: relative;
   }
   
   .blog-content p {
     margin: 1.2em 0;
     line-height: 1.6;
+    overflow: visible;
+    text-align: left;
+    word-wrap: break-word;
   }
   
   .blog-content img {
@@ -660,8 +664,47 @@ body.no-scroll {
   }
   
   .blog-content figure {
-    max-width: 90%;
-    margin: 1.5rem auto;
+    max-width: 65%;
+    margin: 0.5em 0 1em 0;
+    shape-margin: 0.5em;
+    shape-outside: content-box;
+  }
+
+  .blog-content figure img {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    display: block;
+  }
+
+  /* 最初の画像（左寄せ） */
+  .blog-content figure:first-of-type {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    clear: left;
+    shape-outside: margin-box;
+  }
+
+  /* 2番目以降の奇数画像（左寄せ） */
+  .blog-content figure:not(:first-of-type):nth-of-type(odd) {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    clear: left;
+    shape-outside: margin-box;
+  }
+
+  /* 偶数の画像（右寄せ） */
+  .blog-content figure:nth-of-type(even) {
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    clear: right;
+    shape-outside: margin-box;
   }
   
   .blog-title h1 {
@@ -674,6 +717,15 @@ body.no-scroll {
   .blog-content {
     font-size: 95%;
     padding: 0 0.75rem;
+    position: relative;
+  }
+
+  .blog-content p {
+    margin: 1.2em 0;
+    line-height: 1.6;
+    overflow: visible;
+    text-align: left;
+    word-wrap: break-word;
   }
   
   .blog-content img {
@@ -682,7 +734,107 @@ body.no-scroll {
   }
   
   .blog-content figure {
-    max-width: 90%;
-    margin: 1.8rem auto;
+    max-width: 65%;
+    margin: 0.5em 0 1em 0;
+    shape-margin: 0.5em;
+    shape-outside: content-box;
+  }
+
+  .blog-content figure img {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    display: block;
+  }
+
+  /* 最初の画像（左寄せ） */
+  .blog-content figure:first-of-type {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    clear: left;
+    shape-outside: margin-box;
+  }
+
+  /* 2番目以降の奇数画像（左寄せ） */
+  .blog-content figure:not(:first-of-type):nth-of-type(odd) {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    clear: left;
+    shape-outside: margin-box;
+  }
+
+  /* 偶数の画像（右寄せ） */
+  .blog-content figure:nth-of-type(even) {
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    clear: right;
+    shape-outside: margin-box;
+  }
+}
+
+/* タブレット向け */
+@media (min-width: 481px) and (max-width: 767px) {
+  .blog-content {
+    font-size: 100%;
+    padding: 0 1rem;
+    position: relative;
+  }
+
+  .blog-content p {
+    margin: 1.4em 0;
+    line-height: 1.7;
+    overflow: visible;
+    text-align: left;
+    word-wrap: break-word;
+  }
+  
+  .blog-content figure {
+    max-width: 55%;
+    margin: 0.5em 0 1em 0;
+    shape-margin: 0.8em;
+    shape-outside: content-box;
+  }
+
+  .blog-content figure img {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    display: block;
+  }
+
+  /* 最初の画像（左寄せ） */
+  .blog-content figure:first-of-type {
+    float: left;
+    margin-right: 1.5em;
+    margin-bottom: 0.8em;
+    margin-top: 0.5em;
+    clear: left;
+    shape-outside: margin-box;
+  }
+
+  /* 2番目以降の奇数画像（左寄せ） */
+  .blog-content figure:not(:first-of-type):nth-of-type(odd) {
+    float: left;
+    margin-right: 1.5em;
+    margin-bottom: 0.8em;
+    margin-top: 0.5em;
+    clear: left;
+    shape-outside: margin-box;
+  }
+
+  /* 偶数の画像（右寄せ） */
+  .blog-content figure:nth-of-type(even) {
+    float: right;
+    margin-left: 1.5em;
+    margin-bottom: 0.8em;
+    margin-top: 0.5em;
+    clear: right;
+    shape-outside: margin-box;
   }
 }
