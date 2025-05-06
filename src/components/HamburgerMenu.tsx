@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './HamburgerMenu.module.css';
@@ -145,6 +145,7 @@ const SubMenu: React.FC<{ items: MenuItem[], level: number, initiallyExpanded?: 
 export default function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement>(null);
   
   // トップページ（'/'）ではハンバーガーメニューを表示しない
   if (pathname === '/') {
@@ -154,6 +155,32 @@ export default function HamburgerMenu() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
+  // メニュー外のクリックを検知するためのハンドラーを追加
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // メニュー参照が存在し、かつクリックがメニュー外で発生した場合
+      if (
+        menuRef.current && 
+        !menuRef.current.contains(event.target as Node) && 
+        isOpen
+      ) {
+        closeMenu();
+      }
+    };
+
+    // クリックイベントリスナーを追加
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    // クリーンアップ関数
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
     <div className={styles.hamburgerMenuContainer}>
@@ -167,8 +194,15 @@ export default function HamburgerMenu() {
         <span className={styles.hamburgerIcon}></span>
       </button>
 
-      <div className={`${styles.menuOverlay} ${isOpen ? styles.open : ''}`}>
+      <div className={`${styles.menuOverlay} ${isOpen ? styles.open : ''}`} ref={menuRef}>
         <div className={styles.menuContent}>
+          <button 
+            className={styles.closeButton} 
+            onClick={closeMenu}
+            aria-label="閉じる"
+          >
+            ×
+          </button>
           <SubMenu items={menuItems} level={1} initiallyExpanded={true} />
         </div>
       </div>
