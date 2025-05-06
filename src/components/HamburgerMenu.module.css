@@ -1,0 +1,128 @@
+.hamburgerMenuContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.hamburgerButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburgerIcon {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburgerButton.open .hamburgerIcon:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.hamburgerButton.open .hamburgerIcon:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerButton.open .hamburgerIcon:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.97);
+  overflow-y: auto;
+  transition: width 0.3s ease;
+  z-index: 999;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.menuOverlay.open {
+  width: 320px;
+}
+
+.menuContent {
+  padding: 70px 20px 20px;
+  width: 280px;
+}
+
+.submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.level-2 {
+  margin-left: 15px;
+}
+
+.level-3 {
+  margin-left: 15px;
+}
+
+.level-4 {
+  margin-left: 15px;
+}
+
+.menuItem {
+  margin: 10px 0;
+}
+
+.menuToggle {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Entranceのスタイルを特別に設定 */
+.level-1 > li > .menuToggle {
+  font-size: 18px;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+/* 第2階層のスタイル */
+.level-2 > li > .menuToggle {
+  font-size: 16px;
+  color: #444;
+}
+
+.menuLink {
+  display: block;
+  padding: 8px 0;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.menuLink:hover {
+  color: #000;
+}
+
+.arrow {
+  font-size: 10px;
+  transition: transform 0.3s ease;
+}
+
+.arrow.expanded {
+  transform: rotate(180deg);
+} 
