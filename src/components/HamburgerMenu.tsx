@@ -17,58 +17,57 @@ const menuItems: MenuItem[] = [
     children: [
       {
         name: 'Living Room',
+        path: '/livingroom',
         children: [
           {
             name: 'mogmog',
             children: [
-              { name: 'at My Home', path: '/mogmog/home' },
-              { name: 'Away', path: '/mogmog/away' }
+              { name: 'at My Home', path: '/tags/at-my-home' },
+              { name: 'Away', path: '/tags/away' }
             ]
           },
           {
             name: 'tektek',
             children: [
-              { name: 'Journey', path: '/tektek/journey' },
-              { name: 'Strolls', path: '/tektek/strolls' },
-              { name: 'City Notes', path: '/tektek/city-notes' }
+              { name: 'Journey', path: '/tags/journeys' },
+              { name: 'Strolls', path: '/tags/strolls' },
+              { name: 'City Notes', path: '/tags/city-notes' }
             ]
           },
           {
             name: 'perapera',
             children: [
-              { name: 'Readings', path: '/perapera/readings' },
-              { name: 'Zine', path: '/perapera/zine' }
+              { name: 'Readings', path: '/tags/readings' },
+              { name: 'Zine', path: '/tags/zine' }
             ]
           },
           {
             name: 'jiiii',
             children: [
-              { name: 'Exhibits', path: '/jiiii/exhibits' },
-              { name: 'Music', path: '/jiiii/music' },
-              { name: 'Films', path: '/jiiii/films' }
+              { name: 'Exhibits', path: '/tags/exhibits' },
+              { name: 'Music', path: '/tags/music' },
+              { name: 'Films', path: '/tags/films' }
             ]
           }
         ]
       },
       {
         name: 'Kitchen',
-        children: [
-          { name: 'Cupboard', path: '/kitchen/cupboard' },
-          { name: 'Recipe Box', path: '/kitchen/recipes' }
-        ]
+        path: '/kitchen',
+        children: []
       },
       {
         name: 'My Room',
+        path: '/myroom',
         children: [
-          { name: 'Diary', path: '/myroom/diary' },
-          { name: 'murmur', path: '/myroom/murmur' }
+          { name: 'Diary', path: '/diary' }
         ]
       }
     ]
   }
 ];
 
-const SubMenu: React.FC<{ items: MenuItem[], level: number, initiallyExpanded?: boolean }> = ({ items, level, initiallyExpanded = false }) => {
+const SubMenu: React.FC<{ items: MenuItem[], level: number, initiallyExpanded?: boolean, closeMenu: () => void }> = ({ items, level, initiallyExpanded = false, closeMenu }) => {
   const [expandedItems, setExpandedItems] = useState<{ [key: string]: boolean }>({});
 
   // 最初のレンダリング時に、Entranceの下の階層を展開する
@@ -128,11 +127,16 @@ const SubMenu: React.FC<{ items: MenuItem[], level: number, initiallyExpanded?: 
                 {renderArrow(item.name, level)}
               </div>
               {expandedItems[item.name] && item.children && (
-                <SubMenu items={item.children} level={level + 1} />
+                <SubMenu items={item.children} level={level + 1} closeMenu={closeMenu} />
               )}
             </>
           ) : (
-            <Link href={item.path || '#'} className={`${styles.menuLink} ${styles[`link-level-${level}`]}`} title={item.name}>
+            <Link 
+              href={item.path || '#'} 
+              className={`${styles.menuLink} ${styles[`link-level-${level}`]}`} 
+              title={item.name}
+              onClick={closeMenu}
+            >
               <span className={styles.menuText}>{item.name}</span>
             </Link>
           )}
@@ -203,7 +207,7 @@ export default function HamburgerMenu() {
           >
             ×
           </button>
-          <SubMenu items={menuItems} level={1} initiallyExpanded={true} />
+          <SubMenu items={menuItems} level={1} initiallyExpanded={true} closeMenu={closeMenu} />
         </div>
       </div>
     </div>
