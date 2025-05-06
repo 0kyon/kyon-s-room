@@ -53,12 +53,20 @@
 }
 
 .menuOverlay.open {
-  width: 320px;
+  width: 33%; /* 画面の1/3の幅 */
+  max-width: 320px; /* 大きすぎる画面でも最大幅を保持 */
+}
+
+@media (max-width: 767px) {
+  .menuOverlay.open {
+    width: 33%; /* モバイル画面では1/3の幅 */
+    min-width: 200px; /* 小さすぎる画面でも最小幅を確保 */
+  }
 }
 
 .menuContent {
   padding: 70px 15px 20px;
-  width: 280px;
+  width: 100%; /* 幅を調整 */
   box-sizing: border-box;
   overflow-x: hidden;
   max-width: 100%;
@@ -141,6 +149,44 @@
   text-overflow: ellipsis;
   flex: 1;
   max-width: calc(100% - 15px);
+}
+
+@media (max-width: 767px) {
+  .menuText {
+    font-size: 0.9em; /* モバイルでテキストを少し小さく */
+  }
+  
+  .toggle-level-1 {
+    font-size: 16px;
+  }
+  
+  .toggle-level-2 {
+    font-size: 15px;
+  }
+  
+  .toggle-level-3, 
+  .link-level-3 {
+    font-size: 13px;
+  }
+  
+  .link-level-4 {
+    font-size: 12px;
+  }
+  
+  .level-2 {
+    margin-left: 8px;
+    width: calc(100% - 8px);
+  }
+  
+  .level-3 {
+    margin-left: 10px;
+    width: calc(100% - 10px);
+  }
+  
+  .level-4 {
+    margin-left: 10px;
+    width: calc(100% - 10px);
+  }
 }
 
 /* 全てのメニュートグルの矢印を右端に配置 */
@@ -253,12 +299,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transition: all 0.2s ease;
   z-index: 1002;
 }
 
+@media (max-width: 767px) {
+  .closeButton {
+    top: 15px;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+  }
+}
+
 .closeButton:hover {
-  background-color: rgba(0, 0, 0, 0.05);
   color: #000;
 } 
