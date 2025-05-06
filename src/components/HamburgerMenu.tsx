@@ -54,13 +54,17 @@ const menuItems: MenuItem[] = [
       {
         name: 'Kitchen',
         path: '/kitchen',
-        children: []
+        children: [
+          { name: 'Cupboard', path: '/tags/cupboard' },
+          { name: 'Recipe Box', path: '/tags/recipe-box' }
+        ]
       },
       {
         name: 'My Room',
         path: '/myroom',
         children: [
-          { name: 'Diary', path: '/diary' }
+          { name: 'Diary', path: '/tags/diary' },
+          { name: 'murmur', path: '/tags/murmur' }
         ]
       }
     ]
@@ -151,11 +155,6 @@ export default function HamburgerMenu() {
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
   
-  // トップページ（'/'）ではハンバーガーメニューを表示しない
-  if (pathname === '/') {
-    return null;
-  }
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -166,6 +165,10 @@ export default function HamburgerMenu() {
 
   // メニュー外のクリックを検知するためのハンドラーを追加
   useEffect(() => {
+    if (pathname === '/') {
+      return;
+    }
+    
     const handleClickOutside = (event: MouseEvent) => {
       // メニュー参照が存在し、かつクリックがメニュー外で発生した場合
       if (
@@ -184,7 +187,12 @@ export default function HamburgerMenu() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, pathname]);
+
+  // トップページ（'/'）ではハンバーガーメニューを表示しない
+  if (pathname === '/') {
+    return null;
+  }
 
   return (
     <div className={styles.hamburgerMenuContainer}>
