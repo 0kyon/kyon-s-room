@@ -35,6 +35,9 @@ type Params = {
   };
 };
 
+// キャッシュの再検証設定
+export const revalidate = 10; // 10秒ごとに再検証
+
 // タグIDとタイトル・サブタイトルのマッピング
 const tagMapping: { [key: string]: { title: string; subtitle: string } } = {
   "at-my-home": { title: "at My Home", subtitle: "おうちで作ったごはんとおやつ" },

@@ -45,6 +45,9 @@ export const metadata: Metadata = {
   },
 };
 
+// キャッシュの再検証設定
+export const revalidate = 10; // 10秒ごとに再検証
+
 export default async function BlogDetailPage({ params }: Params) {
   const blogId = params.id;
   
