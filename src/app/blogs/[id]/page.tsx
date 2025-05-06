@@ -92,8 +92,8 @@ export default async function BlogDetailPage({ params }: Params) {
           />
         </div>
         
-        <div style={{display: "flex", flexDirection: "column", alignItems: "center", width: "100%", margin: "2rem auto 0 auto", position: "relative"}}>
-          <div className="blog-date" style={{textAlign: "center"}}>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center", width: "100%", margin: "-2rem auto 10rem auto", position: "relative"}}>
+          <div className="blog-date" style={{textAlign: "center", marginBottom: "-2rem"}}>
             Date : {formatDate(blog.publishedAt)}
           </div>
           
