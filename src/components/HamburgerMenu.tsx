@@ -71,7 +71,19 @@ const menuItems: MenuItem[] = [
   }
 ];
 
-const SubMenu: React.FC<{ items: MenuItem[], level: number, initiallyExpanded?: boolean, closeMenu: () => void }> = ({ items, level, initiallyExpanded = false, closeMenu }) => {
+const SubMenu: React.FC<{ 
+  items: MenuItem[], 
+  level: number, 
+  initiallyExpanded?: boolean, 
+  closeMenu: () => void,
+  isMenuOpen: boolean
+}> = ({ 
+  items, 
+  level, 
+  initiallyExpanded = false, 
+  closeMenu,
+  isMenuOpen
+}) => {
   const [expandedItems, setExpandedItems] = useState<{ [key: string]: boolean }>({});
 
   // 最初のレンダリング時に、Entranceの下の階層を展開する
@@ -84,6 +96,22 @@ const SubMenu: React.FC<{ items: MenuItem[], level: number, initiallyExpanded?: 
       setExpandedItems(initialState);
     }
   }, [initiallyExpanded, items, level]);
+
+  // メニューが閉じられたときに状態をリセット
+  useEffect(() => {
+    if (!isMenuOpen) {
+      // メインメニューが閉じられた時、初期状態に戻す
+      if (initiallyExpanded && level === 1) {
+        const initialState: { [key: string]: boolean } = {};
+        items.forEach(item => {
+          initialState[item.name] = true;
+        });
+        setExpandedItems(initialState);
+      } else {
+        setExpandedItems({});
+      }
+    }
+  }, [isMenuOpen, initiallyExpanded, items, level]);
 
   const toggleExpand = (name: string) => {
     setExpandedItems(prev => ({
@@ -131,7 +159,12 @@ const SubMenu: React.FC<{ items: MenuItem[], level: number, initiallyExpanded?: 
                 {renderArrow(item.name, level)}
               </div>
               {expandedItems[item.name] && item.children && (
-                <SubMenu items={item.children} level={level + 1} closeMenu={closeMenu} />
+                <SubMenu 
+                  items={item.children} 
+                  level={level + 1} 
+                  closeMenu={closeMenu} 
+                  isMenuOpen={isMenuOpen}
+                />
               )}
             </>
           ) : (
@@ -215,7 +248,13 @@ export default function HamburgerMenu() {
           >
             ×
           </button>
-          <SubMenu items={menuItems} level={1} initiallyExpanded={true} closeMenu={closeMenu} />
+          <SubMenu 
+            items={menuItems} 
+            level={1} 
+            initiallyExpanded={true} 
+            closeMenu={closeMenu} 
+            isMenuOpen={isOpen}
+          />
         </div>
       </div>
     </div>
