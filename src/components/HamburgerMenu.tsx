@@ -89,28 +89,51 @@ const SubMenu: React.FC<{ items: MenuItem[], level: number, initiallyExpanded?: 
     }));
   };
 
+  // 階層レベルに応じた矢印表示の条件分岐
+  const renderArrow = (itemName: string, itemLevel: number) => {
+    // Entranceの場合は矢印を表示しない
+    if (itemLevel === 1 && itemName === 'Entrance') {
+      return null;
+    }
+    
+    // 第2階層の場合は大きい矢印を表示
+    if (itemLevel === 2) {
+      return (
+        <span className={`${styles.arrow} ${styles.arrowLarge} ${expandedItems[itemName] ? styles.expanded : ''}`}>
+          ▼
+        </span>
+      );
+    }
+    
+    // それ以外の階層は通常の矢印
+    return (
+      <span className={`${styles.arrow} ${expandedItems[itemName] ? styles.expanded : ''}`}>
+        ▼
+      </span>
+    );
+  };
+
   return (
     <ul className={`${styles.submenu} ${styles[`level-${level}`]}`}>
       {items.map((item) => (
-        <li key={item.name} className={styles.menuItem}>
+        <li key={item.name} className={`${styles.menuItem} ${styles[`item-level-${level}`]}`}>
           {item.children ? (
             <>
               <div 
-                className={styles.menuToggle}
+                className={`${styles.menuToggle} ${styles[`toggle-level-${level}`]}`}
                 onClick={() => toggleExpand(item.name)}
+                title={item.name}
               >
-                {item.name}
-                <span className={`${styles.arrow} ${expandedItems[item.name] ? styles.expanded : ''}`}>
-                  ▼
-                </span>
+                <span className={styles.menuText}>{item.name}</span>
+                {renderArrow(item.name, level)}
               </div>
               {expandedItems[item.name] && item.children && (
                 <SubMenu items={item.children} level={level + 1} />
               )}
             </>
           ) : (
-            <Link href={item.path || '#'} className={styles.menuLink}>
-              {item.name}
+            <Link href={item.path || '#'} className={`${styles.menuLink} ${styles[`link-level-${level}`]}`} title={item.name}>
+              <span className={styles.menuText}>{item.name}</span>
             </Link>
           )}
         </li>
