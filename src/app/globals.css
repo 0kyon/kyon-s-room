@@ -22,13 +22,18 @@ body {
   margin-top: 2rem;
   margin-bottom: 2rem;
   font-size: 100%;
-  text-align: left;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
 }
 
 /* 記事本文の段落スタイル */
 .blog-content p {
   margin: 1.8em 0;
   line-height: 1.8;
+  text-align: left;
+  overflow: auto;
 }
 
 /* ブログコンテンツ内の画像スタイル */
@@ -149,6 +154,14 @@ body {
     text-align: center;
   }
 
+  /* 本文全体を中央寄せにする */
+  .blog-content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    text-align: center;
+  }
+
   /* コンテンツ内の画像レイアウト */
   .blog-content figure {
     max-width: 300px;
@@ -197,6 +210,7 @@ body {
   .blog-content p {
     overflow: auto;
     margin: 1.8em 0;
+    text-align: left;
   }
 }
 
