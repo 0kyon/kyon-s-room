@@ -160,42 +160,52 @@ body {
     margin-right: auto;
     max-width: 80%;
     text-align: center;
+    position: relative;
   }
 
   /* コンテンツ内の画像レイアウト */
   .blog-content figure {
-    max-width: 300px;
-    margin: 0 0 16px 0;
+    max-width: 45%;
+    margin: 0.5em 0 1em 0;
+    shape-margin: 1em;
+    shape-outside: content-box;
   }
 
   .blog-content figure img {
     max-width: 100%;
     height: auto;
     margin: 0;
+    display: block;
   }
 
   /* 最初の画像（左寄せ） */
   .blog-content figure:first-of-type {
     float: left;
-    margin-right: 24px;
-    margin-bottom: 16px;
+    margin-right: 2em;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
     clear: left;
+    shape-outside: margin-box;
   }
 
   /* 2番目以降の奇数画像（左寄せ） */
   .blog-content figure:not(:first-of-type):nth-of-type(odd) {
     float: left;
-    margin-right: 24px;
-    margin-bottom: 16px;
+    margin-right: 2em;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
     clear: left;
+    shape-outside: margin-box;
   }
 
   /* 偶数の画像（右寄せ） */
   .blog-content figure:nth-of-type(even) {
     float: right;
-    margin-left: 24px;
-    margin-bottom: 16px;
+    margin-left: 2em;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
     clear: right;
+    shape-outside: margin-box;
   }
 
   /* figcaptionがある場合のスタイル */
@@ -208,9 +218,20 @@ body {
 
   /* 段落のテキスト回り込み調整 */
   .blog-content p {
-    overflow: auto;
-    margin: 1.8em 0;
+    overflow: visible;
+    margin: 1em 0;
     text-align: left;
+    line-height: 1.8;
+    word-wrap: break-word;
+  }
+  
+  /* テキストと画像の間隔を調整 */
+  .blog-content p + figure {
+    margin-top: 1em;
+  }
+  
+  .blog-content figure + p {
+    margin-top: 0;
   }
 }
 
