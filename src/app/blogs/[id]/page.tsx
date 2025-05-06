@@ -90,22 +90,24 @@ export default async function BlogDetailPage({ params }: Params) {
           dangerouslySetInnerHTML={{ __html: blog.content }} 
         />
         
-        <div className="blog-date">
-          Date : {formatDate(blog.publishedAt)}
-        </div>
-        
-        <div className="blog-tags">
-          {blog.tags && blog.tags.length > 0 && (
-            <div>
-              <span>タグ: </span>
-              {blog.tags.map((tag, index) => (
-                <span key={tag.id}>
-                  <Link href={`/tags/${encodeURIComponent(tag.name)}`}>{tag.name}</Link>
-                  {index < blog.tags.length - 1 && ", "}
-                </span>
-              ))}
-            </div>
-          )}
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center", width: "100%", margin: "0 auto"}}>
+          <div className="blog-date" style={{textAlign: "center"}}>
+            Date : {formatDate(blog.publishedAt)}
+          </div>
+          
+          <div className="blog-tags" style={{textAlign: "center"}}>
+            {blog.tags && blog.tags.length > 0 && (
+              <>
+                <span>タグ: </span>
+                {blog.tags.map((tag, index) => (
+                  <span key={tag.id}>
+                    <Link href={`/tags/${encodeURIComponent(tag.name)}`}>{tag.name}</Link>
+                    {index < blog.tags.length - 1 && ", "}
+                  </span>
+                ))}
+              </>
+            )}
+          </div>
         </div>
       </div>
     );
