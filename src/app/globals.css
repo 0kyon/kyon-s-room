@@ -120,6 +120,36 @@ body {
 
 /* PCでの画像レイアウト（左右交互に配置） */
 @media (min-width: 1024px) {
+  /* ブログヘッダーのレイアウト（アイキャッチ画像とタイトルの横並び） */
+  .blog-header {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 300px;
+    justify-content: center;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .blog-eyecatch {
+    padding-right: 0;
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  
+  .blog-title {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* コンテンツ内の画像レイアウト */
   .blog-content figure {
     max-width: 300px;
     margin: 0 0 16px 0;
