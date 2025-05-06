@@ -68,29 +68,31 @@ export default async function BlogDetailPage({ params }: Params) {
     };
 
     return (
-      <div className="blog-container">
-        <div className="blog-header">
-          {blog.eyecatch && (
-            <div className="blog-eyecatch">
-              <img 
-                src={blog.eyecatch.url} 
-                alt={blog.title} 
-                className="eyecatch-image"
-              />
+      <>
+        <div className="blog-container">
+          <div className="blog-header">
+            {blog.eyecatch && (
+              <div className="blog-eyecatch">
+                <img 
+                  src={blog.eyecatch.url} 
+                  alt={blog.title} 
+                  className="eyecatch-image"
+                />
+              </div>
+            )}
+            
+            <div className="blog-title">
+              <h1>{blog.title}</h1>
             </div>
-          )}
-          
-          <div className="blog-title">
-            <h1>{blog.title}</h1>
           </div>
+          
+          <div 
+            className="blog-content"
+            dangerouslySetInnerHTML={{ __html: blog.content }} 
+          />
         </div>
         
-        <div 
-          className="blog-content"
-          dangerouslySetInnerHTML={{ __html: blog.content }} 
-        />
-        
-        <div style={{display: "flex", flexDirection: "column", alignItems: "center", width: "100%", margin: "0 auto"}}>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center", width: "100%", margin: "2rem auto 0 auto", position: "relative"}}>
           <div className="blog-date" style={{textAlign: "center"}}>
             Date : {formatDate(blog.publishedAt)}
           </div>
@@ -109,7 +111,7 @@ export default async function BlogDetailPage({ params }: Params) {
             )}
           </div>
         </div>
-      </div>
+      </>
     );
   } catch (error) {
     console.error("Error fetching blog:", error);
