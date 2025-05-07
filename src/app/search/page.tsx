@@ -32,7 +32,9 @@ export default function SearchPage() {
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState(query);
   const [isExpanded, setIsExpanded] = useState(true);
+  const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const sortMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -66,6 +68,20 @@ export default function SearchPage() {
 
     fetchResults();
   }, [query, sort]);
+
+  // クリック外部検知用のイベントリスナー
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sortMenuRef.current && !sortMenuRef.current.contains(event.target as Node)) {
+        setIsSortMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const handleSearch = () => {
     if (searchQuery.trim()) {
@@ -286,18 +302,39 @@ export default function SearchPage() {
       </div>
       
       <div className={styles.sortContainer}>
-        <button 
-          className={`${styles.sortButton} ${sort === 'new' ? styles.active : ''}`}
-          onClick={() => handleSortChange('new')}
-        >
-          🍃新しい順
-        </button>
-        <button 
-          className={`${styles.sortButton} ${sort === 'old' ? styles.active : ''}`}
-          onClick={() => handleSortChange('old')}
-        >
-          🍂古い順
-        </button>
+        <div className={styles.sortDropdown} ref={sortMenuRef}>
+          <button 
+            className={styles.sortToggleButton}
+            onClick={() => setIsSortMenuOpen(!isSortMenuOpen)}
+            aria-label="並び替え"
+            aria-expanded={isSortMenuOpen}
+          >
+            <span className={styles.sortIconArrows}>↑↓</span>
+          </button>
+          
+          {isSortMenuOpen && (
+            <div className={styles.sortMenu}>
+              <button 
+                className={`${styles.sortMenuItem} ${sort === 'new' ? styles.active : ''}`}
+                onClick={() => {
+                  handleSortChange('new');
+                  setIsSortMenuOpen(false);
+                }}
+              >
+                🍃新しい順
+              </button>
+              <button 
+                className={`${styles.sortMenuItem} ${sort === 'old' ? styles.active : ''}`}
+                onClick={() => {
+                  handleSortChange('old');
+                  setIsSortMenuOpen(false);
+                }}
+              >
+                🍂古い順
+              </button>
+            </div>
+          )}
+        </div>
       </div>
       
       {results.length === 0 ? (

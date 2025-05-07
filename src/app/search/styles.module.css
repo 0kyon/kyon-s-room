@@ -89,23 +89,65 @@
   margin-bottom: 1.5rem;
 }
 
-.sortButton {
-  border: 1px solid #ddd;
-  background-color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+.sortDropdown {
+  position: relative;
+}
+
+.sortToggleButton {
+  background: none;
+  border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  padding: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.sortToggleButton:hover {
+  opacity: 0.7;
+}
+
+.sortIconArrows {
+  font-size: 1.3rem;
+  line-height: 1;
+  font-weight: bold;
+}
+
+.sortMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sortMenuItem {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
   font-size: 0.9rem;
 }
 
-.sortButton:hover, .sortButton.active {
-  background-color: #f0f0f0;
-  border-color: #ccc;
+.sortMenuItem:hover, .sortMenuItem.active {
+  background-color: #f5f5f5;
 }
 
-.sortButton.active {
+.sortMenuItem.active {
   font-weight: bold;
+}
+
+/* 以前のソートボタンスタイルを削除 */
+.sortButton {
+  display: none;
 }
 
 /* 検索結果リスト */
@@ -232,11 +274,24 @@
   }
 
   .sortContainer {
-    justify-content: center;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
   }
 
-  .sortButton {
-    padding: 0.4rem 0.8rem;
+  .sortToggleButton {
+    padding: 0.4rem;
+  }
+  
+  .sortIconArrows {
+    font-size: 1.1rem;
+  }
+
+  .sortMenu {
+    width: 130px;
+  }
+
+  .sortMenuItem {
+    padding: 0.6rem 0.8rem;
     font-size: 0.8rem;
   }
 } 
