@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from './HamburgerMenu.module.css';
 
 type MenuItem = {
@@ -187,10 +187,13 @@ const SearchBar: React.FC<{ closeMenu: () => void }> = ({ closeMenu }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   const handleSearch = () => {
-    // TODO: 検索機能の実装
-    console.log('Searching for:', searchQuery);
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      closeMenu();
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -244,6 +247,7 @@ export default function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   
   const toggleMenu = () => {
     setIsOpen(!isOpen);
