@@ -5,6 +5,9 @@ const nextConfig = {
     // ISRのようなキャッシュ再検証機能を有効化
     serverActions: true,
   },
+  images: {
+    domains: ['images.microcms-assets.io'],
+  },
 };
 
 module.exports = nextConfig; 
