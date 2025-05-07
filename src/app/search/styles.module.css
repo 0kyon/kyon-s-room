@@ -108,13 +108,15 @@
 .sortIconArrows {
   font-size: 1.3rem;
   line-height: 1;
-  font-weight: bold;
+  font-weight: 900;
+  letter-spacing: -2px;
 }
 
 .sortMenu {
   position: absolute;
-  top: 100%;
-  right: 0;
+  top: -30px;
+  right: auto;
+  left: -160px;
   margin-top: 5px;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -284,9 +286,13 @@
   
   .sortIconArrows {
     font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: -2px;
   }
 
   .sortMenu {
+    left: -140px;
+    top: -25px;
     width: 130px;
   }
 
