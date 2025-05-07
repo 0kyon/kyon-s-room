@@ -165,7 +165,8 @@
   border: 1px solid #eaeaea;
   border-radius: 0;
   transition: all 0.3s ease;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
 }
 
 .resultItem:hover {
@@ -182,14 +183,19 @@
 .resultContent {
   display: flex;
   align-items: stretch;
+  position: relative;
 }
 
 .eyecatch {
   flex: 0 0 200px;
   background-color: #f5f5f5;
-  position: relative;
-  width: 200px;
-  height: 150px;
+  position: absolute;
+  left: -30px;
+  top: -30px;
+  width: 230px;
+  height: 190px;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .eyecatchPlaceholder {
@@ -213,6 +219,8 @@
 .textContent {
   flex: 1;
   padding: 1.5rem;
+  padding-left: 210px; /* アイキャッチ画像の幅 + 余白 */
+  min-height: 170px;
 }
 
 .textContent h3 {
@@ -280,16 +288,22 @@
 
   .resultContent {
     flex-direction: column;
+    padding-top: 160px; /* アイキャッチ画像の高さ + 余白 */
   }
 
   .eyecatch {
     flex: 0 0 150px;
-    width: 100%;
+    width: 180px;
     height: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -20px;
   }
 
   .textContent {
     padding: 1rem;
+    padding-left: 1rem; /* モバイルでは元に戻す */
+    min-height: auto;
   }
 
   .textContent h3 {
