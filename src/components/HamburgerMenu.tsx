@@ -16,7 +16,7 @@ const menuItems: MenuItem[] = [
     name: 'Entrance',
     children: [
       {
-        name: 'Living Room',
+        name: '🗣️ 　Living Room',
         path: '/livingroom',
         children: [
           {
@@ -52,7 +52,7 @@ const menuItems: MenuItem[] = [
         ]
       },
       {
-        name: 'Kitchen',
+        name: '🍲 　Kitchen',
         path: '/kitchen',
         children: [
           { name: 'Cupboard', path: '/tags/cupboard' },
@@ -60,7 +60,7 @@ const menuItems: MenuItem[] = [
         ]
       },
       {
-        name: 'My Room',
+        name: '🤐 　My Room',
         path: '/myroom',
         children: [
           { name: 'Diary', path: '/tags/diary' },
