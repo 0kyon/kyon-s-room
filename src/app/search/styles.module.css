@@ -163,7 +163,7 @@
 
 .resultItem {
   border: 1px solid #eaeaea;
-  border-radius: 8px;
+  border-radius: 0;
   transition: all 0.3s ease;
   overflow: hidden;
 }
@@ -251,7 +251,7 @@
 .tag {
   background-color: #f5f5f5;
   padding: 0.25rem 0.75rem;
-  border-radius: 20px;
+  border-radius: 0;
   color: #666;
   text-decoration: none;
   transition: all 0.2s ease;
