@@ -352,7 +352,7 @@ export default function SearchPage() {
                         alt={result.title}
                         width={200}
                         height={150}
-                        style={{ objectFit: 'cover' }}
+                        style={{ objectFit: 'contain' }}
                       />
                     ) : (
                       <div className={styles.eyecatchPlaceholder}>

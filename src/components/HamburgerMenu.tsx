@@ -13,7 +13,7 @@ type MenuItem = {
 
 const menuItems: MenuItem[] = [
   {
-    name: 'Entrance',
+    name: '👋 　Entrance',
     children: [
       {
         name: '🗣️ 　Living Room',
