@@ -15,7 +15,7 @@ export async function GET(request: Request) {
       endpoint: 'blogs',
       queries: {
         q: query,
-        fields: ['id', 'title', 'content', 'tags', 'publishedAt'],
+        fields: ['id', 'title', 'content', 'eyecatch', 'tags', 'publishedAt'],
       },
     });
 

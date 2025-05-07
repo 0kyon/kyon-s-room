@@ -345,8 +345,8 @@ export default function SearchPage() {
             <article key={result.id} className={styles.resultItem}>
               <Link href={`/blogs/${result.id}`} className={styles.resultLink}>
                 <div className={styles.resultContent}>
-                  {result.eyecatch && (
-                    <div className={styles.eyecatch}>
+                  <div className={styles.eyecatch}>
+                    {result.eyecatch ? (
                       <Image
                         src={result.eyecatch.url}
                         alt={result.title}
@@ -354,8 +354,12 @@ export default function SearchPage() {
                         height={150}
                         style={{ objectFit: 'cover' }}
                       />
-                    </div>
-                  )}
+                    ) : (
+                      <div className={styles.eyecatchPlaceholder}>
+                        アイキャッチ画像
+                      </div>
+                    )}
+                  </div>
                   <div className={styles.textContent}>
                     <h3 dangerouslySetInnerHTML={{ __html: highlightText(result.title, query) }}></h3>
                     <div 
