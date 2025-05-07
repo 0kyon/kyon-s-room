@@ -183,6 +183,63 @@ const SubMenu: React.FC<{
   );
 };
 
+const SearchBar: React.FC<{ closeMenu: () => void }> = ({ closeMenu }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSearch = () => {
+    // TODO: 検索機能の実装
+    console.log('Searching for:', searchQuery);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  useEffect(() => {
+    if (isExpanded && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [isExpanded]);
+
+  return (
+    <div className={styles.searchContainer}>
+      <div className={styles.searchWrapper}>
+        <button
+          className={styles.searchIcon}
+          onClick={() => setIsExpanded(!isExpanded)}
+          aria-label="検索"
+        >
+          🔍
+        </button>
+        {isExpanded && (
+          <div className={styles.searchInputContainer}>
+            <input
+              ref={searchInputRef}
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="検索..."
+              className={styles.searchInput}
+            />
+            <button
+              className={styles.searchButton}
+              onClick={handleSearch}
+              aria-label="検索実行"
+            >
+              →
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 export default function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
@@ -248,6 +305,7 @@ export default function HamburgerMenu() {
           >
             ×
           </button>
+          <SearchBar closeMenu={closeMenu} />
           <SubMenu 
             items={menuItems} 
             level={1} 
