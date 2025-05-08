@@ -16,6 +16,33 @@ body {
   overflow-x: hidden;
 }
 
+/* スクロール制御 */
+html.no-scroll,
+body.no-scroll {
+  overflow: hidden !important;
+  height: 100% !important;
+  width: 100% !important;
+  position: fixed !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ハンバーガーメニュー固定 */
+.hamburgerMenuContainer {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 1000 !important;
+}
+
+@media (max-width: 768px) {
+  .hamburgerMenuContainer {
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
+  }
+}
+
 /* ブログスタイル */
 /* ブログコンテンツのスタイル */
 .blog-content {
@@ -353,11 +380,6 @@ body {
     max-height: none;
     margin: 0 auto;
   }
-}
-
-/* ホームページとルームページでスクロールを無効にする */
-body.no-scroll {
-  overflow: hidden;
 }
 
 /* Entrance */

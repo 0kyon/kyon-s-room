@@ -14,6 +14,7 @@ type MenuItem = {
 const menuItems: MenuItem[] = [
   {
     name: '👋 　Entrance',
+    path: '/',
     children: [
       {
         name: '🗣️ 　Living Room',
@@ -123,7 +124,7 @@ const SubMenu: React.FC<{
   // 階層レベルに応じた矢印表示の条件分岐
   const renderArrow = (itemName: string, itemLevel: number) => {
     // Entranceの場合は矢印を表示しない
-    if (itemLevel === 1 && itemName === 'Entrance') {
+    if (itemLevel === 1 && itemName === '👋 　Entrance') {
       return null;
     }
     
@@ -150,15 +151,28 @@ const SubMenu: React.FC<{
         <li key={item.name} className={`${styles.menuItem} ${styles[`item-level-${level}`]}`}>
           {item.children ? (
             <>
-              <div 
-                className={`${styles.menuToggle} ${styles[`toggle-level-${level}`]}`}
-                onClick={() => toggleExpand(item.name)}
-                title={item.name}
-              >
-                <span className={styles.menuText}>{item.name}</span>
-                {renderArrow(item.name, level)}
-              </div>
-              {expandedItems[item.name] && item.children && (
+              {item.name === '👋 　Entrance' ? (
+                <Link 
+                  href={item.path || '/'}
+                  className={`${styles.menuToggle} ${styles[`toggle-level-${level}`]} ${styles.entranceLink}`}
+                  title={item.name}
+                  onClick={closeMenu}
+                  style={{ textDecoration: 'none', borderBottom: 'none' }}
+                >
+                  <span className={styles.menuText}>{item.name}</span>
+                  {renderArrow(item.name, level)}
+                </Link>
+              ) : (
+                <div 
+                  className={`${styles.menuToggle} ${styles[`toggle-level-${level}`]}`}
+                  onClick={() => item.name === '👋 　Entrance' ? null : toggleExpand(item.name)}
+                  title={item.name}
+                >
+                  <span className={styles.menuText}>{item.name}</span>
+                  {renderArrow(item.name, level)}
+                </div>
+              )}
+              {(expandedItems[item.name] || item.name === '👋 　Entrance') && item.children && (
                 <SubMenu 
                   items={item.children} 
                   level={level + 1} 

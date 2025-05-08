@@ -58,9 +58,17 @@
 }
 
 @media (max-width: 767px) {
+  .hamburgerMenuContainer {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+  }
+
   .menuOverlay.open {
-    width: 33%; /* モバイル画面では1/3の幅 */
+    width: 75%; /* モバイル画面では75%の幅 */
     min-width: 200px; /* 小さすぎる画面でも最小幅を確保 */
+    max-width: none; /* モバイルでは最大幅の制限を解除 */
   }
 }
 
@@ -198,7 +206,7 @@
 /* Entranceのスタイルを特別に設定 */
 .toggle-level-1 {
   font-size: 18px;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: none;
   padding-bottom: 12px;
   margin-bottom: 8px;
 }
@@ -258,6 +266,7 @@
   text-align: left;
   width: 100%;
   box-sizing: border-box;
+  border-bottom: none;
 }
 
 .menuLink:hover {
@@ -386,5 +395,55 @@
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+/* Entranceに適用される特別なスタイルを追加 */
+a.menuToggle {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+.entranceLink {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/* リビングルームなどの特定ページでのメニュー表示を改善 */
+body.no-scroll .hamburgerMenuContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+}
+
+@media (max-width: 767px) {
+  body.no-scroll .hamburgerMenuContainer {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 2000;
+  }
+  
+  /* モバイルでのレイアウト改善 */
+  .submenu {
+    width: 100%;
+    padding-right: 15px;
+    box-sizing: border-box;
+  }
+  
+  .menuItem {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .menuToggle, .menuLink {
+    width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+  }
+  
+  .menuText {
+    max-width: calc(100% - 20px);
   }
 } 
