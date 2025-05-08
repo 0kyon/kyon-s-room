@@ -66,9 +66,17 @@
   }
 
   .menuOverlay.open {
-    width: 75%; /* モバイル画面では75%の幅 */
-    min-width: 200px; /* 小さすぎる画面でも最小幅を確保 */
+    width: 40%; /* モバイル画面では40%の幅に縮小 */
+    min-width: 180px; /* 最小幅も少し小さくする */
     max-width: none; /* モバイルでは最大幅の制限を解除 */
+  }
+}
+
+/* さらに小さい画面向け */
+@media (max-width: 480px) {
+  .menuOverlay.open {
+    width: 45%; /* 小さい画面では少し広めに */
+    min-width: 160px; 
   }
 }
 
@@ -428,22 +436,44 @@ body.no-scroll .hamburgerMenuContainer {
   /* モバイルでのレイアウト改善 */
   .submenu {
     width: 100%;
-    padding-right: 15px;
+    padding-right: 10px;
     box-sizing: border-box;
   }
   
   .menuItem {
     width: 100%;
     box-sizing: border-box;
+    margin: 6px 0;
   }
   
   .menuToggle, .menuLink {
     width: 100%;
     box-sizing: border-box;
     white-space: normal;
+    padding: 6px 0;
   }
   
   .menuText {
     max-width: calc(100% - 20px);
+    font-size: 0.9rem;
+  }
+  
+  .toggle-level-1 {
+    font-size: 1rem;
+    padding-bottom: 8px;
+    margin-bottom: 6px;
+  }
+  
+  .toggle-level-2 {
+    font-size: 0.95rem;
+  }
+  
+  .toggle-level-3,
+  .link-level-3 {
+    font-size: 0.9rem;
+  }
+  
+  .link-level-4 {
+    font-size: 0.85rem;
   }
 } 
