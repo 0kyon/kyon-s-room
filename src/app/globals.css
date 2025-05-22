@@ -52,7 +52,7 @@ body.no-scroll {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  max-width: 80%;
+  max-width: 85%;
 }
 
 /* 記事本文の段落スタイル */
@@ -713,8 +713,9 @@ body.no-scroll {
 @media (max-width: 375px) {
   .blog-content {
     font-size: 85%;
-    padding: 0 0.5rem;
+    padding: 0 0.3rem;
     position: relative;
+    max-width: 95%;
   }
   
   .blog-content p {
@@ -783,8 +784,9 @@ body.no-scroll {
 @media (min-width: 376px) and (max-width: 480px) {
   .blog-content {
     font-size: 95%;
-    padding: 0 0.75rem;
+    padding: 0 0.5rem;
     position: relative;
+    max-width: 95%;
   }
 
   .blog-content p {
@@ -849,8 +851,9 @@ body.no-scroll {
 @media (min-width: 481px) and (max-width: 767px) {
   .blog-content {
     font-size: 100%;
-    padding: 0 1rem;
+    padding: 0 0.75rem;
     position: relative;
+    max-width: 90%;
   }
 
   .blog-content p {
