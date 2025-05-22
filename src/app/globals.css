@@ -250,6 +250,7 @@ body.no-scroll {
     text-align: left;
     line-height: 2.2;
     word-wrap: break-word;
+    font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Yu Gothic", "メイリオ", Meiryo, sans-serif;
   }
   
   /* テキストと画像の間隔を調整 */
@@ -283,6 +284,7 @@ body.no-scroll {
     text-align: left;
     line-height: 2.2;
     word-wrap: break-word;
+    font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Yu Gothic", "メイリオ", Meiryo, sans-serif;
   }
   
   .blog-content img {
@@ -722,6 +724,7 @@ body.no-scroll {
     text-align: justify;
     word-wrap: break-word;
     hyphens: auto;
+    font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Yu Gothic", "メイリオ", Meiryo, sans-serif;
   }
 }
 
