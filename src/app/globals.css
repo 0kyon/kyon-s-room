@@ -58,7 +58,7 @@ body.no-scroll {
 /* 記事本文の段落スタイル */
 .blog-content p {
   margin: 1.8em 0;
-  line-height: 1.8;
+  line-height: 2.2;
   text-align: left;
   overflow: auto;
 }
@@ -248,7 +248,7 @@ body.no-scroll {
     overflow: visible;
     margin: 1em 0;
     text-align: left;
-    line-height: 1.8;
+    line-height: 2.2;
     word-wrap: break-word;
   }
   
@@ -281,7 +281,7 @@ body.no-scroll {
     margin: 1.8em 0;
     overflow: visible;
     text-align: left;
-    line-height: 1.8;
+    line-height: 2.2;
     word-wrap: break-word;
   }
   
@@ -789,7 +789,7 @@ body.no-scroll {
 
   .blog-content p {
     margin: 1.2em 0;
-    line-height: 1.6;
+    line-height: 2.5;
     overflow: visible;
     text-align: left;
     word-wrap: break-word;
@@ -855,7 +855,7 @@ body.no-scroll {
 
   .blog-content p {
     margin: 1.4em 0;
-    line-height: 1.7;
+    line-height: 2.1;
     overflow: visible;
     text-align: left;
     word-wrap: break-word;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Link from 'next/link';
 import styles from './styles.module.css';
 
@@ -12,6 +12,18 @@ export default function LivingRoom() {
   const [windowWidth, setWindowWidth] = useState<number>(1200);
   // クライアントサイドで使用する画面の高さ
   const [windowHeight, setWindowHeight] = useState<number>(800);
+  // サブメニューのコンテナへの参照
+  const menuContainerRef = useRef<HTMLDivElement>(null);
+  // 各メニューへのref
+  const mogmogRef = useRef<HTMLDivElement>(null);
+  const tektekRef = useRef<HTMLDivElement>(null);
+  const paraparaRef = useRef<HTMLDivElement>(null);
+  const jiiiRef = useRef<HTMLDivElement>(null);
+  // サブメニューへのref
+  const mogmogSubRef = useRef<HTMLDivElement>(null);
+  const tektekSubRef = useRef<HTMLDivElement>(null);
+  const paraparaSubRef = useRef<HTMLDivElement>(null);
+  const jiiiSubRef = useRef<HTMLDivElement>(null);
 
   // クライアントサイドへのマウント検知
   useEffect(() => {
@@ -37,7 +49,46 @@ export default function LivingRoom() {
     }
   }, []);
 
-  const toggleMenu = (menu: string) => {
+  // グローバルクリックイベントによるサブメニュー制御 - useLayoutEffectを使用
+  useLayoutEffect(() => {
+    if (!isMounted) return;
+    
+    const closeMenuOnOutsideClick = (e: MouseEvent) => {
+      const target = e.target as Node;
+      
+      // メニューボタン自体またはサブメニューをクリックした場合は何もしない
+      if (
+        mogmogRef.current?.contains(target) ||
+        tektekRef.current?.contains(target) ||
+        paraparaRef.current?.contains(target) ||
+        jiiiRef.current?.contains(target) ||
+        mogmogSubRef.current?.contains(target) ||
+        tektekSubRef.current?.contains(target) ||
+        paraparaSubRef.current?.contains(target) ||
+        jiiiSubRef.current?.contains(target)
+      ) {
+        return;
+      }
+      
+      // それ以外の場所をクリックした場合は閉じる
+      if (activeMenu) {
+        console.log('メニュー外をクリック: メニューを閉じます', e.target);
+        setActiveMenu(null);
+      }
+    };
+
+    // イベントリスナーを追加
+    window.addEventListener('click', closeMenuOnOutsideClick);
+    
+    // クリーンアップ
+    return () => {
+      window.removeEventListener('click', closeMenuOnOutsideClick);
+    };
+  }, [isMounted, activeMenu]);
+
+  // 特定の要素をクリックしたときのハンドラ - サブメニューのトグル動作専用
+  const handleMenuToggle = (e: React.MouseEvent, menu: string) => {
+    e.stopPropagation(); // バブリングを防止
     setActiveMenu(activeMenu === menu ? null : menu);
   };
 
@@ -167,20 +218,24 @@ export default function LivingRoom() {
       <div className={styles.buttonContainer}>
         {/* mogmog */}
         <div 
+          ref={mogmogRef}
           className={`${styles.emoji} ${activeMenu === 'mogmog' ? styles.active : ''}`}
           style={{ 
             top: isWideScreen ? '15%' : '23%', 
             left: '50%', 
             cursor: 'pointer' 
           }}
-          onClick={() => toggleMenu('mogmog')}
+          onClick={(event) => handleMenuToggle(event, 'mogmog')}
         >😋</div>
         <div
           className={`${styles.mainButton} ${styles.top}`}
-          onClick={() => toggleMenu('mogmog')}
+          onClick={(event) => handleMenuToggle(event, 'mogmog')}
         >
           <div>mogmog</div>
-          <div className={`${styles.subButtons} ${activeMenu === 'mogmog' ? styles.show : ''}`}>
+          <div 
+            ref={mogmogSubRef}
+            className={`${styles.subButtons} ${activeMenu === 'mogmog' ? styles.show : ''}`}
+          >
             <Link 
               href="/tags/at-my-home" 
               className={styles.subStar} 
@@ -214,20 +269,24 @@ export default function LivingRoom() {
 
         {/* tektek */}
         <div 
+          ref={tektekRef}
           className={`${styles.emoji} ${activeMenu === 'tektek' ? styles.active : ''}`}
           style={{ 
             top: tektekPosition.top, 
             left: tektekPosition.left, 
             cursor: 'pointer' 
           }}
-          onClick={() => toggleMenu('tektek')}
+          onClick={(event) => handleMenuToggle(event, 'tektek')}
         >🚶‍♂️</div>
         <div
           className={`${styles.mainButton} ${styles.left}`}
-          onClick={() => toggleMenu('tektek')}
+          onClick={(event) => handleMenuToggle(event, 'tektek')}
         >
           <div>tektek</div>
-          <div className={`${styles.subButtons} ${activeMenu === 'tektek' ? styles.show : ''}`}>
+          <div 
+            ref={tektekSubRef}
+            className={`${styles.subButtons} ${activeMenu === 'tektek' ? styles.show : ''}`}
+          >
             <Link 
               href="/tags/journeys" 
               className={styles.subStar} 
@@ -275,20 +334,24 @@ export default function LivingRoom() {
 
         {/* parapara */}
         <div 
+          ref={paraparaRef}
           className={`${styles.emoji} ${activeMenu === 'parapara' ? styles.active : ''}`}
           style={{ 
             top: paraparaPosition.top, 
             right: paraparaPosition.right, 
             cursor: 'pointer' 
           }}
-          onClick={() => toggleMenu('parapara')}
+          onClick={(event) => handleMenuToggle(event, 'parapara')}
         >📚</div>
         <div
           className={`${styles.mainButton} ${styles.right}`}
-          onClick={() => toggleMenu('parapara')}
+          onClick={(event) => handleMenuToggle(event, 'parapara')}
         >
           <div>parapara</div>
-          <div className={`${styles.subButtons} ${activeMenu === 'parapara' ? styles.show : ''}`}>
+          <div 
+            ref={paraparaSubRef}
+            className={`${styles.subButtons} ${activeMenu === 'parapara' ? styles.show : ''}`}
+          >
             <Link 
               href="/tags/readings" 
               className={styles.subStar} 
@@ -322,20 +385,24 @@ export default function LivingRoom() {
 
         {/* jiiii */}
         <div 
+          ref={jiiiRef}
           className={`${styles.emoji} ${activeMenu === 'jiiii' ? styles.active : ''}`}
           style={{ 
             bottom: isWideScreen ? '10%' : '18%', 
             left: '50%', 
             cursor: 'pointer' 
           }}
-          onClick={() => toggleMenu('jiiii')}
+          onClick={(event) => handleMenuToggle(event, 'jiiii')}
         >👀</div>
         <div
           className={`${styles.mainButton} ${styles.bottom}`}
-          onClick={() => toggleMenu('jiiii')}
+          onClick={(event) => handleMenuToggle(event, 'jiiii')}
         >
           <div>jiiii</div>
-          <div className={`${styles.subButtons} ${activeMenu === 'jiiii' ? styles.show : ''}`}>
+          <div 
+            ref={jiiiSubRef}
+            className={`${styles.subButtons} ${activeMenu === 'jiiii' ? styles.show : ''}`}
+          >
             <Link 
               href="/tags/exhibits" 
               className={styles.subStar} 
