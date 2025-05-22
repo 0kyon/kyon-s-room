@@ -709,21 +709,32 @@ body.no-scroll {
   }
 }
 
+/* モバイル共通スタイル (0-767px) */
+@media (max-width: 767px) {
+  .blog-content {
+    max-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  .blog-content p {
+    overflow: visible;
+    text-align: justify;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
 /* 小さい画面（iPhone SEなど）向け */
 @media (max-width: 375px) {
   .blog-content {
     font-size: 85%;
     padding: 0 0.3rem;
-    position: relative;
-    max-width: 95%;
   }
   
   .blog-content p {
     margin: 1.2em 0;
     line-height: 2.3;
-    overflow: visible;
-    text-align: left;
-    word-wrap: break-word;
   }
   
   .blog-content img {
@@ -785,16 +796,11 @@ body.no-scroll {
   .blog-content {
     font-size: 95%;
     padding: 0 0.5rem;
-    position: relative;
-    max-width: 95%;
   }
 
   .blog-content p {
     margin: 1.2em 0;
     line-height: 2.5;
-    overflow: visible;
-    text-align: left;
-    word-wrap: break-word;
   }
   
   .blog-content img {
@@ -852,16 +858,11 @@ body.no-scroll {
   .blog-content {
     font-size: 100%;
     padding: 0 0.75rem;
-    position: relative;
-    max-width: 90%;
   }
 
   .blog-content p {
     margin: 1.4em 0;
     line-height: 2.1;
-    overflow: visible;
-    text-align: left;
-    word-wrap: break-word;
   }
   
   .blog-content figure {
