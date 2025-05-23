@@ -5,7 +5,7 @@ const nextConfig = {
     // ISRのようなキャッシュ再検証機能を有効化
   },
   images: {
-    domains: ['images.microcms-assets.io'],
+    domains: ['images.microcms-assets.io', 'files.stripe.com', 'via.placeholder.com'],
   },
 };
 

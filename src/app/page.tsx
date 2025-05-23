@@ -48,6 +48,11 @@ export default function Home() {
           <div className="label">Kitchen</div>
           <div className="emoji">🍲</div>
         </Link>
+
+        <Link href="/shop" className="door-button shop">
+          <div className="label">EC Shop</div>
+          <div className="emoji">🛒</div>
+        </Link>
       </div>
       <div className="welcome">Welcome!</div>
     </div>

@@ -216,7 +216,8 @@ const SearchBar: React.FC<{ closeMenu: () => void }> = ({ closeMenu }) => {
     }
   };
 
-  useEffect(() => {
+  useEffec
+  () => {
     if (isExpanded && searchInputRef.current) {
       searchInputRef.current.focus();
     }

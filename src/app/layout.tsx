@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import BackButton from '../components/BackButton'
 import ScrollControl from '../components/ScrollControl'
 import HamburgerMenu from '../components/HamburgerMenu'
+import CartProvider from '../components/CartProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ScrollControl />
-        <BackButton />
-        <HamburgerMenu />
-        {children}
+        <CartProvider>
+          <ScrollControl />
+          <BackButton />
+          <HamburgerMenu />
+          {children}
+        </CartProvider>
       </body>
     </html>
   )
