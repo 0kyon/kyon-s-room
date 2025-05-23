@@ -10,11 +10,19 @@ export async function GET() {
 
     const productsWithPrices = products.data.map((product) => {
       const price = product.default_price as any;
+      
+      // Stripeから取得される生データを確認
+      console.log('Stripe raw data:', {
+        unit_amount: price?.unit_amount,
+        currency: price?.currency
+      });
+      
+      // Stripeの設定をそのまま使用（余計な変換はしない）
       return {
         id: product.id,
         name: product.name,
         description: product.description,
-        price: price?.unit_amount / 100,
+        price: price?.unit_amount,
         currency: price?.currency,
         image: product.images[0],
         images: product.images,

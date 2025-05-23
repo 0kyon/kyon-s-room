@@ -1,33 +1,61 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useShoppingCart } from 'use-shopping-cart';
 
 export default function SuccessPage() {
+  const searchParams = useSearchParams();
+  const sessionId = searchParams.get('session_id');
   const { clearCart } = useShoppingCart();
-  
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    clearCart();
-  }, [clearCart]);
-  
-  return (
-    <div className="container mx-auto px-4 py-16 text-center">
-      <div className="bg-white p-8 rounded-lg shadow-md max-w-md mx-auto">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
+    if (sessionId) {
+      // 決済が成功したらカートをクリア
+      clearCart();
+      setIsLoading(false);
+    }
+  }, [sessionId, clearCart]);
+
+  if (isLoading) {
+    return (
+      <div className="container mx-auto px-4 py-8 text-center">
+        <div className="max-w-md mx-auto">
+          <h1 className="text-2xl font-bold mb-4">処理中...</h1>
+          <p>決済結果を確認しています。</p>
         </div>
-        
-        <h1 className="text-2xl font-bold text-green-600 mb-4">ご注文ありがとうございました！</h1>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container mx-auto px-4 py-8 text-center">
+      <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+        <div className="text-green-500 text-6xl mb-4">✓</div>
+        <h1 className="text-2xl font-bold text-green-600 mb-4">決済完了！</h1>
         <p className="text-gray-600 mb-6">
-          決済が完了しました。ご注文の詳細はメールでお送りします。
+          ご注文ありがとうございます。<br />
+          決済が正常に完了しました。
         </p>
-        
-        <div className="mt-8">
-          <Link href="/shop" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">
-            ショッピングを続ける
+        {sessionId && (
+          <p className="text-sm text-gray-500 mb-6">
+            セッションID: {sessionId}
+          </p>
+        )}
+        <div className="space-y-4">
+          <Link 
+            href="/shop" 
+            className="block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            お買い物を続ける
+          </Link>
+          <Link 
+            href="/" 
+            className="block text-blue-600 hover:underline"
+          >
+            ホームに戻る
           </Link>
         </div>
       </div>

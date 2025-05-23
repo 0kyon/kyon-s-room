@@ -19,11 +19,13 @@ export async function GET(
     }
 
     const price = product.default_price as any;
+    
+    // Stripeの設定をそのまま使用（余計な変換はしない）
     const productData: Product = {
       id: product.id,
       name: product.name,
       description: product.description,
-      price: price?.unit_amount / 100,
+      price: price?.unit_amount,
       currency: price?.currency,
       image: product.images[0],
       images: product.images,

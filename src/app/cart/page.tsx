@@ -8,17 +8,23 @@ import Link from 'next/link';
 export default function CartPage() {
   const { cartDetails, removeItem, setItemQuantity, redirectToCheckout, cartCount, formattedTotalPrice } = useShoppingCart();
   const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   const handleCheckout = async () => {
     setIsCheckoutLoading(true);
+    setCheckoutError(null);
+    
     try {
       const result = await redirectToCheckout();
       if (result?.error) {
         console.error('Checkout error:', result.error);
+        setCheckoutError('決済ページへの移動に失敗しました。もう一度お試しください。');
         setIsCheckoutLoading(false);
       }
+      // 成功した場合はStripeの決済ページにリダイレクトされるため、ここには到達しない
     } catch (error) {
       console.error('Checkout error:', error);
+      setCheckoutError('決済処理でエラーが発生しました。しばらく待ってから再度お試しください。');
       setIsCheckoutLoading(false);
     }
   };
@@ -79,10 +85,7 @@ export default function CartPage() {
                   
                   <div>
                     <span className="font-semibold">
-                      {new Intl.NumberFormat('ja-JP', {
-                        style: 'currency',
-                        currency: item.currency,
-                      }).format((item.price * (item.quantity || 1)) / 100)}
+                      {item.formattedValue}
                     </span>
                     
                     <button 
@@ -113,12 +116,18 @@ export default function CartPage() {
             <span>{formattedTotalPrice}</span>
           </div>
           
+          {checkoutError && (
+            <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+              {checkoutError}
+            </div>
+          )}
+          
           <button
             onClick={handleCheckout}
             disabled={isCheckoutLoading}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:bg-blue-300"
           >
-            {isCheckoutLoading ? '処理中...' : '購入手続きへ'}
+            {isCheckoutLoading ? '決済ページに移動中...' : '購入手続きへ'}
           </button>
         </div>
       </div>

@@ -10,8 +10,9 @@
 # Stripe環境変数設定
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_ここにあなたの公開キーを貼り付け
 STRIPE_SECRET_KEY=sk_test_ここにあなたのシークレットキーを貼り付け
-NEXT_PUBLIC_STRIPE_SUCCESS_URL=http://localhost:3001/success
-NEXT_PUBLIC_STRIPE_CANCEL_URL=http://localhost:3001/cancel
+NEXT_PUBLIC_STRIPE_SUCCESS_URL=http://localhost:3000/success
+NEXT_PUBLIC_STRIPE_CANCEL_URL=http://localhost:3000/cancel
+NEXT_PUBLIC_API_URL=http://localhost:3000
 ```
 
 ## 3. APIキーの取得方法
@@ -45,7 +46,7 @@ npm run dev
 
 ## 5. 動作確認
 
-- http://localhost:3001/shop にアクセス
+- http://localhost:3000/shop にアクセス
 - Stripeに登録した商品が表示されることを確認
 
 ## ⚠️ 注意事項

@@ -1,3 +1,5 @@
+'use client';
+
 import { useShoppingCart } from 'use-shopping-cart';
 import { Product } from '@/types/product';
 
@@ -9,11 +11,12 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
   const { addItem } = useShoppingCart();
 
   const handleAddToCart = () => {
+    // Stripeから取得した価格をそのまま使用（余計な変換はしない）
     addItem({
       id: product.id,
       name: product.name,
       description: product.description,
-      price: product.price * 100, // Stripe expects price in cents
+      price: product.price,
       currency: product.currency,
       image: product.image,
     });

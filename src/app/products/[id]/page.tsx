@@ -4,24 +4,24 @@ import AddToCartButton from '@/components/AddToCartButton';
 
 async function getProduct(id: string): Promise<Product> {
   try {
-    // まずモックデータから取得を試す
-    const mockResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/mock-products/${id}`,
-      { cache: 'no-store' }
-    );
-    
-    if (mockResponse.ok) {
-      return mockResponse.json();
-    }
-    
-    // モックデータで見つからない場合、Stripeから取得を試す
+    // まずStripe商品から取得を試す
     const stripeResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/products/${id}`,
+      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/products/${id}`,
       { cache: 'no-store' }
     );
     
     if (stripeResponse.ok) {
       return stripeResponse.json();
+    }
+    
+    // Stripe商品で見つからない場合、モックデータから取得を試す
+    const mockResponse = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/mock-products/${id}`,
+      { cache: 'no-store' }
+    );
+    
+    if (mockResponse.ok) {
+      return mockResponse.json();
     }
     
     throw new Error('商品データの取得に失敗しました');
