@@ -14,17 +14,61 @@ export default function CartPage() {
     setIsCheckoutLoading(true);
     setCheckoutError(null);
     
+    // 環境変数チェック
+    const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+    const checkoutUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+    
+    if (!publishableKey || publishableKey === 'pk_test_ここにあなたの公開キーを貼り付け') {
+      setCheckoutError('Stripe APIキーが設定されていません。.env.localファイルを確認してください。');
+      setIsCheckoutLoading(false);
+      return;
+    }
+    
+    // カート内容チェック
+    if (!cartDetails || Object.keys(cartDetails).length === 0) {
+      setCheckoutError('カートが空です。商品を追加してから再度お試しください。');
+      setIsCheckoutLoading(false);
+      return;
+    }
+    
     try {
+      console.log('Starting checkout process...');
+      console.log('Cart details:', cartDetails);
+      console.log('Checkout URL:', `${checkoutUrl}/api/checkout`);
+      
       const result = await redirectToCheckout();
+      
       if (result?.error) {
-        console.error('Checkout error:', result.error);
-        setCheckoutError('決済ページへの移動に失敗しました。もう一度お試しください。');
+        console.error('Checkout error details:', result.error);
+        
+        // Stripeエラーの詳細分類
+        if (result.error.message?.includes('publishable key')) {
+          setCheckoutError('Stripe公開キーが無効です。設定を確認してください。');
+        } else if (result.error.message?.includes('secret key')) {
+          setCheckoutError('Stripeシークレットキーが無効です。設定を確認してください。');
+        } else if (result.error.message?.includes('network')) {
+          setCheckoutError('ネットワークエラーが発生しました。インターネット接続を確認してください。');
+        } else if (result.error.message?.includes('checkout')) {
+          setCheckoutError('チェックアウトセッションの作成に失敗しました。APIサーバーが起動しているか確認してください。');
+        } else {
+          setCheckoutError(`決済エラー: ${result.error.message || '不明なエラーです'}`);
+        }
         setIsCheckoutLoading(false);
       }
       // 成功した場合はStripeの決済ページにリダイレクトされるため、ここには到達しない
-    } catch (error) {
+    } catch (error: any) {
       console.error('Checkout error:', error);
-      setCheckoutError('決済処理でエラーが発生しました。しばらく待ってから再度お試しください。');
+      
+      // エラーの種類に応じた詳細メッセージ
+      if (error.message?.includes('fetch')) {
+        setCheckoutError('APIサーバーへの接続に失敗しました。開発サーバーが起動しているか確認してください。');
+      } else if (error.message?.includes('CORS')) {
+        setCheckoutError('CORS エラーが発生しました。サーバー設定を確認してください。');
+      } else if (error.name === 'TypeError') {
+        setCheckoutError('設定エラーが発生しました。環境変数とAPIキーの設定を確認してください。');
+      } else {
+        setCheckoutError(`決済処理でエラーが発生しました: ${error.message || '詳細不明'}`);
+      }
       setIsCheckoutLoading(false);
     }
   };
@@ -118,7 +162,28 @@ export default function CartPage() {
           
           {checkoutError && (
             <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
-              {checkoutError}
+              <p className="font-semibold mb-2">エラー詳細:</p>
+              <p className="text-sm">{checkoutError}</p>
+              
+              {checkoutError.includes('APIキーが設定されていません') && (
+                <div className="mt-3 text-sm">
+                  <p className="font-semibold">解決方法:</p>
+                  <ol className="list-decimal list-inside mt-1 space-y-1">
+                    <li>プロジェクトルートに <code className="bg-gray-200 px-1 rounded">.env.local</code> ファイルを作成</li>
+                    <li>以下の内容をコピーして貼り付け:</li>
+                  </ol>
+                  <pre className="mt-2 p-2 bg-gray-100 text-xs rounded overflow-x-auto">
+{`NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_あなたの公開キー
+STRIPE_SECRET_KEY=sk_test_あなたのシークレットキー
+NEXT_PUBLIC_STRIPE_SUCCESS_URL=http://localhost:3000/success
+NEXT_PUBLIC_STRIPE_CANCEL_URL=http://localhost:3000/cancel
+NEXT_PUBLIC_API_URL=http://localhost:3000`}
+                  </pre>
+                  <p className="mt-2">
+                    詳細は <a href="/docs/stripe-setup.md" className="text-blue-600 underline">stripe-setup.md</a> を参照してください。
+                  </p>
+                </div>
+              )}
             </div>
           )}
           
