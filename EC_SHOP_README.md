@@ -5,12 +5,11 @@
 ## 📦 実装済み機能
 
 ### ✅ 完了済み
-- 商品一覧表示
+- 商品一覧表示（Stripe商品のみ）
 - 商品詳細ページ
 - カート機能（追加・削除・数量変更）
 - Stripe決済連携
 - レスポンシブデザイン
-- モックデータでのテスト環境
 
 ### 🔧 設定が必要
 - Stripe APIキーの設定
@@ -26,25 +25,25 @@
 # Stripe環境変数
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_あなたの公開キー
 STRIPE_SECRET_KEY=sk_test_あなたのシークレットキー
-NEXT_PUBLIC_STRIPE_SUCCESS_URL=http://localhost:3001/success
-NEXT_PUBLIC_STRIPE_CANCEL_URL=http://localhost:3001/cancel
+NEXT_PUBLIC_STRIPE_SUCCESS_URL=http://localhost:3000/success
+NEXT_PUBLIC_STRIPE_CANCEL_URL=http://localhost:3000/cancel
+NEXT_PUBLIC_API_URL=http://localhost:3000
 ```
 
-### 2. Stripe商品登録
+### 2. Stripe商品登録（必須）
 Stripeダッシュボードで以下を設定：
 1. 商品を作成
 2. 価格を設定（通貨: JPY）
 3. 商品画像をアップロード
 
+**重要**: 商品が表示されるためには、必ずStripeで商品を登録する必要があります。
+
 ## 🛒 利用方法
 
-### モックデータでのテスト
-環境変数が未設定でも、以下のURLでモックデータを使用してテストできます：
-- 商品一覧: `http://localhost:3001/shop`
-- カート: `http://localhost:3001/cart`
-
-### 実際のStripe決済
-環境変数を設定後、実際のStripe決済フローをテストできます。
+### Stripe決済での運用
+環境変数設定とStripe商品登録後、実際のStripe決済フローを利用できます：
+- 商品一覧: `http://localhost:3000/shop`
+- カート: `http://localhost:3000/cart`
 
 ## 📁 ファイル構成
 
@@ -53,7 +52,7 @@ src/
 ├── app/
 │   ├── api/
 │   │   ├── products/          # Stripe商品取得API
-│   │   └── mock-products/     # モックデータAPI
+│   │   └── checkout/          # 決済処理API
 │   ├── shop/                  # ショップページ
 │   ├── cart/                  # カートページ
 │   ├── products/[id]/         # 商品詳細ページ

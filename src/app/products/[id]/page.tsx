@@ -4,7 +4,7 @@ import AddToCartButton from '@/components/AddToCartButton';
 
 async function getProduct(id: string): Promise<Product> {
   try {
-    // まずStripe商品から取得を試す
+    // Stripe商品を取得
     const stripeResponse = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/products/${id}`,
       { cache: 'no-store' }
@@ -12,19 +12,11 @@ async function getProduct(id: string): Promise<Product> {
     
     if (stripeResponse.ok) {
       return stripeResponse.json();
+    } else {
+      // APIエラーの詳細を取得
+      const errorData = await stripeResponse.json().catch(() => ({ error: 'レスポンスの解析に失敗しました' }));
+      throw new Error(errorData.error || `API エラー: ${stripeResponse.status}`);
     }
-    
-    // Stripe商品で見つからない場合、モックデータから取得を試す
-    const mockResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/mock-products/${id}`,
-      { cache: 'no-store' }
-    );
-    
-    if (mockResponse.ok) {
-      return mockResponse.json();
-    }
-    
-    throw new Error('商品データの取得に失敗しました');
   } catch (error) {
     console.error('Product fetch error:', error);
     throw error;
@@ -77,8 +69,28 @@ export default async function ProductPage({ params }: { params: { id: string } }
   } catch (error) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <p className="text-red-500">商品データの読み込みに失敗しました。</p>
-        <p className="text-sm text-gray-600 mt-2">商品が存在しないか、サーバーエラーが発生しました。</p>
+        <div className="max-w-md mx-auto bg-red-50 p-6 rounded-lg border border-red-200">
+          <div className="text-red-500 text-4xl mb-4">❌</div>
+          <h2 className="text-xl font-bold text-red-600 mb-4">商品が見つかりません</h2>
+          <p className="text-sm text-red-700 mb-4">
+            {error instanceof Error ? error.message : '不明なエラーが発生しました'}
+          </p>
+          
+          <div className="text-left text-sm text-gray-700 space-y-2">
+            <p className="font-semibold">考えられる原因:</p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>商品IDが存在しない</li>
+              <li>Stripe APIキーが設定されていない</li>
+              <li>Stripeで商品が削除された</li>
+            </ul>
+            
+            <div className="mt-4 pt-4 border-t border-red-200">
+              <a href="/shop" className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
+                商品一覧に戻る
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
