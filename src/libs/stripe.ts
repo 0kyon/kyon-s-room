@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { loadStripe } from '@stripe/stripe-js';
+import { loadStripe, Stripe as StripeJs } from '@stripe/stripe-js';
 
 // 環境変数チェック
 const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -15,7 +15,7 @@ export const stripe = new Stripe(secretKey || 'sk_test_placeholder', {
 });
 
 // クライアントサイド用のStripeインスタンス
-let stripePromise: Promise<Stripe | null>;
+let stripePromise: Promise<StripeJs | null>;
 export const getStripe = () => {
   if (!stripePromise) {
     if (!publishableKey || publishableKey === 'pk_test_ここにあなたの公開キーを貼り付け') {
