@@ -11,7 +11,7 @@ if (!secretKey || secretKey === 'sk_test_ここにあなたのシークレット
 }
 
 export const stripe = new Stripe(secretKey || 'sk_test_placeholder', {
-  apiVersion: '2023-10-16',
+  // apiVersion は型定義が厳密でビルド失敗の原因になるため省略（最新版を使用）
 });
 
 // クライアントサイド用のStripeインスタンス
