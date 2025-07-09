@@ -106,8 +106,18 @@
   }
 
   .bubbleItem {
-    padding: 0.6rem 1rem; /* tighter vertical padding */
-    max-width: 90%;
-    margin: 1.5rem auto;
+    padding: 0.6rem 1rem;
+    max-width: 95%;
+    width: 95%;
+    margin: 1.5rem auto; /* center horizontally */
+  }
+} 
+
+/* general mobile up to 767px */
+@media screen and (max-width: 767px) {
+  .bubbleItem {
+    max-width: 90%; /* slightly wider than desktop (70%) */
+    width: 90%;
+    margin: 1.5rem auto; /* keep centered */
   }
 } 
