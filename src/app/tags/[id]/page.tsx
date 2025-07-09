@@ -90,7 +90,13 @@ export default async function TagPage({ params }: Params) {
             <li key={blog.id} className={styles.blogItem}>
               <Link href={`/blogs/${blog.id}`} className={styles.blogLink}>
                 <div className={styles.blogItemContent}>
-                  <h2 className={styles.blogTitle}>{blog.title}</h2>
+                  {tagId === "murmur" ? (
+                    <div
+                      dangerouslySetInnerHTML={{ __html: blog.content }}
+                    />
+                  ) : (
+                    <h2 className={styles.blogTitle}>{blog.title}</h2>
+                  )}
                 </div>
               </Link>
             </li>
