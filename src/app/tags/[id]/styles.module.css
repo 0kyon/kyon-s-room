@@ -50,6 +50,38 @@
   margin: 0 0 0.5rem 0;
 }
 
+/* speech bubble style for murmur */
+.bubbleItem {
+  position: relative;
+  margin: 1rem auto; /* center horizontally */
+  padding: 1rem 1.25rem;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  max-width: 70%; /* narrow width */
+  text-align: center; /* center text */
+  word-wrap: break-word;
+}
+
+.bubbleItem:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bubbleItem::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-top: 12px solid #fafafa; /* same as background */
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  filter: drop-shadow(0 -1px 1px rgba(0,0,0,0.04));
+}
+
 /* iPhone SEなど小さい画面向けのメディアクエリ */
 @media screen and (max-width: 375px) {
   .blogTitle {
@@ -66,5 +98,10 @@
   
   .blogItemContent {
     padding: 0.8rem;
+  }
+
+  .bubbleItem {
+    padding: 0.8rem 1rem;
+    max-width: 90%;
   }
 } 

@@ -87,7 +87,7 @@ export default async function TagPage({ params }: Params) {
         
         <ul className={styles.blogList}>
           {blogData.contents.map((blog) => (
-            <li key={blog.id} className={styles.blogItem}>
+            <li key={blog.id} className={tagId === "murmur" ? styles.bubbleItem : styles.blogItem}>
               <Link href={`/blogs/${blog.id}`} className={styles.blogLink}>
                 <div className={styles.blogItemContent}>
                   {tagId === "murmur" ? (
