@@ -264,6 +264,24 @@ export default function HamburgerMenu() {
   const menuRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const { size: fontSize, setSize: setFontSize } = useFontSize();
+  const [viewportWidth, setViewportWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 1200);
+
+  useEffect(() => {
+    const handleResize = () => setViewportWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const getOverlayWidth = (): string => {
+    const isMobile = viewportWidth <= 767;
+    if (fontSize === 'small') {
+      return isMobile ? '40%' : '33%';
+    } else if (fontSize === 'medium') {
+      return isMobile ? '50%' : '40%';
+    }
+    // large
+    return isMobile ? '60%' : '45%';
+  };
   
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -316,7 +334,11 @@ export default function HamburgerMenu() {
         <span className={styles.hamburgerIcon}></span>
       </button>
 
-      <div className={`${styles.menuOverlay} ${isOpen ? styles.open : ''}`} ref={menuRef}>
+      <div
+        className={`${styles.menuOverlay} ${isOpen ? styles.open : ''}`}
+        ref={menuRef}
+        style={isOpen ? { width: getOverlayWidth() } : undefined}
+      >
         <div className={styles.menuContent}>
           <button 
             className={styles.closeButton} 
@@ -326,30 +348,7 @@ export default function HamburgerMenu() {
             ×
           </button>
           <SearchBar closeMenu={closeMenu} />
-          {/* フォントサイズ調整ボタン */}
-          <div className={styles.fontSizeControls}>
-            <button
-              className={`${styles.fontSizeButton} ${fontSize === 'small' ? styles.active : ''}`}
-              onClick={() => setFontSize('small')}
-              aria-label="小さい文字"
-            >
-              小
-            </button>
-            <button
-              className={`${styles.fontSizeButton} ${fontSize === 'medium' ? styles.active : ''}`}
-              onClick={() => setFontSize('medium')}
-              aria-label="中くらいの文字"
-            >
-              中
-            </button>
-            <button
-              className={`${styles.fontSizeButton} ${fontSize === 'large' ? styles.active : ''}`}
-              onClick={() => setFontSize('large')}
-              aria-label="大きい文字"
-            >
-              大
-            </button>
-          </div>
+          {/* メインメニュー */}
           <SubMenu 
             items={menuItems} 
             level={1} 
@@ -357,6 +356,32 @@ export default function HamburgerMenu() {
             closeMenu={closeMenu} 
             isMenuOpen={isOpen}
           />
+        </div>
+
+        {/* フォントサイズ調整ボタン（オーバーレイ最下部に配置） */}
+        <div className={styles.fontSizeControls}>
+          <span className={styles.fontSizeLabel}>Font Size:</span>
+          <button
+            className={`${styles.fontSizeButton} ${fontSize === 'small' ? styles.active : ''}`}
+            onClick={() => setFontSize('small')}
+            aria-label="Small text"
+          >
+            S
+          </button>
+          <button
+            className={`${styles.fontSizeButton} ${fontSize === 'medium' ? styles.active : ''}`}
+            onClick={() => setFontSize('medium')}
+            aria-label="Medium text"
+          >
+            M
+          </button>
+          <button
+            className={`${styles.fontSizeButton} ${fontSize === 'large' ? styles.active : ''}`}
+            onClick={() => setFontSize('large')}
+            aria-label="Large text"
+          >
+            L
+          </button>
         </div>
       </div>
     </div>
