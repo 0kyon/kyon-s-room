@@ -110,6 +110,7 @@
     max-width: 95%;
     width: 95%;
     margin: 1.5rem auto; /* center horizontally */
+    font-size: 0.7rem; /* smaller text on very small screens */
   }
 } 
 
@@ -119,5 +120,6 @@
     max-width: 90%; /* slightly wider than desktop (70%) */
     width: 90%;
     margin: 1.5rem auto; /* keep centered */
+    font-size: 0.7rem; /* slightly reduced font size for general smartphones */
   }
 } 
