@@ -53,8 +53,8 @@
 /* speech bubble style for murmur */
 .bubbleItem {
   position: relative;
-  margin: 1rem auto; /* center horizontally */
-  padding: 1rem 1.25rem;
+  margin: 2rem auto; /* center horizontally with larger vertical spacing */
+  padding: 0.1rem 1.25rem; /* slightly tighter vertical padding */
   background: #fafafa;
   border: 1px solid #eee;
   border-radius: 20px;
@@ -82,6 +82,11 @@
   filter: drop-shadow(0 -1px 1px rgba(0,0,0,0.04));
 }
 
+.bubbleItem p {
+  margin: 0.1rem 0; /* minimal vertical margin for text lines */
+  line-height: 1.4; /* slightly tighter line height */
+}
+
 /* iPhone SEなど小さい画面向けのメディアクエリ */
 @media screen and (max-width: 375px) {
   .blogTitle {
@@ -101,7 +106,8 @@
   }
 
   .bubbleItem {
-    padding: 0.8rem 1rem;
+    padding: 0.6rem 1rem; /* tighter vertical padding */
     max-width: 90%;
+    margin: 1.5rem auto;
   }
 } 
