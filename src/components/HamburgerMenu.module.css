@@ -477,3 +477,43 @@ body.no-scroll .hamburgerMenuContainer {
     font-size: 0.85rem;
   }
 } 
+
+/* Font size controls */
+.fontSizeControls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.fontSizeButton {
+  border: 1px solid #ccc;
+  background: #fdfdfd;
+  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.fontSizeButton:hover {
+  background: #f0f0f0;
+}
+
+.fontSizeButton.active {
+  background: #e0e0e0;
+  font-weight: 600;
+  border-color: #999;
+}
+
+/* Adjust for mobile */
+@media (max-width: 767px) {
+  .fontSizeControls {
+    padding: 0.5rem 1rem;
+  }
+  .fontSizeButton {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+} 

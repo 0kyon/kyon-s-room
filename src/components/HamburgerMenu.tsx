@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import styles from './HamburgerMenu.module.css';
+import { useFontSize } from './FontSizeProvider';
 
 type MenuItem = {
   name: string;
@@ -262,6 +263,7 @@ export default function HamburgerMenu() {
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const { size: fontSize, setSize: setFontSize } = useFontSize();
   
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -324,6 +326,30 @@ export default function HamburgerMenu() {
             ×
           </button>
           <SearchBar closeMenu={closeMenu} />
+          {/* フォントサイズ調整ボタン */}
+          <div className={styles.fontSizeControls}>
+            <button
+              className={`${styles.fontSizeButton} ${fontSize === 'small' ? styles.active : ''}`}
+              onClick={() => setFontSize('small')}
+              aria-label="小さい文字"
+            >
+              小
+            </button>
+            <button
+              className={`${styles.fontSizeButton} ${fontSize === 'medium' ? styles.active : ''}`}
+              onClick={() => setFontSize('medium')}
+              aria-label="中くらいの文字"
+            >
+              中
+            </button>
+            <button
+              className={`${styles.fontSizeButton} ${fontSize === 'large' ? styles.active : ''}`}
+              onClick={() => setFontSize('large')}
+              aria-label="大きい文字"
+            >
+              大
+            </button>
+          </div>
           <SubMenu 
             items={menuItems} 
             level={1} 

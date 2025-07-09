@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import BackButton from '../components/BackButton'
+import { FontSizeProvider } from '../components/FontSizeProvider'
 import ScrollControl from '../components/ScrollControl'
 import HamburgerMenu from '../components/HamburgerMenu'
 import CartProvider from '../components/CartProvider'
@@ -50,13 +51,15 @@ export default function RootLayout({
         )}
       </head>
       <body className={inter.className}>
-        <CartProvider>
-          <ScrollControl />
-          <BackButton />
-          <HamburgerMenu />
-          {children}
-          <Analytics />
-        </CartProvider>
+        <FontSizeProvider>
+          <CartProvider>
+            <ScrollControl />
+            <BackButton />
+            <HamburgerMenu />
+            {children}
+            <Analytics />
+          </CartProvider>
+        </FontSizeProvider>
       </body>
     </html>
   )

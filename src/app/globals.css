@@ -912,3 +912,16 @@ body.no-scroll {
     shape-outside: margin-box;
   }
 }
+
+/* Font size utility classes controlled via FontSizeProvider */
+html.font-small {
+  font-size: 100%;
+}
+
+html.font-medium {
+  font-size: 110%;
+}
+
+html.font-large {
+  font-size: 120%;
+}
