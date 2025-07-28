@@ -80,7 +80,7 @@ async function ProductList() {
 export default function ShopPage() {
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">商品一覧</h1>
+      <h1 className="text-3xl font-bold mb-8">Item List</h1>
       
       <Suspense fallback={<div className="text-center py-10">読み込み中...</div>}>
         <ProductList />

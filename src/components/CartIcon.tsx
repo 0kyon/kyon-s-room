@@ -9,11 +9,11 @@ export default function CartIcon() {
   return (
     <Link 
       href="/cart" 
-      className="relative p-2"
+      className="relative p-3 hover:bg-gray-100 rounded-full transition-colors"
     >
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
-        className="h-6 w-6 text-gray-700" 
+        className="h-8 w-8 text-gray-700" 
         fill="none" 
         viewBox="0 0 24 24" 
         stroke="currentColor"
@@ -27,7 +27,7 @@ export default function CartIcon() {
       </svg>
       
       {cartCount && cartCount > 0 && (
-        <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+        <span className="absolute -top-1 -right-1 bg-red-500 text-white text-sm rounded-full h-6 w-6 flex items-center justify-center font-bold">
           {cartCount}
         </span>
       )}
