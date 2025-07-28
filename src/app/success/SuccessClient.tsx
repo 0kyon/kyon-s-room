@@ -39,11 +39,7 @@ export default function SuccessClient() {
           ご注文ありがとうございます。<br />
           決済が正常に完了しました。
         </p>
-        {sessionId && (
-          <p className="text-sm text-gray-500 mb-6">
-            セッションID: {sessionId}
-          </p>
-        )}
+        {/* セッションIDはユーザーには不要なため非表示 */}
         <div className="space-y-4">
           <Link 
             href="/shop" 
