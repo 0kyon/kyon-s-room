@@ -1,4 +1,3 @@
-import ShopNavbar from '@/components/ShopNavbar';
 import { ReactNode } from 'react';
 
 export const metadata = {
@@ -9,7 +8,6 @@ export const metadata = {
 export default function ShopLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-gray-50">
-      <ShopNavbar />
       <main className="pt-20">{children}</main>
     </div>
   );

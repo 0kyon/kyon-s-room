@@ -69,6 +69,8 @@ body {
   width: 100% !important;
   max-width: 100% !important;
   overflow: hidden !important;
+  display: block !important;
+  box-sizing: border-box !important;
 }
 
 /* 商品一覧のコンテナスタイル */
@@ -78,41 +80,45 @@ body {
   max-width: 80%;
   text-align: center;
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* 商品カードの左右交互レイアウト（PC） */
 @media (min-width: 1024px) {
   .product-card-item {
-    max-width: 45%;
-    margin: 0.5em 0 1em 0;
+    max-width: 45% !important;
+    margin: 0.5em 0 1em 0 !important;
     shape-margin: 1em;
     shape-outside: content-box;
+    width: 45% !important;
+    box-sizing: border-box !important;
   }
 
   .product-card-item img {
-    max-width: 100%;
-    height: auto;
-    margin: 0;
-    display: block;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    display: block !important;
   }
 
   /* 奇数番目の商品（左寄せ） */
   .product-card-item:nth-of-type(odd) {
-    float: left;
-    margin-right: 2em;
-    margin-bottom: 5em; /* 下の間隔を増やす */
-    margin-top: 0.5em;
-    clear: left;
+    float: left !important;
+    margin-right: 2em !important;
+    margin-bottom: 1em !important;
+    margin-top: 0.5em !important;
+    clear: left !important;
     shape-outside: margin-box;
   }
 
   /* 偶数番目の商品（右寄せ・少し下にずらす） */
   .product-card-item:nth-of-type(even) {
-    float: right;
-    margin-left: 2em;
-    margin-bottom: 5em; /* 下の間隔を増やす */
-    margin-top: 20em; /* 奇数番目より2.5em下にずらす */
-    clear: right;
+    float: right !important;
+    margin-left: 2em !important;
+    margin-bottom: 5em !important;
+    margin-top: 20em !important;
+    clear: right !important;
     shape-outside: margin-box;
   }
 
@@ -139,6 +145,7 @@ body {
     max-width: 100% !important;
     margin: 1em 0 !important;
     clear: none !important;
+    width: 100% !important;
   }
 }
 

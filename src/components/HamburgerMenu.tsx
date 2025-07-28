@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import styles from './HamburgerMenu.module.css';
 import { useFontSize } from './FontSizeProvider';
+import CartIcon from './CartIcon';
 
 type MenuItem = {
   name: string;
@@ -322,17 +323,23 @@ export default function HamburgerMenu() {
     return null;
   }
 
+  // /shopと商品詳細ページでのみカートアイコンを表示
+  const showCartIcon = pathname === '/shop' || pathname.startsWith('/products/');
+
   return (
     <div className={styles.hamburgerMenuContainer}>
-      <button 
-        className={`${styles.hamburgerButton} ${isOpen ? styles.open : ''}`}
-        onClick={toggleMenu}
-        aria-label="メニュー"
-      >
-        <span className={styles.hamburgerIcon}></span>
-        <span className={styles.hamburgerIcon}></span>
-        <span className={styles.hamburgerIcon}></span>
-      </button>
+      <div className={styles.topRightControls}>
+        {showCartIcon && <CartIcon />}
+        <button 
+          className={`${styles.hamburgerButton} ${isOpen ? styles.open : ''}`}
+          onClick={toggleMenu}
+          aria-label="メニュー"
+        >
+          <span className={styles.hamburgerIcon}></span>
+          <span className={styles.hamburgerIcon}></span>
+          <span className={styles.hamburgerIcon}></span>
+        </button>
+      </div>
 
       <div
         className={`${styles.menuOverlay} ${isOpen ? styles.open : ''}`}

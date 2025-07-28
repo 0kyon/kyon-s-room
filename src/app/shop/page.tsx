@@ -1,4 +1,6 @@
-import { Suspense } from 'react';
+'use client';
+
+import { Suspense, useEffect } from 'react';
 import ProductCard from '@/components/ProductCard';
 import { Product } from '@/types/product';
 
@@ -78,9 +80,30 @@ async function ProductList() {
 }
 
 export default function ShopPage() {
+  // ページロード時にスタイルを強制適用
+  useEffect(() => {
+    // 商品カードのスタイルを強制適用
+    const productCards = document.querySelectorAll('.product-card-item');
+    productCards.forEach((card) => {
+      if (card instanceof HTMLElement) {
+        card.style.maxWidth = '45%';
+        card.style.width = '45%';
+        card.style.boxSizing = 'border-box';
+      }
+    });
+
+    // 商品リストコンテナのスタイルを強制適用
+    const productListContainer = document.querySelector('.product-list-container');
+    if (productListContainer instanceof HTMLElement) {
+      productListContainer.style.maxWidth = '80%';
+      productListContainer.style.width = '100%';
+      productListContainer.style.boxSizing = 'border-box';
+    }
+  }, []);
+
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Item List</h1>
+      <h1 className="text-3xl font-bold mb-8">商品一覧</h1>
       
       <Suspense fallback={<div className="text-center py-10">読み込み中...</div>}>
         <ProductList />

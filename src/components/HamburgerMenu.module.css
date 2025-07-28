@@ -5,6 +5,12 @@
   z-index: 1000;
 }
 
+.topRightControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .hamburgerButton {
   display: flex;
   flex-direction: column;

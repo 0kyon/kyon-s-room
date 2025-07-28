@@ -10,6 +10,7 @@ export default function CartIcon() {
     <Link 
       href="/cart" 
       className="relative p-3 hover:bg-gray-100 rounded-full transition-colors"
+      style={{ display: 'inline-block' }}
     >
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
@@ -17,6 +18,7 @@ export default function CartIcon() {
         fill="none" 
         viewBox="0 0 24 24" 
         stroke="currentColor"
+        style={{ width: '32px', height: '32px', minWidth: '32px', minHeight: '32px' }}
       >
         <path 
           strokeLinecap="round" 
