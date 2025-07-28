@@ -16,6 +16,45 @@ body {
   overflow-x: hidden;
 }
 
+/* 商品カードのリンクスタイル */
+.product-card-link {
+  text-decoration: none !important;
+  color: #111827 !important; /* text-gray-900 */
+}
+
+.product-card-link:hover {
+  text-decoration: none !important;
+  color: #111827 !important; /* text-gray-900 */
+}
+
+.product-card-link:visited {
+  text-decoration: none !important;
+  color: #111827 !important; /* text-gray-900 */
+}
+
+.product-card-link:focus {
+  text-decoration: none !important;
+  color: #111827 !important; /* text-gray-900 */
+}
+
+.product-card-link:active {
+  text-decoration: none !important;
+  color: #111827 !important; /* text-gray-900 */
+}
+
+/* 商品カード内のテキストスタイル */
+.product-card-link h3,
+.product-card-link p {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.product-card-link:hover h3,
+.product-card-link:hover p {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
 /* スクロール制御 */
 html.no-scroll,
 body.no-scroll {

@@ -9,11 +9,11 @@ type ProductCardProps = {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow max-w-sm mx-auto">
-      {/*
-        fill を使うと親要素のサイズが確定していない場合、画像が想定よりも拡大することがあります。
-        ここでは幅・高さを明示し、object-fit:cover でトリミングして正方形サムネイルを作成します。
-      */}
+    <Link
+      href={`/products/${product.id}`}
+      className="product-card-link group block bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow max-w-sm mx-auto focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 hover:text-gray-900 visited:text-gray-900 focus:text-gray-900 no-underline hover:no-underline visited:no-underline focus:no-underline"
+    >
+      {/* 画像エリア */}
       <div className="relative w-full overflow-hidden" style={{ aspectRatio: '1 / 1' }}>
         {product.image ? (
           <Image
@@ -21,7 +21,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             alt={product.name}
             width={400}
             height={400}
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full transition-transform duration-200 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, 400px"
           />
         ) : (
@@ -30,23 +30,21 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         )}
       </div>
-      
+
+      {/* テキストエリア */}
       <div className="p-4">
-        <h3 className="text-lg font-semibold mb-2 line-clamp-2">{product.name}</h3>
+        <h3 className="text-lg font-semibold mb-2 line-clamp-2 text-gray-900">
+          {product.name}
+        </h3>
         {product.description && (
-          <p className="text-gray-600 text-sm mb-2 line-clamp-2">{product.description}</p>
+          <p className="text-gray-600 text-sm mb-2 line-clamp-2">
+            {product.description}
+          </p>
         )}
-        <p className="text-xl font-bold text-blue-600 mb-4">
+        <p className="text-xl font-bold text-gray-900">
           ¥{product.price.toLocaleString()}
         </p>
-        
-        <Link 
-          href={`/products/${product.id}`} 
-          className="inline-block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition-colors"
-        >
-          詳細を見る
-        </Link>
       </div>
-    </div>
+    </Link>
   );
 } 
