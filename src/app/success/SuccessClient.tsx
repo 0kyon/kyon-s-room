@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
 import { useShoppingCart } from 'use-shopping-cart';
+import Link from 'next/link';
 
 export default function SuccessClient() {
   const searchParams = useSearchParams();
@@ -11,13 +11,15 @@ export default function SuccessClient() {
   const { clearCart } = useShoppingCart();
   const [isLoading, setIsLoading] = useState(true);
 
+  // clearCart はコンテキストの関数でレンダーごとに参照が変わる可能性があり、
+  // 依存配列に含めると無限ループの原因になるため外す。
   useEffect(() => {
     if (sessionId) {
-      // 決済が成功したらカートをクリア
+      // 決済が成功したらカートをクリア（1 回だけ実行）
       clearCart();
       setIsLoading(false);
     }
-  }, [sessionId, clearCart]);
+  }, [sessionId]);
 
   if (isLoading) {
     return (
@@ -40,20 +42,14 @@ export default function SuccessClient() {
           決済が正常に完了しました。
         </p>
         {/* セッションIDはユーザーには不要なため非表示 */}
-        <div className="space-y-4">
-          <Link 
-            href="/shop" 
-            className="block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            お買い物を続ける
-          </Link>
-          <Link 
-            href="/" 
-            className="block text-blue-600 hover:underline"
-          >
-            ホームに戻る
-          </Link>
-        </div>
+
+        {/* ショップのトップページへ戻るボタン */}
+        <Link
+          href="/shop"
+          className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200"
+        >
+          もどる
+        </Link>
       </div>
     </div>
   );
