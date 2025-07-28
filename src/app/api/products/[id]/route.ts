@@ -30,6 +30,7 @@ export async function GET(
       image: product.images[0],
       images: product.images,
       metadata: product.metadata,
+      priceId: price?.id,
     };
 
     return NextResponse.json(productData);

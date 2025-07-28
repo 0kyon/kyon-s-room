@@ -6,5 +6,6 @@ export type Product = {
   currency: string;
   image?: string;
   images?: string[];
+  priceId?: string;
   metadata?: Record<string, string>;
 }; 

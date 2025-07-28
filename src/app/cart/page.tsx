@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function CartPage() {
-  const { cartDetails, removeItem, setItemQuantity, redirectToCheckout, cartCount, formattedTotalPrice } = useShoppingCart();
+  const { cartDetails, removeItem, setItemQuantity, cartCount, formattedTotalPrice } = useShoppingCart();
   const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
@@ -34,28 +34,29 @@ export default function CartPage() {
     try {
       console.log('Starting checkout process...');
       console.log('Cart details:', cartDetails);
-      console.log('Checkout URL:', `${checkoutUrl}/api/checkout`);
-      
-      const result = await redirectToCheckout();
-      
-      if (result?.error) {
-        console.error('Checkout error details:', result.error);
-        
-        // Stripeエラーの詳細分類
-        if (result.error.message?.includes('publishable key')) {
-          setCheckoutError('Stripe公開キーが無効です。設定を確認してください。');
-        } else if (result.error.message?.includes('secret key')) {
-          setCheckoutError('Stripeシークレットキーが無効です。設定を確認してください。');
-        } else if (result.error.message?.includes('network')) {
-          setCheckoutError('ネットワークエラーが発生しました。インターネット接続を確認してください。');
-        } else if (result.error.message?.includes('checkout')) {
-          setCheckoutError('チェックアウトセッションの作成に失敗しました。APIサーバーが起動しているか確認してください。');
-        } else {
-          setCheckoutError(`決済エラー: ${result.error.message || '不明なエラーです'}`);
-        }
-        setIsCheckoutLoading(false);
+
+      // サーバーにCheckout Session作成を依頼
+      const response = await fetch(`${checkoutUrl}/api/checkout`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cartDetails }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'セッション生成に失敗しました');
       }
-      // 成功した場合はStripeの決済ページにリダイレクトされるため、ここには到達しない
+
+      const data = await response.json();
+      if (data.url) {
+        // Stripe決済ページへリダイレクト
+        window.location.href = data.url;
+        return;
+      } else {
+        throw new Error('Stripe決済URLが取得できませんでした');
+      }
     } catch (error: any) {
       console.error('Checkout error:', error);
       

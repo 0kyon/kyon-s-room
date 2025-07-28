@@ -19,6 +19,7 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
       price: product.price,
       currency: product.currency,
       image: product.image,
+      priceId: product.priceId,
     });
   };
 

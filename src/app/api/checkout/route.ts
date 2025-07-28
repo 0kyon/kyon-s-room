@@ -28,19 +28,27 @@ export async function POST(request: NextRequest) {
 
     // カート商品をStripe line_itemsに変換
     const lineItems = Object.values(cartDetails).map((item: any) => {
-      console.log('Processing item:', item);
-      return {
-        price_data: {
-          currency: item.currency || 'jpy',
-          product_data: {
-            name: item.name,
-            description: item.description || '',
-            images: item.image ? [item.image] : [],
+      if (item.priceId) {
+        // priceIdがあればprice指定
+        return {
+          price: item.priceId,
+          quantity: item.quantity || 1,
+        };
+      } else {
+        // 互換: priceIdがない場合は従来通り
+        return {
+          price_data: {
+            currency: item.currency || 'jpy',
+            product_data: {
+              name: item.name,
+              description: item.description || '',
+              images: item.image ? [item.image] : [],
+            },
+            unit_amount: item.price,
           },
-          unit_amount: item.price,
-        },
-        quantity: item.quantity || 1,
-      };
+          quantity: item.quantity || 1,
+        };
+      }
     });
 
     console.log('Generated line items:', lineItems);
