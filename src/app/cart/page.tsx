@@ -94,9 +94,9 @@ export default function CartPage() {
 
       <div className="flex flex-col lg:flex-row gap-8 justify-center">
         {/* 商品一覧エリア */}
-        <div className="flex-1 max-w-2xl">
+        <div className="flex flex-col items-center max-w-2xl mx-auto lg:mx-0">
           {Object.entries(cartDetails ?? {}).map(([id, item]) => (
-            <div key={id} className="cart-item-card bg-white p-4 rounded-lg shadow-md mb-4">
+            <div key={id} className="cart-item-card mb-4">
               <div className="cart-item-content">
                 {/* 商品画像エリア */}
                 <div className="cart-item-image-container">
@@ -117,10 +117,11 @@ export default function CartPage() {
                   )}
                 </div>
                 
-                <div className="flex-grow min-w-0">
-                  <h3 className="font-semibold text-lg break-words mb-2">{item.name}</h3>
+                {/* 商品情報エリア */}
+                <div className="cart-item-info">
+                  <h3 className="font-semibold text-lg break-words">{item.name}</h3>
                   
-                  <div className="mt-2 flex flex-col sm:flex-row sm:justify-center sm:items-center gap-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                     <div className="flex items-center justify-center">
                       <button 
                         onClick={() => setItemQuantity(id, Math.max(1, (item.quantity || 1) - 1))}
@@ -138,7 +139,7 @@ export default function CartPage() {
                     </div>
                     
                     <div className="flex items-center justify-center gap-2">
-                      <span className="font-semibold text-center">
+                      <span className="font-semibold">
                         {item.formattedValue}
                       </span>
                       
