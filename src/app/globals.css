@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* General */
 html, body {
   margin: 0;
@@ -20,6 +24,10 @@ body {
 .product-card-link {
   text-decoration: none !important;
   color: #111827 !important; /* text-gray-900 */
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .product-card-link:hover {
@@ -53,6 +61,91 @@ body {
 .product-card-link:hover p {
   color: inherit !important;
   text-decoration: none !important;
+}
+
+/* 商品カードの左右交互レイアウト用スタイル */
+.product-card-link {
+  margin-bottom: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+/* 商品一覧のコンテナスタイル */
+.product-list-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
+  text-align: center;
+  position: relative;
+}
+
+/* 商品カードの左右交互レイアウト（PC） */
+@media (min-width: 1024px) {
+  .product-card-item {
+    max-width: 45%;
+    margin: 0.5em 0 1em 0;
+    shape-margin: 1em;
+    shape-outside: content-box;
+  }
+
+  .product-card-item img {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    display: block;
+  }
+
+  /* 奇数番目の商品（左寄せ） */
+  .product-card-item:nth-of-type(odd) {
+    float: left;
+    margin-right: 2em;
+    margin-bottom: 5em; /* 下の間隔を増やす */
+    margin-top: 0.5em;
+    clear: left;
+    shape-outside: margin-box;
+  }
+
+  /* 偶数番目の商品（右寄せ・少し下にずらす） */
+  .product-card-item:nth-of-type(even) {
+    float: right;
+    margin-left: 2em;
+    margin-bottom: 5em; /* 下の間隔を増やす */
+    margin-top: 20em; /* 奇数番目より2.5em下にずらす */
+    clear: right;
+    shape-outside: margin-box;
+  }
+
+  /* 商品カードのクリア */
+  .product-card-item::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1024px) {
+  .product-card-link {
+    margin-bottom: 0 !important;
+  }
+  
+  .product-list-container {
+    max-width: 100%;
+  }
+  
+  .product-card-item {
+    float: none !important;
+    max-width: 100% !important;
+    margin: 1em 0 !important;
+    clear: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card-link {
+    margin-bottom: 0 !important;
+  }
 }
 
 /* スクロール制御 */
