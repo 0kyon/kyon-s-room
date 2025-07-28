@@ -122,7 +122,7 @@ export default function CartPage() {
                   <h3 className="font-semibold text-lg break-words">{item.name}</h3>
                   
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center -mt-2">
                       <button 
                         onClick={() => setItemQuantity(id, Math.max(1, (item.quantity || 1) - 1))}
                         className="bg-gray-200 px-2 py-1 rounded hover:bg-gray-300 transition-colors"

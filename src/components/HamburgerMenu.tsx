@@ -71,6 +71,13 @@ const menuItems: MenuItem[] = [
         ]
       }
     ]
+  },
+  {
+    name: '🛒 　Shop',
+    path: '/shop',
+    children: [
+      { name: 'All Products', path: '/shop' },
+    ]
   }
 ];
 
@@ -355,11 +362,28 @@ export default function HamburgerMenu() {
             ×
           </button>
           <SearchBar closeMenu={closeMenu} />
-          {/* メインメニュー */}
+          
+          {/* Entranceメニュー */}
           <SubMenu 
-            items={menuItems} 
+            items={[menuItems[0]]} 
             level={1} 
             initiallyExpanded={true} 
+            closeMenu={closeMenu} 
+            isMenuOpen={isOpen}
+          />
+          
+          {/* My RoomとShopの間の区切り線 */}
+          <div style={{ 
+            borderBottom: '1px solid #eaeaea', 
+            margin: '20px 0', 
+            width: '100%' 
+          }} />
+          
+          {/* Shopメニュー */}
+          <SubMenu 
+            items={[menuItems[1]]} 
+            level={1} 
+            initiallyExpanded={false} 
             closeMenu={closeMenu} 
             isMenuOpen={isOpen}
           />
