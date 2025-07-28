@@ -9,14 +9,20 @@ type ProductCardProps = {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-      <div className="relative h-60 w-full">
+    <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow max-w-sm mx-auto">
+      {/*
+        fill を使うと親要素のサイズが確定していない場合、画像が想定よりも拡大することがあります。
+        ここでは幅・高さを明示し、object-fit:cover でトリミングして正方形サムネイルを作成します。
+      */}
+      <div className="relative w-full overflow-hidden" style={{ aspectRatio: '1 / 1' }}>
         {product.image ? (
           <Image
             src={product.image}
             alt={product.name}
-            fill
-            style={{ objectFit: 'cover' }}
+            width={400}
+            height={400}
+            className="object-cover w-full h-full"
+            sizes="(max-width: 640px) 100vw, 400px"
           />
         ) : (
           <div className="bg-gray-200 h-full w-full flex items-center justify-center">
