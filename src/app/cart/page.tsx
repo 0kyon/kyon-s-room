@@ -76,9 +76,9 @@ export default function CartPage() {
 
   if (!cartCount) {
     return (
-      <div className="container mx-auto px-4 py-8 min-h-screen">
-        <h1 className="text-3xl font-bold mb-8">カート</h1>
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+      <div className="w-full max-w-6xl mx-auto px-4 py-8 min-h-screen">
+        <h1 className="text-3xl font-bold mb-8 text-center">カート</h1>
+        <div className="bg-white p-6 rounded-lg shadow-md text-center max-w-md mx-auto">
           <p className="text-gray-600 mb-4">カートに商品がありません</p>
           <Link href="/shop" className="text-blue-600 hover:underline">
             商品一覧に戻る
@@ -89,56 +89,66 @@ export default function CartPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">カート</h1>
+    <div className="w-full max-w-6xl mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-8 text-center">カート</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
+      <div className="flex flex-col lg:flex-row gap-8 justify-center">
+        {/* 商品一覧エリア */}
+        <div className="flex-1 max-w-2xl">
           {Object.entries(cartDetails ?? {}).map(([id, item]) => (
-            <div key={id} className="bg-white p-4 rounded-lg shadow-md mb-4 flex flex-col sm:flex-row">
-              {item.image && (
-                <div className="w-full sm:w-24 h-24 relative mb-4 sm:mb-0 sm:mr-4">
-                  <Image 
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    style={{ objectFit: 'contain' }}
-                  />
+            <div key={id} className="cart-item-card bg-white p-4 rounded-lg shadow-md mb-4">
+              <div className="cart-item-content">
+                {/* 商品画像エリア */}
+                <div className="cart-item-image-container">
+                  {item.image && item.image !== '' ? (
+                    <img 
+                      src={item.image}
+                      alt={item.name || '商品画像'}
+                      className="cart-item-image"
+                      onError={(e) => {
+                        console.error('Image load error for:', item.image);
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gray-200 rounded-lg">
+                      <span className="text-gray-500 text-xs">画像なし</span>
+                    </div>
+                  )}
                 </div>
-              )}
-              
-              <div className="flex-grow">
-                <h3 className="font-semibold text-lg">{item.name}</h3>
-                <p className="text-gray-600 text-sm">{item.description}</p>
                 
-                <div className="mt-2 flex justify-between items-center">
-                  <div className="flex items-center">
-                    <button 
-                      onClick={() => setItemQuantity(id, Math.max(1, (item.quantity || 1) - 1))}
-                      className="bg-gray-200 px-2 py-1 rounded"
-                    >
-                      -
-                    </button>
-                    <span className="mx-2">{item.quantity}</span>
-                    <button 
-                      onClick={() => setItemQuantity(id, (item.quantity || 1) + 1)}
-                      className="bg-gray-200 px-2 py-1 rounded"
-                    >
-                      +
-                    </button>
-                  </div>
+                <div className="flex-grow min-w-0">
+                  <h3 className="font-semibold text-lg break-words mb-2">{item.name}</h3>
                   
-                  <div>
-                    <span className="font-semibold">
-                      {item.formattedValue}
-                    </span>
+                  <div className="mt-2 flex flex-col sm:flex-row sm:justify-center sm:items-center gap-2">
+                    <div className="flex items-center justify-center">
+                      <button 
+                        onClick={() => setItemQuantity(id, Math.max(1, (item.quantity || 1) - 1))}
+                        className="bg-gray-200 px-2 py-1 rounded hover:bg-gray-300 transition-colors"
+                      >
+                        -
+                      </button>
+                      <span className="mx-2">{item.quantity}</span>
+                      <button 
+                        onClick={() => setItemQuantity(id, (item.quantity || 1) + 1)}
+                        className="bg-gray-200 px-2 py-1 rounded hover:bg-gray-300 transition-colors"
+                      >
+                        +
+                      </button>
+                    </div>
                     
-                    <button 
-                      onClick={() => removeItem(id)}
-                      className="ml-4 text-red-500 hover:text-red-700"
-                    >
-                      削除
-                    </button>
+                    <div className="flex items-center justify-center gap-2">
+                      <span className="font-semibold text-center">
+                        {item.formattedValue}
+                      </span>
+                      
+                      <button 
+                        onClick={() => removeItem(id)}
+                        className="text-red-500 hover:text-red-700 transition-colors"
+                      >
+                        削除
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -146,17 +156,18 @@ export default function CartPage() {
           ))}
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-md h-fit">
-          <h2 className="text-xl font-bold mb-4">注文サマリー</h2>
+        {/* 注文サマリーエリア */}
+        <div className="bg-white p-6 rounded-lg shadow-md h-fit w-full max-w-sm mx-auto lg:mx-0">
+          <h2 className="text-xl font-bold mb-4 text-center">注文サマリー</h2>
           
-          <div className="mb-4 pb-4 border-b">
-            <div className="flex justify-between mb-2">
+          <div className="cart-summary-border mb-4 pb-4">
+            <div className="cart-summary-item flex justify-between mb-2">
               <span>小計</span>
               <span>{formattedTotalPrice}</span>
             </div>
           </div>
           
-          <div className="flex justify-between font-bold text-lg mb-6">
+          <div className="cart-summary-container flex justify-between font-bold text-lg mb-6">
             <span>合計</span>
             <span>{formattedTotalPrice}</span>
           </div>
@@ -188,13 +199,15 @@ NEXT_PUBLIC_API_URL=http://localhost:3000`}
             </div>
           )}
           
-          <button
-            onClick={handleCheckout}
-            disabled={isCheckoutLoading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:bg-blue-300"
-          >
-            {isCheckoutLoading ? '決済ページに移動中...' : '購入手続きへ'}
-          </button>
+          <div className="flex justify-center">
+            <button
+              onClick={handleCheckout}
+              disabled={isCheckoutLoading}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded disabled:bg-blue-300 transition-colors"
+            >
+              {isCheckoutLoading ? '決済ページに移動中...' : '購入手続きへ'}
+            </button>
+          </div>
         </div>
       </div>
     </div>

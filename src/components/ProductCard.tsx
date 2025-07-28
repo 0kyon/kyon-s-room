@@ -31,13 +31,10 @@ export default function ProductCard({ product, isEven = false }: ProductCardProp
         {/* 画像エリア */}
         <div className="relative w-full overflow-hidden" style={{ aspectRatio: '1 / 1' }}>
           {product.image ? (
-            <Image
+            <img
               src={product.image}
               alt={product.name}
-              width={400}
-              height={400}
               className="object-cover w-full h-full transition-transform duration-200 group-hover:scale-105"
-              sizes="(max-width: 1024px) 100vw, 45vw"
               style={{ maxWidth: '100%', height: 'auto', margin: '0', display: 'block' }}
             />
           ) : (

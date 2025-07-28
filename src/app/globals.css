@@ -1064,3 +1064,90 @@ html.font-medium {
 html.font-large {
   font-size: 150%;
 }
+
+/* カートページ専用スタイル */
+.cart-summary-container {
+  max-width: 200px !important;
+  margin: 0 auto !important;
+  width: 200px !important;
+}
+
+.cart-summary-item {
+  max-width: 200px !important;
+  margin: 0 auto !important;
+  width: 200px !important;
+}
+
+.cart-summary-border {
+  max-width: 200px !important;
+  margin: 0 auto !important;
+  width: 200px !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+/* カートページの商品画像スタイル */
+.cart-item-image {
+  width: 100px !important;
+  height: 100px !important;
+  max-width: 100px !important;
+  max-height: 100px !important;
+  object-fit: cover !important;
+  border-radius: 0.5rem !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+.cart-item-image-container {
+  width: 100px !important;
+  height: 100px !important;
+  max-width: 100px !important;
+  max-height: 100px !important;
+  flex-shrink: 0 !important;
+  background-color: #f3f4f6 !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+  margin: 0 auto 1rem auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* カート商品カード全体のレイアウト */
+.cart-item-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.cart-item-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+@media (min-width: 640px) {
+  .cart-item-image-container {
+    margin: 0 !important;
+  }
+  
+  .cart-item-card {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .cart-item-content {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+}

@@ -32,11 +32,10 @@ export default async function ProductPage({ params }: { params: { id: string } }
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="relative h-96 md:h-full">
             {product.image ? (
-              <Image
+              <img
                 src={product.image}
                 alt={product.name}
-                fill
-                style={{ objectFit: 'contain' }}
+                className="w-full h-full object-contain"
               />
             ) : (
               <div className="bg-gray-200 h-full w-full flex items-center justify-center">

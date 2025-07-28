@@ -6,6 +6,20 @@ const nextConfig = {
   },
   images: {
     domains: ['images.microcms-assets.io', 'files.stripe.com', 'via.placeholder.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'files.stripe.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'stripe.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 };
 
