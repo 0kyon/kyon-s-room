@@ -44,24 +44,18 @@ export default function BackButton() {
     width: '100%',
     height: '100%',
     color: '#000',
+    fontSize: isMobile ? '28px' : '36px',
+    lineHeight: '1',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   };
   
   return (
     <button onClick={() => router.back()} style={backButtonStyle} aria-label="戻る">
-      <svg 
-        style={arrowStyle}
-        viewBox="0 0 24 24" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path 
-          d="M22 12H5M5 12L12 5M5 12L12 19" 
-          stroke="currentColor" 
-          strokeWidth="2" 
-          strokeLinecap="square" 
-          strokeLinejoin="miter"
-        />
-      </svg>
+      <span style={arrowStyle} role="img" aria-label="戻る">
+        ⬅️
+      </span>
     </button>
   );
 } 
