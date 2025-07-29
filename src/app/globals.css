@@ -133,7 +133,7 @@ body {
 /* タブレットサイズ（768px - 1023px） */
 @media (min-width: 768px) and (max-width: 1023px) {
   .product-list-container {
-    max-width: 100%;
+    max-width: 90%;
   }
   
   .product-card-item {
@@ -187,7 +187,7 @@ body {
   }
   
   .product-list-container {
-    max-width: 100%;
+    max-width: 95%;
   }
   
   .product-card-item {
@@ -237,8 +237,8 @@ body {
 /* 小さいモバイル（480px以下） */
 @media (max-width: 480px) {
   .product-list-container {
-    max-width: 100%;
-    padding: 0;
+    max-width: 95%;
+    padding: 0 10px;
   }
   
   .product-card-item {
