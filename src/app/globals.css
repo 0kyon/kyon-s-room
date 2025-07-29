@@ -130,8 +130,58 @@ body {
   }
 }
 
-/* レスポンシブ対応 */
-@media (max-width: 1024px) {
+/* タブレットサイズ（768px - 1023px） */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .product-list-container {
+    max-width: 100%;
+  }
+  
+  .product-card-item {
+    max-width: 45% !important;
+    margin: 0.5em 0 1em 0 !important;
+    shape-margin: 1em;
+    shape-outside: content-box;
+    width: 45% !important;
+    box-sizing: border-box !important;
+  }
+
+  .product-card-item img {
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* 奇数番目の商品（左寄せ） */
+  .product-card-item:nth-of-type(odd) {
+    float: left !important;
+    margin-right: 2em !important;
+    margin-bottom: 1em !important;
+    margin-top: 0.5em !important;
+    clear: left !important;
+    shape-outside: margin-box;
+  }
+
+  /* 偶数番目の商品（右寄せ・少し下にずらす） */
+  .product-card-item:nth-of-type(even) {
+    float: right !important;
+    margin-left: 2em !important;
+    margin-bottom: 5em !important;
+    margin-top: 20em !important;
+    clear: right !important;
+    shape-outside: margin-box;
+  }
+
+  /* 商品カードのクリア */
+  .product-card-item::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* レスポンシブ対応（768px以下） */
+@media (max-width: 767px) {
   .product-card-link {
     margin-bottom: 0 !important;
   }
@@ -141,17 +191,97 @@ body {
   }
   
   .product-card-item {
-    float: none !important;
+    max-width: 45% !important;
+    margin: 0.5em 0 1em 0 !important;
+    shape-margin: 1em;
+    shape-outside: content-box;
+    width: 45% !important;
+    box-sizing: border-box !important;
+  }
+
+  .product-card-item img {
     max-width: 100% !important;
-    margin: 1em 0 !important;
-    clear: none !important;
-    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* 奇数番目の商品（左寄せ） */
+  .product-card-item:nth-of-type(odd) {
+    float: left !important;
+    margin-right: 1em !important;
+    margin-bottom: 1em !important;
+    margin-top: 0.5em !important;
+    clear: left !important;
+    shape-outside: margin-box;
+  }
+
+  /* 偶数番目の商品（右寄せ・少し下にずらす） */
+  .product-card-item:nth-of-type(even) {
+    float: right !important;
+    margin-left: 1em !important;
+    margin-bottom: 3em !important;
+    margin-top: 10em !important;
+    clear: right !important;
+    shape-outside: margin-box;
+  }
+
+  /* 商品カードのクリア */
+  .product-card-item::after {
+    content: "";
+    display: table;
+    clear: both;
   }
 }
 
-@media (max-width: 768px) {
-  .product-card-link {
-    margin-bottom: 0 !important;
+/* 小さいモバイル（480px以下） */
+@media (max-width: 480px) {
+  .product-list-container {
+    max-width: 100%;
+    padding: 0;
+  }
+  
+  .product-card-item {
+    max-width: 45% !important;
+    margin: 0.3em 0 0.8em 0 !important;
+    shape-margin: 0.5em;
+    shape-outside: content-box;
+    width: 45% !important;
+    box-sizing: border-box !important;
+  }
+
+  .product-card-item img {
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* 奇数番目の商品（左寄せ） */
+  .product-card-item:nth-of-type(odd) {
+    float: left !important;
+    margin-right: 0.5em !important;
+    margin-bottom: 0.8em !important;
+    margin-top: 0.3em !important;
+    clear: left !important;
+    shape-outside: margin-box;
+  }
+
+  /* 偶数番目の商品（右寄せ・少し下にずらす） */
+  .product-card-item:nth-of-type(even) {
+    float: right !important;
+    margin-left: 0.5em !important;
+    margin-bottom: 2em !important;
+    margin-top: 5em !important;
+    clear: right !important;
+    shape-outside: margin-box;
+  }
+
+  /* 商品カードのクリア */
+  .product-card-item::after {
+    content: "";
+    display: table;
+    clear: both;
   }
 }
 
