@@ -48,7 +48,7 @@ export default function SuccessClient() {
           href="/shop"
           className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200"
         >
-          もどる
+          とじる
         </Link>
       </div>
     </div>

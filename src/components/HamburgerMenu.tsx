@@ -325,8 +325,8 @@ export default function HamburgerMenu() {
     };
   }, [isOpen, pathname]);
 
-  // トップページ（'/'）ではハンバーガーメニューを表示しない
-  if (pathname === '/') {
+  // トップページ（'/'）および決済完了ページ（'/success'）ではハンバーガーメニューを表示しない
+  if (pathname === '/' || pathname.startsWith('/success')) {
     return null;
   }
 

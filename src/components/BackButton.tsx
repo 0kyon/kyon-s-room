@@ -24,8 +24,8 @@ export default function BackButton() {
     };
   }, []);
   
-  // entranceページ（ルートパス）には表示しない
-  if (pathname === '/') return null;
+  // entranceページ（ルートパス）および決済完了ページでは表示しない
+  if (pathname === '/' || pathname === '/success') return null;
   
   const backButtonStyle: CSSProperties = {
     position: 'fixed',
