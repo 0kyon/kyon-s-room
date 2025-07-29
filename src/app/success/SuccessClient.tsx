@@ -46,7 +46,7 @@ export default function SuccessClient() {
         {/* ショップのトップページへ戻るボタン */}
         <Link
           href="/shop"
-          className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200"
+          className="inline-block text-[#ED3D33] visited:text-[#ED3D33] font-normal no-underline py-2 px-6 transition-colors duration-200"
         >
           とじる
         </Link>
