@@ -28,8 +28,14 @@ export default function CartIcon() {
         🛒
       </span>
       
-      {cartCount && cartCount > 0 && (
-        <span className="absolute -top-1 -right-1 bg-red-500 text-white text-sm rounded-full h-6 w-6 flex items-center justify-center font-bold">
+      {cartCount !== undefined && cartCount !== null && (
+        <span 
+          className="absolute bg-red-500 text-white text-sm rounded-full h-6 w-6 flex items-center justify-center font-bold"
+          style={{ 
+            top: '-8px', 
+            left: '-8px' 
+          }}
+        >
           {cartCount}
         </span>
       )}
