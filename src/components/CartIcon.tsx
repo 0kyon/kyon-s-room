@@ -30,10 +30,13 @@ export default function CartIcon() {
       
       {cartCount !== undefined && cartCount !== null && (
         <span 
-          className="absolute bg-red-500 text-white text-sm rounded-full h-6 w-6 flex items-center justify-center font-bold"
+          className="absolute flex items-center justify-center"
           style={{ 
             top: '-8px', 
-            left: '-8px' 
+            left: '-8px',
+            color: '#333333',
+            fontWeight: 'bold',
+            fontSize: '12px'
           }}
         >
           {cartCount}
