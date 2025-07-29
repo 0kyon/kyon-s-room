@@ -23,7 +23,7 @@ export default function SuccessClient() {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-8 text-center">
+      <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
         <div className="max-w-md mx-auto">
           <h1 className="text-2xl font-bold mb-4">処理中...</h1>
           <p>決済結果を確認しています。</p>
@@ -33,9 +33,9 @@ export default function SuccessClient() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 text-center">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
       <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
-        <div className="text-green-500 text-6xl mb-4">✓</div>
+        <div className="text-green-500 text-[2rem] leading-none mb-4">☑️</div>
         <h1 className="text-2xl font-bold text-green-600 mb-4">決済完了！</h1>
         <p className="text-gray-600 mb-6">
           ご注文ありがとうございます。<br />
